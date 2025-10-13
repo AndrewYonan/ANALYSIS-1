@@ -1,0 +1,109 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem} % Better control over lists
+\usepackage{fancyhdr} % Header/Footer
+\usepackage{lastpage} % For total page count in footer
+\usepackage{hyperref} % Clickable refs and links
+\usepackage{tikz}     % For diagrams (optional)
+
+% Header/Footer formatting
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+% Custom commands
+\newcommand{\points}[1]{\hfill {[#1 points]}}
+\newcommand{\problem}[2][]{%
+  \item {#2}%
+  \ifx&#1&%
+  \else%
+    \points{#1}%
+  \fi
+  \par\vspace{0.5em}
+}
+
+% Title info
+\title{\vspace{-1cm}\textbf{Building Calculus From Scratch }}
+\author{With Terence Tao's \textit{Analysis I}}
+
+\begin{document}
+
+\maketitle
+\vspace{-1em}
+
+\newenvironment{justifiedproof}{%
+  \begin{tabular}{@{}p{0.6\linewidth}@{\quad}p{0.12\linewidth}@{}}%
+}{\end{tabular}}
+
+\section{Starting Axioms}
+\begin{enumerate}
+	\item $0$ is a natural number.
+	\item if $n$ is a natural number, then its successor $n$++ is a natural number. We define the short-hand symbols
+	$$1 := 0\text{++}$$
+	$$2 := (0\text{++})\text{++}$$
+	$$3 := ((0\text{++})\text{++})\text{++}$$
+	$$\hdots$$
+	\item $0$ is not the successor of any natural number. That is, $0 \neq n\text{++}$ for any $n$.
+	\item Different natural numbers have different successors. That is, $[n \neq m] \iff [n\text{++} \neq m\text{++}]$ for any $n,m$. Equivalently, if we have that $n\text{++} = m\text{++}$, then we have that $n=m$.
+	\item The principle of induction holds. That is, let $P(n)$ be a property of the natural number $n$. Let $P(0)$ be true, and let $P(n) \implies P(n\text{++})$. Then $P(n)$ is true for all natural numbers $n$.
+ \end{enumerate}
+
+
+\section{Steps \& Problems}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}]
+
+    \problem{Define the addition operation on two natural numbers, $n$ and $m$.}
+	We define incrementing $m$ by zero as $0 + m := m$. Suppose inductively, that we know how to increment $m$ by $n$. Then we can increment $m$ by $n$++ by defining $$(n\text{++}) + m := (n + m)\text{++}$$ This recursive definition allows us to now add numbers (perform repeated incrementation). For example, $2+m = (1\text{++})+m = (1+m)\text{++} = ((0\text{++})+m)\text{++} = ((0+m)\text{++})\text{++} = ((m)\text{++})\text{++}$, which is exactly $m$ incremented twice.
+	
+    \problem{Prove that $n+0 = n$ for any natural number $n$}
+        	\textcolor{blue}{ We will induct on $n$. We have that $0+0 = 0$ by the fact that $0 + m := m$ for any natural number $m$, including $0$. Suppose, inductively, that $k+0=k$ for some natural number $k$. Now consider the sum $(k\text{++}) + 0 = (k+0)\text{++} \overset{\text{I.H.}}{=} (k)\text{++}$. Hence for any natural number $n$, we have that $n+0 = n$.
+}
+
+    \problem{Prove that $n + (m\text{++}) = (n + m)\text{++}$}
+        	\textcolor{blue}{We will induct on $n$. For $n = 0$, we have that $0 + (m\text{++}) = m\text{++} = (0 + m)\text{++}$. Assume inductively that $k + (m\text{++}) = (k + m)\text{++}$ for some natural number $k$. Now for the next number, $k\text{++}$, we have that $(k\text{++}) + (m\text{++}) = (k + (m\text{++}))\text{++}$ (by the definition from problem 1) $\overset{\text{I.H.}}{=} ((k+m)\text{++})\text{++} = ((k\text{++}) + m)\text{++}$. Hence, $n + (m\text{++}) = (n + m)\text{++}$ for all natural numbers $n$.}
+	
+	
+	 \problem{Prove that the natural numbers are closed under addition. That is, if $a$,$b$ are natural numbers, then $a+b$ is a natural number.}
+    	\textcolor{blue}{We will fix $b$ and induct on $a$. Base case: $0$ is a natural number by Axiom $1$ and let $b$ be a natural number. Then $0+b = b$ by our definition of incrementing by zero. But $b$ is a natural number (by assumption). This closes the base case. Assume inductively that for some natural number $a$, if $a$ and $b$ are natural numbers then so is $a+b$. Consider the next natural number $a\text{++}$. By Axiom $2$, since $a$ is a natural number (I.H), we must have that $a\text{++}$ is also a natural number. Let $b$ be a natural number by assumption. Now consider the sum $(a\text{++}) + b = (a+b)\text{++}$. We have that $a$ and $b$ are natural numbers, so $a+b$ is a natural number by the inductive hypothesis. By Axiom $2$, we have that its successor $(a+b)\text{++}$ must also be a natural number. This closes the induction. Hence the natural numbers are closed under addition.}
+	
+	 \problem{Prove that the addition operation is commutative. That is, for any two natural numbers, $a$ and $b$, we have that $a+b = b+a$}
+    	\textcolor{blue}{We will fix $b$ and induct on $a$. We have that $0 + b = b$ from our first definition—incrementing a natural number by 0. Then $b = b + 0$, which we have from problem $2$'s proof. Hence we have our base case $0 + b = b + 0$. Suppose inductively that $a + b = b + a$ for some natural number $a$. Now consider the next number, $a\text{++}$ : we have $(a\text{++}) + b = (a + b)\text{++} \overset{\text{I.H.}}{=} (b + a)\text{++} = b+(a\text{++})$ by our previous proof. Hence for some natural number $b$, we have that $a + b = b + a$ for all natural numbers $a$.}
+	
+	
+	\problem{Prove that the additive cancellation law holds. That is, for any three natural numbers $a$, $b$, and $c$ such that $a + b = a + c$, we have $b = c$.}
+    	\textcolor{blue}{We will fix $b$,$c$ and induct on $a$. For the base case $a=0$, we will show that $[0+b=0+c] \implies [c=b]$. Let us assume that $0+b=0+c$. We have that $0+b=b$ and that $0+c=c$ from a previous proof. Then by transitive equality, we have $b=c$. This closes the base case. Assume inductively that for some natural number $a$, we have that $[a+b=a+c] \implies [b=c]$. Now consider the next natural number $a\text{++}$. Assume that $(a\text{++})+b=(a\text{++})+c$. Re-writing both sides, we have $(a+b)\text{++} = (a+c)\text{++}$. $a+b$ is a natural number and $a+c$ is a natural number (by our additive closure proof). Recall by Axiom $4$ that if the successors of two natural numbers are equal, then the natural numbers themselves must be equal. Hence we have that $a+b = a+c$. By the inductive hypothesis ($[a+b=a+c]  \implies [b=c]$), we must now have that $b=c$. This closes the inductive step. Thus, for any $a$, $b$, $c$ such that $a + b = a + c$, we also have that $b = c$.}
+	
+	\problem{A natural number $a$ is said to be positive iff $a \neq 0$. Prove that the sum of a natural number and a positive number must be positive.}
+	\textcolor{blue}{}
+	
+	\problem{Prove that, for natural numbers $a$ and $b$, if $a + b = 0$ then $a = 0$ and $b = 0$.}
+	\textcolor{blue}{We will prove the equivalent contraposition statement: if $a \neq 0$ or $b \neq 0$, then $a + b \neq 0$. Assume that either $a \neq 0$ or $b \neq 0$. In the case that $a \neq 0$, $a+b$ must be positive and hence non-zero. In the case that $b \neq 0$, $a+b$ must similarly be positive and hence non-zero.}
+	
+    \problem{(\textbf{EXERCISE 1}) Prove that the addition operation is associative. That is, for any three natural numbers, $a$, $b$, $c$, we have that $(a+b)+c = a+(b+c)$}
+    	\textcolor{blue}{We will fix $b,c \in \mathbb{N}$ and induct on $a$. Base case: $(0 + b) + c = b + c = 0 + (b + c).$ Assume inductively that $(a + b) + c = a + (b + c)$ for some natural number $a$. Then $((a\text{++}) + b) + c = ((a + b)\text{++}) + c = ((a+b) + c)\text{++} \overset{\text{I.H.}}{=} (a + (b + c))\text{++} = (a\text{++}) + (b+c)$. Hence, we have $(a+b)+c = a+(b+c)$ for all natural numbers $a$.}
+	
+	\problem{(\textbf{EXERCISE 2}) Let $a$ be a positive number. Prove that there exists exactly one natural number $b$ such that $b\text{++} = a$}
+	\textcolor{blue}{Will will induct on $a$. Base case: for $a = 1$, we have $b=0 \implies b\text{++} = a$. This is the \textit{only} such $b$ for $a=0$ because a different $b \neq 0$ would have a different successor $b\text{++} \neq 1$ acccording to Axiom $4$: different natural numbers have different successors. Suppose inductively that for some natural number $a$ there exists a $b$ such that $b\text{++} = a$. Now consider the next natural number $a\text{++}$: the number $a\text{++}$, by definition, is the successor of $a$. So we have found one $b=a$ such that $b\text{++} = a\text{++}$. This is the only such $b$ because, similarly, by Axiom $4$, any other $b \neq a$ has a different successor $b\text{++} \neq a\text{++}$. This closes the induction.}
+	
+	\problem{Define the ordering of the natural numbers.}
+	Let $n$ and $m$ be natural numbers. We say that $n$ is \textit{greater than or equal to} $m$, and write $n \geq m$ or $m \leq n$, iff we have $n = m + a$ for some natural number $a$. We say that $n$ is \textit{strictly greater than} $m$, and write $n > m$ or $m < n$, iff we have $n = m + a$ for some \textit{positive} number $a$.
+	
+	\problem{(\textbf{EXERCISE 3}) Prove properties of order.}
+	\begin{enumerate}
+	   \problem{(Reflexivity) Prove that $a \geq a$ for any natural number $a$.}
+    	\textcolor{blue}{We can find a natural number $a$ such that $0 = 0 + a$. Choose $a=0$ and we have $0 = 0+0$. Hence $0 \geq 0$. Assume inductively that $n \geq n$ for some natural number $n$. Consider the next natural number $n\text{++}$. We can find an $a$ such that $n\text{++} = (n\text{++}) + a$. Chose $a=0$ again, and then we have $(n\text{++}) + 0 = (n+0)\text{++} = (n)\text{++}$. Hence $n\text{++} \geq n\text{++}$. This closes the induction. Note that this is degenerate induction, because the inductive hypothesis was not needed.}
+	   \problem{(Transitivity) Prove that if $a \geq b$ and $b \geq c$, then $a \geq c$.}
+    	\textcolor{blue}{Assume that $a \geq b$ and $b \geq c$ for some natural numbers $a,b,c$. Then we have some natural number $k_1$ such that $a = b + k_1$, and we have some natural number $k_2$ such that $b = c + k_2$. Substituting the second equation into the first, we have that $a = (c + k_2) + k_1$, which, by associativity, is $a = c + (k_2 + k_1)$. By additive closure, $k_2 + k_1$ is some natural number, call it $m$. But since we have that $a = c + m$ for some natural number $m$, then we must have that $a \geq c$.}
+	
+	\problem{(Anti-symmetry) Prove that if $a \geq b$ and $b \geq a$, then $a = b$}
+	\textcolor{blue}{Assume that $a \geq b$ and $b \geq a$ for some $a,b$. Then we have some $k_1$ such that $a = b + k_1$ and we have some $k_2$ such that $b = a + k_2$. Substituting the second equation into the first, we have $a = (a + k_2) + k_1$ which is $a = a + (k_2 + k_1)$ by associativity. Re-writing this as $a + 0 = a + (k_2 + k_1)$ allows us to apply our proven cancellation law to get that $0 = (k_2 + k_1)$.}
+	\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
