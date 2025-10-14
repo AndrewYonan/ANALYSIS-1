@@ -79,10 +79,10 @@
     	\textcolor{blue}{We will fix $b$,$c$ and induct on $a$. For the base case $a=0$, we will show that $[0+b=0+c] \implies [c=b]$. Let us assume that $0+b=0+c$. We have that $0+b=b$ and that $0+c=c$ from a previous proof. Then by transitive equality, we have $b=c$. This closes the base case. Assume inductively that for some natural number $a$, we have that $[a+b=a+c] \implies [b=c]$. Now consider the next natural number $a\text{++}$. Assume that $(a\text{++})+b=(a\text{++})+c$. Re-writing both sides, we have $(a+b)\text{++} = (a+c)\text{++}$. $a+b$ is a natural number and $a+c$ is a natural number (by our additive closure proof). Recall by Axiom $4$ that if the successors of two natural numbers are equal, then the natural numbers themselves must be equal. Hence we have that $a+b = a+c$. By the inductive hypothesis ($[a+b=a+c]  \implies [b=c]$), we must now have that $b=c$. This closes the inductive step. Thus, for any $a$, $b$, $c$ such that $a + b = a + c$, we also have that $b = c$.}
 	
 	\problem{A natural number $a$ is said to be positive iff $a \neq 0$. Prove that the sum of a natural number and a positive number must be positive.}
-	\textcolor{blue}{}
+	\textcolor{blue}{Fix a positive number $b$. We will show that $a+b$ is positive for all $a$. Base case: $0 + b = b$ by our definition of incrementing by zero, and $b$ is positive (by assumption). This closes the base case. Assume inductively that $a+b$ is positive for some natural number $a$. Then consider the statement for the next natural number $a\text{++}$: we have $(a\text{++}) + b = (a+b)\text{++}$. By the inductive hypothesis, we have that $a+b$ is positive. But this means that $(a+b)\text{++}$, the succesor of $a+b$, must also be positive—it cannot be $0$ because of Axiom $3$: zero is not the successor of any natural number. This closes the induction.}
 	
 	\problem{Prove that, for natural numbers $a$ and $b$, if $a + b = 0$ then $a = 0$ and $b = 0$.}
-	\textcolor{blue}{We will prove the equivalent contraposition statement: if $a \neq 0$ or $b \neq 0$, then $a + b \neq 0$. Assume that either $a \neq 0$ or $b \neq 0$. In the case that $a \neq 0$, $a+b$ must be positive and hence non-zero. In the case that $b \neq 0$, $a+b$ must similarly be positive and hence non-zero.}
+	\textcolor{blue}{We will prove the equivalent contraposition statement: if $a \neq 0$ or $b \neq 0$, then $a + b \neq 0$. Assume that either $a \neq 0$ or $b \neq 0$. In the case that $a \neq 0$, $a+b$ must be positive (according to the result of the previous proof) and hence non-zero. In the case that $b \neq 0$, $a+b$ must similarly be positive and hence non-zero.}
 	
     \problem{(\textbf{EXERCISE 1}) Prove that the addition operation is associative. That is, for any three natural numbers, $a$, $b$, $c$, we have that $(a+b)+c = a+(b+c)$}
     	\textcolor{blue}{We will fix $b,c \in \mathbb{N}$ and induct on $a$. Base case: $(0 + b) + c = b + c = 0 + (b + c).$ Assume inductively that $(a + b) + c = a + (b + c)$ for some natural number $a$. Then $((a\text{++}) + b) + c = ((a + b)\text{++}) + c = ((a+b) + c)\text{++} \overset{\text{I.H.}}{=} (a + (b + c))\text{++} = (a\text{++}) + (b+c)$. Hence, we have $(a+b)+c = a+(b+c)$ for all natural numbers $a$.}
@@ -91,7 +91,7 @@
 	\textcolor{blue}{Will will induct on $a$. Base case: for $a = 1$, we have $b=0 \implies b\text{++} = a$. This is the \textit{only} such $b$ for $a=0$ because a different $b \neq 0$ would have a different successor $b\text{++} \neq 1$ acccording to Axiom $4$: different natural numbers have different successors. Suppose inductively that for some natural number $a$ there exists a $b$ such that $b\text{++} = a$. Now consider the next natural number $a\text{++}$: the number $a\text{++}$, by definition, is the successor of $a$. So we have found one $b=a$ such that $b\text{++} = a\text{++}$. This is the only such $b$ because, similarly, by Axiom $4$, any other $b \neq a$ has a different successor $b\text{++} \neq a\text{++}$. This closes the induction.}
 	
 	\problem{Define the ordering of the natural numbers.}
-	Let $n$ and $m$ be natural numbers. We say that $n$ is \textit{greater than or equal to} $m$, and write $n \geq m$ or $m \leq n$, iff we have $n = m + a$ for some natural number $a$. We say that $n$ is \textit{strictly greater than} $m$, and write $n > m$ or $m < n$, iff we have $n = m + a$ for some \textit{positive} number $a$.
+	Let $n$ and $m$ be natural numbers. We say that $n$ is \textit{greater than or equal to} $m$, and write $n \geq m$ or $m \leq n$, iff we have $n = m + a$ for some natural number $a$. We say that $n$ is \textit{strictly greater than} $m$, and write $n > m$ or $m < n$, iff $n \geq m$ and $n \neq m$.
 	
 	\problem{(\textbf{EXERCISE 3}) Prove properties of order.}
 	\begin{enumerate}
@@ -101,7 +101,24 @@
     	\textcolor{blue}{Assume that $a \geq b$ and $b \geq c$ for some natural numbers $a,b,c$. Then we have some natural number $k_1$ such that $a = b + k_1$, and we have some natural number $k_2$ such that $b = c + k_2$. Substituting the second equation into the first, we have that $a = (c + k_2) + k_1$, which, by associativity, is $a = c + (k_2 + k_1)$. By additive closure, $k_2 + k_1$ is some natural number, call it $m$. But since we have that $a = c + m$ for some natural number $m$, then we must have that $a \geq c$.}
 	
 	\problem{(Anti-symmetry) Prove that if $a \geq b$ and $b \geq a$, then $a = b$}
-	\textcolor{blue}{Assume that $a \geq b$ and $b \geq a$ for some $a,b$. Then we have some $k_1$ such that $a = b + k_1$ and we have some $k_2$ such that $b = a + k_2$. Substituting the second equation into the first, we have $a = (a + k_2) + k_1$ which is $a = a + (k_2 + k_1)$ by associativity. Re-writing this as $a + 0 = a + (k_2 + k_1)$ allows us to apply our proven cancellation law to get that $0 = (k_2 + k_1)$.}
+	\textcolor{blue}{Assume that $a \geq b$ and $b \geq a$ for some $a,b$. Then we have some $k_1$ such that $a = b + k_1$ and we have some $k_2$ such that $b = a + k_2$. Substituting the second equation into the first, we have $a = (a + k_2) + k_1$ which is $a = a + (k_2 + k_1)$ by associativity. Re-writing this as $a + 0 = a + (k_2 + k_1)$ allows us to apply our proven cancellation law to get that $0 = (k_2 + k_1)$, which means that $k_1 = 0$ and $k_2 = 0$ (by our previous zero-sum proof). But this means that $a=b+0$, or $a=b$.}
+	
+	\problem{(Order preservation under addition) Prove that $a \geq b$ if and only if $a+c \geq b+c$.}
+	\textcolor{blue}{We will prove the forward direction first—that is, if $a \geq b$, then $a+c \geq b+c$. Assume that $a \geq b$ for some $a,b$. Then we have some $k_1$ such that $a = b+k_1$. We can add a natural number $c$ to both sides to obtain $a+c = (b+k_1)+c = b+(k_1+c) = b+(c+k_1)=(b+c)+k_1$ by applications of associativity and commutativity. In all, we have that $a+c = (b+c)+k_1$, which is the definition of $a+c \geq b+c$. \\ \\ Let us prove the backwards direction now—that is, if $a+c \geq b+c$, then $a \geq b$. Assume that $a+c \geq b+c$ for some natural numbers $a,b,c$. Then we have that $a+c = (b+c) + k$ for some natural number $k$. With some associativity and commutativity manipulations, we can obtain $a+c = (b+k)+c$. Apply our cancellation law to obtain $a=b+k$, which is the definition of $a \geq b$.}
+	
+		\problem{Prove that $a < b$ if and only if $a\text{++} \leq b$.}
+		\textcolor{blue}{Forward direction: assume that $a < b$. That is, $a \leq b$ and $a \neq b$. Then we have that $b = a + k$ for some $k$. Since $a \neq b$, we must have that $k \neq 0$. Hence $k$ must be positive. But this means that $k$ is the successor of some natural number, say $m$. That is, $k = m\text{++}$. In total, we now have $b = a + (m\text{++}) = a + (m+1) = a + (1+m) = (a+1)+m=(a\text{++}) + m$. Hence $b = (a\text{++}) + m$, which is the definition of $a\text{++} \leq b$. \\ \\ 
+		Backward direction: assume that $a\text{++} \leq b$. Then $b = (a\text{++}) + m$ for some natural number $m$. Then $b=(a+1)+m = a+(1+m)=a+(m+1)=a+m\text{++}$. Together, we have $b = a+(m\text{++})$, which is the definition of $a \leq b$. Since $m\text{++}$ is positive by definition, then $a \neq b$. If $a \leq b$ and $a \neq b$, then we must have that $a < b$.}
+		
+		\problem{Prove that $a < b$ if and only if $b = a + d$ for some positive number $d$.}
+		\textcolor{blue}{Forward: $a < b \implies b = a + k$ for some $k$ and $a \neq b$. Temporarily assume that $k=0$. Then $b=a+0$ and $b=a$ (a contradiction). Hence $k \neq 0$ and $k$ is positive. Let $d = k$, then we have $b = a + d$ where $d$ is positive. \\ \\ 
+		Backward: Let $b = a + d$ for some positive $d$. Then $a \leq b$. Since $d$ is positive, then $d \neq 0$. Temporarily assume that $b=a$. Then $b = a + d \implies d = 0$ (contradiction). Hence, $b \neq a$, and we have in total that $a < b$.}
+	
+	\end{enumerate}
+	
+	\problem{\textbf{EXERCISE 4} Justify the following:}
+	\begin{enumerate}
+	\problem{$0 \leq a$ for all $a$.}	
 	\end{enumerate}
 
 \end{enumerate}
