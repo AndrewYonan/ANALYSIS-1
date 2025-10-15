@@ -69,7 +69,7 @@
 	
 	
 	 \problem{Prove that the natural numbers are closed under addition. That is, if $a$,$b$ are natural numbers, then $a+b$ is a natural number.}
-    	\textcolor{blue}{We will fix $b$ and induct on $a$. Base case: $0$ is a natural number by Axiom $1$ and let $b$ be a natural number. Then $0+b = b$ by our definition of incrementing by zero. But $b$ is a natural number (by assumption). This closes the base case. Assume inductively that for some natural number $a$, if $a$ and $b$ are natural numbers then so is $a+b$. Consider the next natural number $a\text{++}$. By Axiom $2$, since $a$ is a natural number (I.H), we must have that $a\text{++}$ is also a natural number. Let $b$ be a natural number by assumption. Now consider the sum $(a\text{++}) + b = (a+b)\text{++}$. We have that $a$ and $b$ are natural numbers, so $a+b$ is a natural number by the inductive hypothesis. By Axiom $2$, we have that its successor $(a+b)\text{++}$ must also be a natural number. This closes the induction. Hence the natural numbers are closed under addition.}
+    	\textcolor{blue}{We will fix $b$ and induct on $a$. Base case: $0$ is a natural number by Axiom $1$ and let $b$ be a natural number. Then $0+b = b$ by our definition of incrementing by zero. But $b$ is a natural number (by assumption). This closes the base case. Assume inductively that for some natural number $a$, if $a$ and $b$ are natural numbers then so is $a+b$. Consider the next natural number $a\text{++}$. By Axiom $2$, since $a$ is a natural number (I.H), we must have that $a\text{++}$ is also a natural number. Now consider the sum $(a\text{++}) + b = (a+b)\text{++}$. We have that $a$ and $b$ are natural numbers, so $a+b$ is a natural number by the inductive hypothesis. By Axiom $2$, we have that its successor $(a+b)\text{++}$ must also be a natural number. This closes the induction. Hence the natural numbers are closed under addition.}
 	
 	 \problem{Prove that the addition operation is commutative. That is, for any two natural numbers, $a$ and $b$, we have that $a+b = b+a$}
     	\textcolor{blue}{We will fix $b$ and induct on $a$. We have that $0 + b = b$ from our first definition—incrementing a natural number by 0. Then $b = b + 0$, which we have from problem $2$'s proof. Hence we have our base case $0 + b = b + 0$. Suppose inductively that $a + b = b + a$ for some natural number $a$. Now consider the next number, $a\text{++}$ : we have $(a\text{++}) + b = (a + b)\text{++} \overset{\text{I.H.}}{=} (b + a)\text{++} = b+(a\text{++})$ by our previous proof. Hence for some natural number $b$, we have that $a + b = b + a$ for all natural numbers $a$.}
@@ -104,23 +104,61 @@
 	\textcolor{blue}{Assume that $a \geq b$ and $b \geq a$ for some $a,b$. Then we have some $k_1$ such that $a = b + k_1$ and we have some $k_2$ such that $b = a + k_2$. Substituting the second equation into the first, we have $a = (a + k_2) + k_1$ which is $a = a + (k_2 + k_1)$ by associativity. Re-writing this as $a + 0 = a + (k_2 + k_1)$ allows us to apply our proven cancellation law to get that $0 = (k_2 + k_1)$, which means that $k_1 = 0$ and $k_2 = 0$ (by our previous zero-sum proof). But this means that $a=b+0$, or $a=b$.}
 	
 	\problem{(Order preservation under addition) Prove that $a \geq b$ if and only if $a+c \geq b+c$.}
-	\textcolor{blue}{We will prove the forward direction first—that is, if $a \geq b$, then $a+c \geq b+c$. Assume that $a \geq b$ for some $a,b$. Then we have some $k_1$ such that $a = b+k_1$. We can add a natural number $c$ to both sides to obtain $a+c = (b+k_1)+c = b+(k_1+c) = b+(c+k_1)=(b+c)+k_1$ by applications of associativity and commutativity. In all, we have that $a+c = (b+c)+k_1$, which is the definition of $a+c \geq b+c$. \\ \\ Let us prove the backwards direction now—that is, if $a+c \geq b+c$, then $a \geq b$. Assume that $a+c \geq b+c$ for some natural numbers $a,b,c$. Then we have that $a+c = (b+c) + k$ for some natural number $k$. With some associativity and commutativity manipulations, we can obtain $a+c = (b+k)+c$. Apply our cancellation law to obtain $a=b+k$, which is the definition of $a \geq b$.}
-	
+	\textcolor{blue}{
+	\begin{align*}
+	a \geq b \iff& \exists k (a = b+k)  \\
+	\iff& a + c = (b + k) + c \\
+	\iff& a + c = b + (k + c) \\
+	\iff& a + c = b + (c + k) \\
+	\iff& a + c = (b + c) + k \\
+	\iff& a + c \geq b + c \\
+	\end{align*}
+	}
 		\problem{Prove that $a < b$ if and only if $a\text{++} \leq b$.}
-		\textcolor{blue}{Forward direction: assume that $a < b$. That is, $a \leq b$ and $a \neq b$. Then we have that $b = a + k$ for some $k$. Since $a \neq b$, we must have that $k \neq 0$. Hence $k$ must be positive. But this means that $k$ is the successor of some natural number, say $m$. That is, $k = m\text{++}$. In total, we now have $b = a + (m\text{++}) = a + (m+1) = a + (1+m) = (a+1)+m=(a\text{++}) + m$. Hence $b = (a\text{++}) + m$, which is the definition of $a\text{++} \leq b$. \\ \\ 
-		Backward direction: assume that $a\text{++} \leq b$. Then $b = (a\text{++}) + m$ for some natural number $m$. Then $b=(a+1)+m = a+(1+m)=a+(m+1)=a+m\text{++}$. Together, we have $b = a+(m\text{++})$, which is the definition of $a \leq b$. Since $m\text{++}$ is positive by definition, then $a \neq b$. If $a \leq b$ and $a \neq b$, then we must have that $a < b$.}
+		\textcolor{blue}{
+		\begin{align*}
+	a < b \iff& \exists k (b = a+k \;\; \text{and} \;\; a \neq b)  \\
+	\iff& k \neq 0\\
+	\iff& \exists m (k = m\text{++})\\
+	\iff& b = a + m\text{++}\\
+	\iff& b = a + (m+1)\\	
+	\iff& b = a + (1+m)\\
+	\iff& b = (a + 1)+m\\
+	\iff& b = (a\text{++}) + m\\	
+	\iff& a\text{++} \leq b\\	
+	\end{align*}}
 		
 		\problem{Prove that $a < b$ if and only if $b = a + d$ for some positive number $d$.}
-		\textcolor{blue}{Forward: $a < b \implies b = a + k$ for some $k$ and $a \neq b$. Temporarily assume that $k=0$. Then $b=a+0$ and $b=a$ (a contradiction). Hence $k \neq 0$ and $k$ is positive. Let $d = k$, then we have $b = a + d$ where $d$ is positive. \\ \\ 
-		Backward: Let $b = a + d$ for some positive $d$. Then $a \leq b$. Since $d$ is positive, then $d \neq 0$. Temporarily assume that $b=a$. Then $b = a + d \implies d = 0$ (contradiction). Hence, $b \neq a$, and we have in total that $a < b$.}
+		\textcolor{blue}{
+		\begin{align*}
+	a < b \iff& \exists k (b = a+k \;\; \text{and} \;\; a \neq b)  \\
+	\iff& k \neq 0\\
+	\iff& \text{choose} \;\; d = k\\
+	\iff& b = a + d \;\; \text{and $d$ is positive}\\
+	\end{align*}}
 	
 	\end{enumerate}
 	
 	\problem{\textbf{EXERCISE 4} Justify the following:}
 	\begin{enumerate}
 	\problem{$0 \leq a$ for all $a$.}	
+	\textcolor{blue}{$0 \leq 0$ since $0 = 0 + 0$. Assume inductively that $0 \leq a$ for some $a$. By the inductive hypothesis, we have that $1 \leq a\text{++}$ by order-preservation under addition (proven previously). But we certainly have that $0 \leq 1 \leq a\text{++}$, and by transitivity (proven previously), we have $0 \leq a\text{++}$. This closes the induction.}
+	
+	\problem{If $a > b$, then $a\text{++} > b$}	
+	\textcolor{blue}{Let $a > b$. We have that $a\text{++} > a$ by definition ($a\text{++} = a + 1$). Putting these together, we have $a\text{++} > a > b$. By transitivity (proved earlier), $a\text{++} > b$.}
+	
+	\problem{If $a = b$, then $a\text{++} > b$}	
+	\textcolor{blue}{Let $a = b$. Then $a\text{++} = b\text{++} > b \implies a\text{++} > b$.}
 	\end{enumerate}
-
+	
+	\problem{\textbf{EXERCISE 5} Prove the principle of strong induction.}
+	\textcolor{blue}{
+	\begin{align*}
+	x=2 \implies& x+1=3 \\
+	\implies& x+2 = 4
+	\end{align*}
+	}
+	
 \end{enumerate}
 
 \end{document}
