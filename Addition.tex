@@ -85,10 +85,24 @@
 	\textcolor{blue}{We will prove the equivalent contraposition statement: if $a \neq 0$ or $b \neq 0$, then $a + b \neq 0$. Assume that either $a \neq 0$ or $b \neq 0$. In the case that $a \neq 0$, $a+b$ must be positive (according to the result of the previous proof) and hence non-zero. In the case that $b \neq 0$, $a+b$ must similarly be positive and hence non-zero.}
 	
     \problem{(\textbf{EXERCISE 1}) Prove that the addition operation is associative. That is, for any three natural numbers, $a$, $b$, $c$, we have that $(a+b)+c = a+(b+c)$}
-    	\textcolor{blue}{We will fix $b,c \in \mathbb{N}$ and induct on $a$. Base case: $(0 + b) + c = b + c = 0 + (b + c).$ Assume inductively that $(a + b) + c = a + (b + c)$ for some natural number $a$. Then $((a\text{++}) + b) + c = ((a + b)\text{++}) + c = ((a+b) + c)\text{++} \overset{\text{I.H.}}{=} (a + (b + c))\text{++} = (a\text{++}) + (b+c)$. Hence, we have $(a+b)+c = a+(b+c)$ for all natural numbers $a$.}
-	
+    	\textcolor{blue}{We will fix $b,c \in \mathbb{N}$ and induct on $a$. Base case:
+	\begin{align*}
+	(0 + b) + c &=b + c \\
+	&= 0 + (b + c)\\
+	\end{align*}
+	Assume inductively that $(a + b) + c = a + (b + c)$ for some natural number $a$. Then
+	\begin{align*}
+	((a\text{++}) + b) + c &= ((a + b)\text{++}) + c\\
+	&= ((a+b) + c)\text{++}  \\
+	& = (a + (b + c))\text{++} \;\; \text{(I.H)} \\
+	&= (a\text{++}) + (b+c) \\
+	\end{align*}
+	This closes the induction.}
+	\\ \\ \\
 	\problem{(\textbf{EXERCISE 2}) Let $a$ be a positive number. Prove that there exists exactly one natural number $b$ such that $b\text{++} = a$}
-	\textcolor{blue}{Will will induct on $a$. Base case: for $a = 1$, we have $b=0 \implies b\text{++} = a$. This is the \textit{only} such $b$ for $a=0$ because a different $b \neq 0$ would have a different successor $b\text{++} \neq 1$ acccording to Axiom $4$: different natural numbers have different successors. Suppose inductively that for some natural number $a$ there exists a $b$ such that $b\text{++} = a$. Now consider the next natural number $a\text{++}$: the number $a\text{++}$, by definition, is the successor of $a$. So we have found one $b=a$ such that $b\text{++} = a\text{++}$. This is the only such $b$ because, similarly, by Axiom $4$, any other $b \neq a$ has a different successor $b\text{++} \neq a\text{++}$. This closes the induction.}
+	\textcolor{blue}{ 
+	We effectively need to prove that each positive $a$ has a unique predecessor $b$. Hence, it suffices to show that each $a$ has both: 1) \textit{at least} $1$ predecessor and 2) \textit{at most} $1$ predecessor. If $a$ is positive, then $a \neq 0$, which guarantees the existence of a $b$ such that $b\text{++} = a$ (a predecessor of $a$). Axiom $4$ (different natural numbers have different successors) guarantees that no two distinct natural numbers have the same successor. Hence, $a$ cannot have more than $1$ predecessor $\implies b$ must be the only predecessor of $a$.  \\ \\ \\
+	Will will induct on $a$. Base case: for $a = 1$, we have $b=0 \implies b\text{++} = a$. This is the \textit{only} such $b$ for $a=0$ because a different $b \neq 0$ would have a different successor $b\text{++} \neq 1$ acccording to Axiom $4$: different natural numbers have different successors. Suppose inductively that for some natural number $a$ there exists a $b$ such that $b\text{++} = a$. Now consider the next natural number $a\text{++}$: the number $a\text{++}$, by definition, is the successor of $a$. So we have found one $b=a$ such that $b\text{++} = a\text{++}$. This is the only such $b$ because, similarly, by Axiom $4$, any other $b \neq a$ has a different successor $b\text{++} \neq a\text{++}$. This closes the induction.}
 	
 	\problem{Define the ordering of the natural numbers.}
 	Let $n$ and $m$ be natural numbers. We say that $n$ is \textit{greater than or equal to} $m$, and write $n \geq m$ or $m \leq n$, iff we have $n = m + a$ for some natural number $a$. We say that $n$ is \textit{strictly greater than} $m$, and write $n > m$ or $m < n$, iff $n \geq m$ and $n \neq m$.
