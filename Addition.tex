@@ -61,18 +61,46 @@
 	We define incrementing $m$ by zero as $0 + m := m$. Suppose inductively, that we know how to increment $m$ by $n$. Then we can increment $m$ by $n$++ by defining $$(n\text{++}) + m := (n + m)\text{++}$$ This recursive definition allows us to now add numbers (perform repeated incrementation). For example, $2+m = (1\text{++})+m = (1+m)\text{++} = ((0\text{++})+m)\text{++} = ((0+m)\text{++})\text{++} = ((m)\text{++})\text{++}$, which is exactly $m$ incremented twice.
 	
     \problem{Prove that $n+0 = n$ for any natural number $n$}
-        	\textcolor{blue}{ We will induct on $n$. We have that $0+0 = 0$ by the fact that $0 + m := m$ for any natural number $m$, including $0$. Suppose, inductively, that $k+0=k$ for some natural number $k$. Now consider the sum $(k\text{++}) + 0 = (k+0)\text{++} \overset{\text{I.H.}}{=} (k)\text{++}$. Hence for any natural number $n$, we have that $n+0 = n$.
+        	\textcolor{blue}{ We will induct on $n$. We have that $0+0 = 0$ from $0 + m := m$ for any natural $m$, including $0$. Suppose, inductively, that $k+0=k$ for some natural number $k$. Then 
+	\begin{align*}
+	(k\text{++}) + 0 &= (k+0)\text{++} \;\; \text{(definition of addition)} \\
+	&= (k)\text{++} \;\; \text{(I.H)} \\
+	\end{align*}
+	Hence for any natural number $n$, we have that $n+0 = n$.
 }
 
     \problem{Prove that $n + (m\text{++}) = (n + m)\text{++}$}
-        	\textcolor{blue}{We will induct on $n$. For $n = 0$, we have that $0 + (m\text{++}) = m\text{++} = (0 + m)\text{++}$. Assume inductively that $k + (m\text{++}) = (k + m)\text{++}$ for some natural number $k$. Now for the next number, $k\text{++}$, we have that $(k\text{++}) + (m\text{++}) = (k + (m\text{++}))\text{++}$ (by the definition from problem 1) $\overset{\text{I.H.}}{=} ((k+m)\text{++})\text{++} = ((k\text{++}) + m)\text{++}$. Hence, $n + (m\text{++}) = (n + m)\text{++}$ for all natural numbers $n$.}
+        	\textcolor{blue}{We will induct on $n$. For $n = 0$,
+	\begin{align*}
+	0 + (m\text{++}) &= m\text{++} \\
+	&= (0 + m)\text{++} \\
+	\end{align*}
+	Assume inductively that $k + (m\text{++}) = (k + m)\text{++}$ for some natural number $k$. Then
+	\begin{align*}
+	(k\text{++}) + (m\text{++}) &= (k + (m\text{++}))\text{++}  \;\; \text{(definition of addition)}\\
+	&= ((k+m)\text{++})\text{++} \;\; \text{(I.H)} \\
+	&= ((k\text{++}) + m)\text{++} \\
+	\end{align*}
+	Hence, $n + (m\text{++}) = (n + m)\text{++}$ for all natural numbers $n$.}
 	
 	
 	 \problem{Prove that the natural numbers are closed under addition. That is, if $a$,$b$ are natural numbers, then $a+b$ is a natural number.}
-    	\textcolor{blue}{We will fix $b$ and induct on $a$. Base case: $0$ is a natural number by Axiom $1$ and let $b$ be a natural number. Then $0+b = b$ by our definition of incrementing by zero. But $b$ is a natural number (by assumption). This closes the base case. Assume inductively that for some natural number $a$, if $a$ and $b$ are natural numbers then so is $a+b$. Consider the next natural number $a\text{++}$. By Axiom $2$, since $a$ is a natural number (I.H), we must have that $a\text{++}$ is also a natural number. Now consider the sum $(a\text{++}) + b = (a+b)\text{++}$. We have that $a$ and $b$ are natural numbers, so $a+b$ is a natural number by the inductive hypothesis. By Axiom $2$, we have that its successor $(a+b)\text{++}$ must also be a natural number. This closes the induction. Hence the natural numbers are closed under addition.}
+    	\textcolor{blue}{Fix a natural number $b$. For $a = 0$, we have $a + b = b$ (natural). Assume inductively that $a+b$ is natural for some natural $a$. Then $(a\text{++}) + b = (a+b)\text{++}$ where $a+b$ is natural by the inductive hypothesis. Hence $(a+b)\text{++}$ is natural by Axiom $2$ (if a number is natural then its successor must also be natural). Hence the natural numbers are closed under addition.}
 	
 	 \problem{Prove that the addition operation is commutative. That is, for any two natural numbers, $a$ and $b$, we have that $a+b = b+a$}
-    	\textcolor{blue}{We will fix $b$ and induct on $a$. We have that $0 + b = b$ from our first definition—incrementing a natural number by 0. Then $b = b + 0$, which we have from problem $2$'s proof. Hence we have our base case $0 + b = b + 0$. Suppose inductively that $a + b = b + a$ for some natural number $a$. Now consider the next number, $a\text{++}$ : we have $(a\text{++}) + b = (a + b)\text{++} \overset{\text{I.H.}}{=} (b + a)\text{++} = b+(a\text{++})$ by our previous proof. Hence for some natural number $b$, we have that $a + b = b + a$ for all natural numbers $a$.}
+    	\textcolor{blue}{Fix a natural number $b$. For $a=0$, 
+	\begin{align*}
+	a + b &= b \\
+	&= b + 0 \;\; \text{(from proof that $n+0=n$ for any $n$)} \\
+	&= b + a \\
+	\end{align*}
+	Assume inductively that $a + b = b + a$ for some natural $a$. Then
+	\begin{align*}
+	(a\text{++}) + b &= (a + b)\text{++} \;\; \text{(definition of addition)} \\
+	&= (b + a)\text{++} \;\; \text{(I.H)} \\
+	&= b+(a\text{++}) \;\; \text{(alternate-order proof of addition)} \\
+	\end{align*}
+	Hence for any $a,b$, we have that $a + b = b + a$.}
 	
 	
 	\problem{Prove that the additive cancellation law holds. That is, for any three natural numbers $a$, $b$, and $c$ such that $a + b = a + c$, we have $b = c$.}
@@ -80,13 +108,16 @@
 	\begin{align*}
 	a+b = b \;\; \text{($0$-incrementing)} \\
 	a+c = c \;\; \text{($0$-incrementing)} \\
-	a+b=a+c \implies& b = c \;\; \text{(transitive equality)}\\
+	a+b=a+c \implies& b = c \;\; \text{(substitution)}\\
 	\end{align*}
-	Assume inductively that for some natural $a$, $[a+b=a+c] \implies [b=c]$
+	Assume inductively that for some natural $a$, we have $[a+b=a+c] \implies [b=c]$. Then
 	\begin{align*}
-	then	
+	(a\text{++})+b=(a\text{++})+c \implies& (a+b)\text{++} = (a+c)\text{++} \;\; \text{(definition of addition)} \\
+	\implies& \text{$a + b$ and $a + c$ are naturals (additive closure)} \\
+	\implies& \text{$a + b = a + c$ (Axiom $4$)} \\
+	\implies& b = c \;\; \text{(I.H)} \\
 	\end{align*}
-	we will show that $[0+b=0+c] \implies [c=b]$. Let us assume that $0+b=0+c$. We have that $0+b=b$ and that $0+c=c$ from a previous proof. Then by transitive equality, we have $b=c$. This closes the base case. Assume inductively that for some natural $a$, $[a+b=a+c] \implies [b=c]$. Now consider the next natural number $a\text{++}$. Assume that $(a\text{++})+b=(a\text{++})+c$. Re-writing both sides, we have $(a+b)\text{++} = (a+c)\text{++}$. $a+b$ is a natural number and $a+c$ is a natural number (by our additive closure proof). Recall by Axiom $4$ that if the successors of two natural numbers are equal, then the natural numbers themselves must be equal. Hence we have that $a+b = a+c$. By the inductive hypothesis ($[a+b=a+c]  \implies [b=c]$), we must now have that $b=c$. This closes the inductive step. Thus, for any $a$, $b$, $c$ such that $a + b = a + c$, we also have that $b = c$.}
+	Hence, for any $a,b,c$, we have $[a + b = a + c] \implies [b = c]$}
 	
 	\problem{A natural number $a$ is said to be positive iff $a \neq 0$. Prove that the sum of a natural number and a positive number must be positive.}
 	\textcolor{blue}{Fix a positive number $b$. Let $a = 0 \implies a + b = b \neq 0$. Then $(a\text{++}) + b = (a+b)\text{++} \neq 0$ since $a + b$ is a natural number (by our proof of additive closure), and the successor of any natural number is positive by Axiom $3$ (zero is not the successor of any natural number). Hence $a + b \neq 0$ for all $a$.}
