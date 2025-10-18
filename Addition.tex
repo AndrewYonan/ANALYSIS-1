@@ -245,11 +245,24 @@
 	\end{align*}}
 	\end{enumerate}
 	
-	\problem{\textbf{EXERCISE 5} Prove the principle of strong induction.}
+	\problem{\textbf{EXERCISE 5} (Prove the principle of strong induction). Let $m_0$ be a natural number and let $P(m)$ be a property of an arbitrary natural number $m$. Suppose that for each $m \geq m_0$, if $P(m')$ is true for all $m_0 \leq m' < m$, then $P(m)$ is also true. Prove that $P(m)$ is then true for all $m \geq m_0$.}
 	\textcolor{blue}{
-	\begin{align*}
-	x \implies& x \\
-	\end{align*}}
+	We will prove the principle of strong induction by re-notating (and effectively reducing) the multi-variable inductive hypothesis to a single-variable inductive hypothesis. Then we will prove the strong induction principle by simply invoking the ordinary induction principle (Axiom $5$). \\ \\
+	\textit{proof.} Suppose that for each $m \geq m_0$, if $P(m')$ is true for all $m_0 \leq m' < m$, then $P(m)$ is also true. Put formally, we are assuming: 
+	\begin{equation}
+	[\forall m \geq m_0(\forall m' (m_0 \leq m' < m) \implies P(m'))] \implies P(m)
+	\label{eq:1}
+	\end{equation}
+	Let $Q(n)$ be the property that $P(m)$ is true for all $m_0 \leq m < n$. Note that $Q(n) \implies P(n)$ by \eqref{eq:1}. Hence, to show that $P(m)$ is true for all $m \geq m_0$, it suffices to show that $Q(n)$ holds for all $n \geq m_0$. \\ \\$Q(m_0)$ is true (vacuously). Suppose inductively that $Q(n)$ is true for some $n \geq m_0$ : that is, $P(m)$ is true for all $m_0 \leq m < n$. Then $P(n)$ is true by \eqref{eq:1}, meaning that all of $m_0 \leq m < n+1$ is true. But this statement is exactly $Q(n+1)$. This closes the induction.}
+	
+	\problem{(\textbf{EXERCISE 6}) (Prove the principle of backwards induction). Let $n$ be a natural number and let $P(m)$ be a property pertaining to the natural numbers such that whenever $P(m\text{++})$ is true, then $P(m)$ is true. Suppose that $P(n)$ is true. Prove that $P(m)$ is true for all $m \leq n$.}
+	\textcolor{blue}{Define the statement
+	\begin{equation}
+	Q(n) := [P(n) \land \forall m (P(m\text{++}) \implies P(m))] \implies \forall m \leq n (P(m))
+	\label{eq:2}
+	\end{equation}
+	We effectively want to prove that $Q(n)$ is true for all $n$, and we can use ordinary forward induction to do this. We have that $$Q(0) : [P(0) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(0)$$ is trivially true. Suppose inductively that for some $n \geq 0$, $Q(n)$ is true. Now we will prove that $$Q(n+1) : [P(n+1) \land \forall m (P(m\text{++}) \implies P(m))] \implies \forall m \leq n+1 (P(m))$$ is true. Assume that $P(n+1) \land \forall m (P(m\text{++}) \implies P(m))$. Then $P(n+1)$ is trivially true. Since $Q(n)$ is true (inductive hypothesis) and  
+	}
 	
 \end{enumerate}
 
