@@ -253,16 +253,19 @@
 	[\forall m \geq m_0(\forall m' (m_0 \leq m' < m) \implies P(m'))] \implies P(m)
 	\label{eq:1}
 	\end{equation}
-	Let $Q(n)$ be the property that $P(m)$ is true for all $m_0 \leq m < n$. Note that $Q(n) \implies P(n)$ by \eqref{eq:1}. Hence, to show that $P(m)$ is true for all $m \geq m_0$, it suffices to show that $Q(n)$ holds for all $n \geq m_0$. \\ \\$Q(m_0)$ is true (vacuously). Suppose inductively that $Q(n)$ is true for some $n \geq m_0$ : that is, $P(m)$ is true for all $m_0 \leq m < n$. Then $P(n)$ is true by \eqref{eq:1}, meaning that all of $m_0 \leq m < n+1$ is true. But this statement is exactly $Q(n+1)$. This closes the induction.}
+	Let $Q(n)$ be the property that $P(m)$ is true for all $m_0 \leq m < n$. Note that $Q(n) \implies P(n)$ by \eqref{eq:1}. Hence, to show that $P(m)$ is true for all $m \geq m_0$, it suffices to show that $Q(n)$ holds for all $n \geq m_0$. \\ \\$Q(m_0)$ is true (vacuously). Suppose inductively that $Q(n)$ is true for some $n \geq m_0$ : that is, $P(m)$ is true for all $m_0 \leq m < n$. Then $P(n)$ is true by \eqref{eq:1}, meaning that $P(m)$ is true for all all of $m_0 \leq m < n+1$. But this is exactly the statement $Q(n+1)$. This closes the induction.}
 	
 	\problem{(\textbf{EXERCISE 6}) (Prove the principle of backwards induction). Let $n$ be a natural number and let $P(m)$ be a property pertaining to the natural numbers such that whenever $P(m\text{++})$ is true, then $P(m)$ is true. Suppose that $P(n)$ is true. Prove that $P(m)$ is true for all $m \leq n$.}
-	\textcolor{blue}{Define the statement
+	\textcolor{blue}{The principle of backward induction starting on $n$ can be written as the statement
 	\begin{equation}
-	Q(n) := [P(n) \land \forall m (P(m\text{++}) \implies P(m))] \implies \forall m \leq n (P(m))
+	Q(n) := [P(n) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(m) \forall m \leq n
 	\label{eq:2}
 	\end{equation}
-	We effectively want to prove that $Q(n)$ is true for all $n$, and we can use ordinary forward induction to do this. We have that $$Q(0) : [P(0) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(0)$$ is trivially true. Suppose inductively that for some $n \geq 0$, $Q(n)$ is true. Now we will prove that $$Q(n+1) : [P(n+1) \land \forall m (P(m\text{++}) \implies P(m))] \implies \forall m \leq n+1 (P(m))$$ is true. Assume that $P(n+1) \land \forall m (P(m\text{++}) \implies P(m))$. Then $P(n+1)$ is trivially true. Since $Q(n)$ is true (inductive hypothesis) and  
-	}
+	We effectively want to prove that $Q(n)$ is true for all $n$, and we can use ordinary forward induction to do this. We have that $$Q(0) : [P(0) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(0)$$ is trivially true. Suppose inductively that for some $n \geq 0$, $Q(n)$ is true. Now we will prove that the following statement is true: $$Q(n+1) : [P(n+1) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(m) \forall m \leq n+1 $$ Since $Q(n)$ is true by the inductive hypothesis, we have that $$[P(n) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(m) \forall m \leq n$$ Appending a condition to both sides of an implication maintains its truth. Hence we can append $P(n+1)$ to both sides and maintain the statement's truth: $$[P(n+1) \land P(n) \land \forall m (P(m\text{++}) \implies P(m))] \implies [P(n+1) \land P(m) \forall m \leq n]$$  $P(n+1) = P(n\text{++})$ already implies $P(n)$ by the condition $\forall m (P(m\text{++}) \implies P(m))$. Hence $P(n)$ is a redundant condition on the left-hand side. Removing $P(n)$ and re-writing the right-hand side, we get:
+	$$[P(n+1)\land \forall m (P(m\text{++}) \implies P(m))] \implies P(m) \forall m \leq n+1]$$
+	Which is exactly the statement $Q(n+1)$. This closes the induction.}
+	
+	
 	
 \end{enumerate}
 
