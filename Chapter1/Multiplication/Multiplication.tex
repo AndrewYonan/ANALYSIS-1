@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem} % Better control over lists
+\usepackage{fancyhdr} % Header/Footer
+\usepackage{lastpage} % For total page count in footer
+\usepackage{hyperref} % Clickable refs and links
+\usepackage{tikz}     % For diagrams (optional)
+
+% Header/Footer formatting
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+% Custom commands
+\newcommand{\points}[1]{\hfill {[#1 points]}}
+\newcommand{\problem}[2][]{%
+  \item {#2}%
+  \ifx&#1&%
+  \else%
+    \points{#1}%
+  \fi
+  \par\vspace{0.5em}
+}
+
+% Title info
+\title{\vspace{-1cm}\textbf{Multiplication Homework}}
+\author{\textit{Analysis I (TT)}}
+
+\begin{document}
+
+\maketitle
+\vspace{-1em}
+
+\newenvironment{justifiedproof}{%
+  \begin{tabular}{@{}p{0.6\linewidth}@{\quad}p{0.12\linewidth}@{}}%
+}{\end{tabular}}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}]
+
+
+    \problem{Prove that}
+        	\textcolor{blue}{Yes}
+
+\end{enumerate}
+
+\end{document}

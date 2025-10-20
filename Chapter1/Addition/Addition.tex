@@ -27,8 +27,8 @@
 }
 
 % Title info
-\title{\vspace{-1cm}\textbf{Building Calculus From Scratch }}
-\author{With Terence Tao's \textit{Analysis I}}
+\title{\vspace{-1cm}\textbf{Addition Homework}}
+\author{\textit{Analysis I (TT)}}
 
 \begin{document}
 
@@ -261,12 +261,34 @@
 	Q(n) := [P(n) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(m) \forall m \leq n
 	\label{eq:2}
 	\end{equation}
-	We effectively want to prove that $Q(n)$ is true for all $n$, and we can use ordinary forward induction to do this. We have that $$Q(0) : [P(0) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(0)$$ is trivially true. Suppose inductively that for some $n \geq 0$, $Q(n)$ is true. Now we will prove that the following statement is true: $$Q(n+1) : [P(n+1) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(m) \forall m \leq n+1 $$ Since $Q(n)$ is true by the inductive hypothesis, we have that $$[P(n) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(m) \forall m \leq n$$ Appending a condition to both sides of an implication maintains its truth. Hence we can append $P(n+1)$ to both sides and maintain the statement's truth: $$[P(n+1) \land P(n) \land \forall m (P(m\text{++}) \implies P(m))] \implies [P(n+1) \land P(m) \forall m \leq n]$$  $P(n+1) = P(n\text{++})$ already implies $P(n)$ by the condition $\forall m (P(m\text{++}) \implies P(m))$. Hence $P(n)$ is a redundant condition on the left-hand side. Removing $P(n)$ and re-writing the right-hand side, we get:
-	$$[P(n+1)\land \forall m (P(m\text{++}) \implies P(m))] \implies P(m) \forall m \leq n+1]$$
-	Which is exactly the statement $Q(n+1)$. This closes the induction.}
+	We effectively want to prove that $Q(n)$ is true for all $n$, and we can use ordinary forward induction to do this. We have that $$Q(0) : [P(0) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(0)$$ is trivially true (as a tautology of the form $A \land B \implies A$). Suppose inductively that for some $n \geq 0$, $Q(n)$ is true. Now we will prove $Q(n+1)$: $$[P(n+1) \land \forall m (P(m\text{++}) \implies P(m))] \implies P(m) \forall m \leq n+1$$ \textit{proof:}
+	\begin{align*}
+	[P(n+1) \land \forall m (P(m\text{++}) \implies P(m))] \implies& P(n\text{++}) \\
+	\implies& P(n) \\
+	\implies& P(n) \land \forall m (P(m\text{++}) \implies P(m))  \;\; \text{(I.H)} \\
+	\implies& P(m) \forall m \leq n \\
+	\implies& P(m) \forall m \leq n \land P(n+1)  \\
+	\implies& P(m) \forall m \leq n + 1\\
+	\end{align*}}
 	
+	\problem{(\textbf{EXERCISE 7}) (Prove the principle of shifted induction) Let $n$ be a natural number and let $P(m)$ be a property pertaining to the natural numbers such that whenever $P(m)$ is true, then $P(m\text{++})$ is true. Show that if $P(n)$ is true, then $P(m)$ is true for all $m \geq n$.}
 	
-	
+	\textcolor{blue}{	We want to show that $$Q(n) := [P(n) \land \forall m (P(m) \implies P(m\text{++}))] \implies P(m) \forall m \geq n$$ is true for all $n$. We can again achieve this using ordinary induction. The base case  $$Q(0) : [P(0) \land \forall m (P(m) \implies P(m\text{++}))] \implies P(m) \forall m \geq 0$$ is a direct re-stating of the ordinary principle of induction (Axiom $5$), and hence it must be true. Assume inductively that $Q(n)$ is true for some $n \geq 0$. Now we will prove $Q(n+1)$: 
+	$$[P(n+1) \land \forall m (P(m) \implies P(m\text{++}))] \implies P(m) \forall m \geq n+1$$
+	\textit{proof:} \\ \\
+	Define $S(k) := P(n+1+k)$ for $k \in \mathbb{N}$.
+	\begin{align*}
+	[P(n+1) \land \forall m (P(m) \implies P(m\text{++}))] \implies& P(n+1) \\
+	\implies& S(0) \;\; \text{(base)} \\
+	\implies& \text{Assume $S(k)$ for some $k \geq 0$} \\
+	\implies& \forall m P(m) \implies P(m\text{++}) \\
+	\implies& [P(n+1+k) \implies P((n+1+k) + 1)] \\
+	\implies& [S(k) \implies S(k+1)] \\
+	\implies& S(k) \forall k \geq 0 \;\; \text{(ordinary induction on $k$)} \\
+	\implies& P(n+1+k) \forall k \geq 0\\
+	\implies& P(m) \forall m \geq n+1 \\
+	\end{align*}
+ 	}	
 \end{enumerate}
 
 \end{document}
