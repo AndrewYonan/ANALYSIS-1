@@ -27,7 +27,7 @@
 }
 
 % Title info
-\title{\vspace{-1cm}\textbf{Addition Homework}}
+\title{\vspace{-1cm}\textbf{Addition and Multiplication HW}}
 \author{\textit{Analysis I (TT)}}
 
 \begin{document}
@@ -53,12 +53,12 @@
  \end{enumerate}
 
 
-\section{Steps \& Problems}
+\section{Addition}
 
 \begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}]
 
     \problem{Define the addition operation on two natural numbers, $n$ and $m$.}
-	We define incrementing $m$ by zero as $0 + m := m$. Suppose inductively, that we know how to increment $m$ by $n$. Then we can increment $m$ by $n$++ by defining $$(n\text{++}) + m := (n + m)\text{++}$$ This recursive definition allows us to now add numbers (perform repeated incrementation). For example, $2+m = (1\text{++})+m = (1+m)\text{++} = ((0\text{++})+m)\text{++} = ((0+m)\text{++})\text{++} = ((m)\text{++})\text{++}$, which is exactly $m$ incremented twice.
+	To begin, we must first define what adding two numbers means. We currently only have an increment operation, so we must define addition in terms of the increment operation—that is, we will \textit{define} addition as repeated incrementation. We define incrementing $m$ by zero as $0 + m := m$. Suppose inductively, that we know how to increment $m$ by $n$. Then we can increment $m$ by $n$++ by defining $$(n\text{++}) + m := (n + m)\text{++}$$ This recursive definition allows us to now add numbers (perform repeated incrementation). For example, $2+m = (1\text{++})+m = (1+m)\text{++} = ((0\text{++})+m)\text{++} = ((0+m)\text{++})\text{++} = ((m)\text{++})\text{++}$, which is exactly $m$ incremented twice.
 	
     \problem{Prove that $n+0 = n$ for any natural number $n$}
         	\textcolor{blue}{ We will induct on $n$. We have that $0+0 = 0$ from $0 + m := m$ for any natural $m$, including $0$. Suppose, inductively, that $k+0=k$ for some natural number $k$. Then 
@@ -281,7 +281,7 @@
 	[P(n+1) \land \forall m (P(m) \implies P(m\text{++}))] \implies& P(n+1) \\
 	\implies& S(0) \;\; \text{(base)} \\
 	\implies& \text{Assume $S(k)$ for some $k \geq 0$} \\
-	\implies& \forall m P(m) \implies P(m\text{++}) \\
+	\implies& \forall m P(m) \implies P(m\text{++}) \;\; \text{(given)} \\
 	\implies& [P(n+1+k) \implies P((n+1+k) + 1)] \\
 	\implies& [S(k) \implies S(k+1)] \\
 	\implies& S(k) \forall k \geq 0 \;\; \text{(ordinary induction on $k$)} \\
@@ -291,4 +291,35 @@
  	}	
 \end{enumerate}
 
+
+\section{Repeated Addition (Multiplication)}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}]
+    \problem{Define the multiplication operation on two natural numbers, $n$ and $m$. \\ \\ We will now define multiplication as the process of repeated addition, analogously to how we defined addition as repeated incrementation. We define $0 \times m := 0$. Now suppose inductively that we define how to multiply $n$ to $m$. Then we can multiply $n\text{++}$ to $m$ by defining $$(n\text{++}) \times m := (n \times m) + m$$ \\
+    Example: we can correctly multiply $3 \times 4$ by using nothing but this recursive definition of multiplication as repeated addition:
+    \begin{align*}
+    3 \times 4 &= (2\text{++}) \times 4 \\ 
+                   &= (2 \times 4) + 4 \\
+                   &= ((1\text{++}) \times 4) + 4 \\
+                   &= ((1 \times 4) + 4) + 4 \\
+                   &= (((0\text{++}) \times 4) + 4) + 4 \\
+                   &= (((0 \times 4) + 4) + 4) + 4 \\  
+                   &= (((0) + 4) + 4) + 4 \\
+                   &= ((4) + 4) + 4 \\                              
+                   &= (8) + 4 \\
+                   &= 12 \\
+    \end{align*}}
+    
+    \problem{(\textbf{EXERCISE 8}) Prove that multiplication is commutative.}
+    \textcolor{blue}{Let $n$ and $m$ be natural numbers.}
+   \end{enumerate}
+
 \end{document}
+
+
+
+
+
+
+
+
