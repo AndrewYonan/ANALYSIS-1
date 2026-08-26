@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{xcolor}
+\usepackage{graphicx}
 \usepackage[normalem]{ulem}
 \usepackage{enumerate}
 
@@ -51,7 +52,12 @@ Thus our series expansion is $$f(x) = \sum_{n=1}^{\infty} \left[ \frac{2\sin(n\p
 $$ g(x) = b_1 \sin(x)$$
 and
 $$ h(x) = b_1 \sin(x) + b_2 \sin(2x)$$
-are the one-term and two-term Fourier Series approximations of $f$, respectively.
+are the one-term and two-term Fourier Series approximations of $f$, respectively. \\ \\
+\textcolor{blue}{We have $g(x) = 2\sin(x)$ and $h(x) = 2\sin(x) - \sin(2x)$} \\ \\
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.5\textwidth]{1}
+\end{figure}
 \end{enumerate}
 
 
@@ -59,8 +65,18 @@ are the one-term and two-term Fourier Series approximations of $f$, respectively
 
 \noindent $\textbf{2}$. (5 points) Let $f(x)$ be a given function for $x \in [-\pi, \pi]$ and find $c \in \mathbb{R}$ which minimizes
 $$\int_{-\pi}^\pi \left ( f(x) - c \right )^2 \ dx.$$
-Note that your answer should depend in some manner upon the given function $f$.\\
-\noindent \underline{\emph{Hint:}} Think of this integral as $\mathcal{F}(c)$ and do what you typically would to minimize a function of $c \in \mathbb{R}$.\\
+Note that your answer should depend in some manner upon the given function $f$.\\ \\
+\textcolor{blue}{Let us find the $c$ that minimizes 
+\begin{align*}
+D(c) &= \int_{-\pi}^{\pi} (f(x) - c)^2
+\end{align*}
+Note that $D(c)$ appears to be some of sort of distance-squared metric measuring the accumulated distance between $f(x)$ and the line $y=c$. So intuitively, we expect $c$ has to be something like the average value of $f(x)$ in order for all of $f$ to be as close as possible to $c$—that is, to minimize this distance. We will use the first derivative test.  $$\frac{dD}{dc} = \frac{d}{dc} \int_{-\pi}^{\pi} (f(x) - c)^2 dx$$ We can bring the derivative inside the integral because it is independent of the variable of integration. Doing this will translate the derivative into a partial derivative, because the integrand is a function of both $x$ and the parameter $c$.
+\begin{align*}
+&=  \int_{-\pi}^{\pi} \frac{\partial}{\partial c} (f(x) - c)^2 dx \\
+&=   \int_{-\pi}^{\pi} 2 (f(x) - c)(0 - 1) dx \\
+&=   \int_{-\pi}^{\pi} (c - 2f(x)) dx
+\end{align*}
+}
 
 
 \vspace{0.3in}
