@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  25 AUG 2026 23:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  25 AUG 2026 23:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -252,12 +252,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--61
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--79
+Underfull \hbox (badness 10000) in paragraph at lines 67--82
 
  []
 
 [2 <./1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 86--88
+Underfull \hbox (badness 10000) in paragraph at lines 89--92
 
  []
 
@@ -274,7 +274,7 @@ Here is how much of TeX's memory you used:
  32056 multiletter control sequences out of 15000+600000
  633400 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,10n,65p,681b,339s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,13n,65p,685b,339s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -284,7 +284,7 @@ sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 cal/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
 /texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw1.pdf (3 pages, 179068 bytes).
+Output written on hw1.pdf (3 pages, 180022 bytes).
 PDF statistics:
  62 PDF objects out of 1000 (max. 8388607)
  36 compressed objects within 1 object stream
