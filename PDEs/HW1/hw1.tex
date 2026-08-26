@@ -1,0 +1,75 @@
+
+\documentclass[12pt]{article}
+\pagestyle{empty} \topmargin -0.5in \textheight 9in \textwidth 6.5in
+\oddsidemargin -0in
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\begin{document}
+
+\begin{flushleft}
+
+\textbf{Department of Applied Mathematics and Statistics}
+
+\textbf{COLORADO SCHOOL OF MINES}\\
+
+
+MATH $455$: Partial Differential Equations
+\end{flushleft}
+
+\vspace{0.1in}
+
+\begin{center}
+{\bf Assignment \#1 - Fourier Series} \\
+Due Tuesday, September 8, 2026 \\
+\end{center}
+
+\vspace{0.3in}
+
+\noindent $\textbf{1}$. (15 points) Let $f$ be a $2\pi$-periodic function satisfying $f(x) = x$ for $x \in (-\pi, \pi)$. 
+\begin{enumerate}[(a)]
+\item Compute the Fourier series of $f$ and show all work. \\ \\
+\textcolor{blue}{\textbf{Solution} — The Fourier series of a periodic function $f(x)$ over the domain of one period $[a,b]$ is given by $$f(x) = \frac{1}{2} a_0 + \sum_{n=1}^{\infty} a_n \cos(nx) + \sum_{n=1}^{\infty} b_n \sin(nx)$$ where $$a_0 = \frac{2}{b - a} \int_a^b f(x)dx \;\;\;\;\;\;\;a_n = \frac{2}{b-a} \int_a^b f(x)\cos(nx) dx$$ \\ $$b_n = \frac{2}{b-a} \int_a^b f(x) \sin(nx) dx$$ \\ \\ 
+Then for our specific $2\pi$-periodic function $f(x) = x$, we have $$a_0  = \frac{1}{\pi} \int_{-\pi}^{\pi} x dx = 0 \;\; \text{(by oddness)}$$ $$a_n = \frac{1}{\pi} \int_{-\pi}^{\pi} x \cos(nx) dx = 0 \;\; \text{(also by oddness)}$$
+\begin{align*}
+b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} x \sin(nx)dx \\
+&= \frac{2}{\pi} \int_0^{\pi} x \sin(nx) dx \;\; \text{(by evenness)} \\
+&= \frac{2}{\pi} \left[ \frac{-x}{n}  \left. \cos(nx) \right|_{0}^{\pi} + \frac{1}{n} \int_0^{\pi} \cos(nx)dx   \right] \;\; \text{(by IBP)} \\
+&= \frac{2}{\pi} \left[ \frac{-\pi}{n} \cos(nx) + \frac{\sin(n\pi)}{n^2}   \right]  \\
+&= \frac{2\sin(n\pi)}{\pi n^2} - \frac{2}{n} \cos(nx)  \\
+\end{align*}
+Thus our series expansion is $$f(x) = \sum_{n=1}^{\infty} \left[ \frac{2\sin(n\pi)}{\pi n^2} - \frac{2}{n} \cos(nx) \right] \sin(nx)$$ Note that $\sin(n\pi) = 0$ and $\cos(n\pi) = (-1)^{n}$ for $n=1,2,3 \cdots$. Hence, we have $$f(x) = 2\sum_{n=1}^{\infty} \frac{(-1)^{n+1} \sin(nx)}{n}$$ 
+}
+\item Using your answer from (a), graph by hand on the same axes the three functions $f(x), g(x)$, and $h(x)$ on the interval $[-\pi,\pi]$  where
+$$ g(x) = b_1 \sin(x)$$
+and
+$$ h(x) = b_1 \sin(x) + b_2 \sin(2x)$$
+are the one-term and two-term Fourier Series approximations of $f$, respectively.
+\end{enumerate}
+
+
+\vspace{0.3in}
+
+\noindent $\textbf{2}$. (5 points) Let $f(x)$ be a given function for $x \in [-\pi, \pi]$ and find $c \in \mathbb{R}$ which minimizes
+$$\int_{-\pi}^\pi \left ( f(x) - c \right )^2 \ dx.$$
+Note that your answer should depend in some manner upon the given function $f$.\\
+\noindent \underline{\emph{Hint:}} Think of this integral as $\mathcal{F}(c)$ and do what you typically would to minimize a function of $c \in \mathbb{R}$.\\
+
+
+\vspace{0.3in}
+
+
+\noindent $\textbf{3}$. (10 points) Let $f(x)$ be a given function for $x \in [-\pi, \pi]$ and find $a, b, c \in \mathbb{R}$ which minimize
+$$\int_{-\pi}^\pi \left ( f(x) - a\cos(x) - b\sin(x) - c \right )^2 \ dx.$$
+Again, note that your answer should depend in some manner upon the given function $f$ and use the analogous hint as above for a multivariate function.\\
+
+
+
+\end{document}
