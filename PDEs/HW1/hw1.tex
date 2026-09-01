@@ -103,7 +103,7 @@ Again, note that your answer should depend in some manner upon the given functio
 \frac{\partial F}{\partial b} &= \frac{\partial}{\partial b} \int_{-\pi}^\pi \left ( f(x) - a\cos(x) - b\sin(x) - c \right )^2 \ dx \\
 &= \int_{-\pi}^\pi  2( f(x) - a\cos(x) - b\sin(x) - c)(-\sin(x)) \ dx \\
 &= 2 \left[-\int_{-\pi}^\pi  f(x)\sin(x) dx + a \int_{-\pi}^\pi  \sin(x)\cos(x) dx + b \int_{-\pi}^\pi  \sin^2(x) dx + c \int_{-\pi}^\pi  \sin(x) dx \right] \\
-&= 2 \left[-\int_{-\pi}^\pi  f(x)\sin(x) dx + 0 + \pi a + 0 \right] = 0 \\
+&= 2 \left[-\int_{-\pi}^\pi  f(x)\sin(x) dx + 0 + \pi b + 0 \right] = 0 \\
 &\implies b = \frac{1}{\pi} \int_{-\pi}^\pi  f(x)\sin(x) dx  \\
 \end{align*}
 \begin{align*}
@@ -113,7 +113,7 @@ Again, note that your answer should depend in some manner upon the given functio
 &= 2 \left[-\int_{-\pi}^\pi  f(x) dx + 0 + 0 + 2\pi c \right] = 0 \\
 &\implies c = \frac{1}{2\pi} \int_{-\pi}^\pi  f(x)\sin(x) dx  \\
 \end{align*}
-A triplet that minimizes $F$ is thus $(a,b,c) = (a_1, b_1, f_{avg})$, where $a_1$ is the first Fourier coefficient, $a_2$ is the second Fourier coefficient, and $f_{avg}$ is the average value of $f(x)$ over $[-\pi, \pi]$. We can make a rudimentary argument for why such $(a,b,c)$ is the global minimum: in order for the squared difference error between $f(x)$ and $g(x) = a \cos(x) + b\sin(x) + c$ to be minimized, $g(x)$ has to be an accurate approximation for $f(x)$, which is attained, for instance, from the first-order Fourier approximation of $f$. Changing $g(x)$ in any way results in increasing error, where $g(x)$ becomes a poorer approximation of $f$, causing squared error to increase in all such directions. Hence we have found the minimum such $(a,b,c)$.
+A triplet that minimizes $F$ is thus $(a,b,c) = (a_1, b_1, f_{avg})$, where $a_1$ is the first odd Fourier coefficient, $a_2$ is the first even Fourier coefficient, and $f_{avg}$ is the average value of $f(x)$ over $[-\pi, \pi]$. We can make a rudimentary argument for why such $(a,b,c)$ is the global minimum: in order for the squared difference error between $f(x)$ and $g(x) = a \cos(x) + b\sin(x) + c$ to be minimized, $g(x)$ has to be an accurate approximation for $f(x)$, which is attained, for instance, from the first-order Fourier approximation of $f$. Changing $g(x)$ in any way results in increasing error, where $g(x)$ becomes a poorer approximation of $f$, causing squared error to increase in all such directions. Hence we have found the minimum such $(a,b,c)$.
 }
 
 
