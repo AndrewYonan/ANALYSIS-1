@@ -1,0 +1,52 @@
+
+\documentclass[12pt]{article}
+\pagestyle{empty} \topmargin -0.5in \textheight 9in \textwidth 6.5in
+\oddsidemargin -0in
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\begin{document}
+
+\begin{flushleft}
+
+\textbf{Department of Applied Mathematics and Statistics}
+
+\textbf{COLORADO SCHOOL OF MINES}\\
+
+
+MATH $455$: Partial Differential Equations
+\end{flushleft}
+
+Let $$\sin(x+y) = \cos(xy)$$ Note that $$\cos(xy) = \sin(\frac{\pi}{2} - xy)$$ so our implicit equation becomes $$\sin(x+y) = \sin(\frac{\pi}{2} - xy)$$ Also note that the general solutions to $$\sin(A) = \sin(B)$$ are $$A = B + 2\pi k$$ and $$A = \pi - B + 2\pi k$$ for $k \in \mathbb{Z}$. Then, in our case, $$x + y = \frac{\pi}{2} - xy + 2\pi k$$ $$\implies x + y + xy = \frac{\pi}{2} + 2\pi k$$ and $$x + y = \pi - (\frac{\pi}{2} - xy) + 2\pi k$$ $$\implies x + y - xy = \frac{\pi}{2} + 2\pi k$$. \\ \\ So our curve is the union of the two families of curves: $$x + y + xy = R_k$$ $$x + y - xy = R_k$$ for $k \in \mathbb{Z}$ and $R_k = \frac{\pi}{2} + 2\pi k$ \\ \\
+For shorthand, let $P = x + y + xy$ and $Q = x + y - xy$. At the origin $P=Q=0$, so the closed region containing the origin is bounded by the level curves nearest to zero: $R_{-1} = \frac{-3\pi}{2}$ and $R_{0} = \frac{\pi}{2}$: $$\frac{-3\pi}{2} \leq P,Q \leq \frac{\pi}{2}$$
+
+Over both families of curves, we find the following nearest-zero level curves:
+$$P = \frac{-3\pi}{2} \;\;\;\;\;\;\;\;\; \text{(1)}$$
+$$P = \frac{\pi}{2} \;\;\;\;\;\;\;\;\;\; \text{(2)}$$
+$$Q = \frac{-3\pi}{2} \;\;\;\;\;\;\;\;\; \text{(3)}$$
+$$Q = \frac{\pi}{2} \;\;\;\;\;\;\;\;\;\; \text{(4)}$$
+
+We find pairwise intersections and integrate accordingly. $(1)$ intersects $(2)$ nowhere (for any values of $x$ and $y$, the expression $P(x,y)$ can't be equal to both $-3\pi/2$ and $\pi/2$). Similarly, $(3)$ intersects $(4)$ nowhere. \\ \\ Intersection of $(1)$ and $(3)$: $$x + y + xy = \frac{-3\pi}{2}$$ $$x + y - xy = \frac{-3\pi}{2}$$ Add and subtract the equations to obtain a simpler system: $$x + y = \frac{-3\pi}{2} \;\;\;\;\;\;\; xy = 0$$ Which has solutions $$\left(0, \frac{-3\pi}{2}\right) \;\;\;\;\;\;\;\;\; \left(\frac{-3\pi}{2}, 0\right)$$ \\
+We apply an identical strategy, and find the intersection points of $(2)$ and $(4)$ to be $$\left(0, \frac{\pi}{2}\right) \;\;\;\;\;\;\;\;\;  \left(\frac{\pi}{2}, 0\right)$$ \\ \\ Proceeding identically, we find the intersection points of $(1)$ and $(4)$ to satisfy the quadratic $$x^2 + \frac{\pi}{2} x - \pi = 0$$ Let $a$ be the positive solution $$a = \frac{-\pi + \sqrt{\pi^2 + 16\pi}}{4}$$ and similarly let $b$ be the negative solution $$b = \frac{-\pi - \sqrt{\pi^2 + 16\pi}}{4}$$ Then our intersection points are $$\left(a, -\frac{\pi}{2} - a\right) \;\;\;\;\;\;\;\;\; \left(b, \frac{-\pi}{2} - b\right)$$ For curves $(2)$ and $(3)$ we obtain a very similar quadratic equation that has no solution due to sign differences. There are no more pairwise intersections to check; hence we've found all of them. Ordered by $x$-coordinate, we have intersections at $$x_1 = L = \frac{-3\pi}{2} \approx -4.71238898$$ $$x_2 = b \approx -2.72406857$$ $$x_3 = 0 \;\;\;\; \text{(repeated)}$$ $$x_4 = a \approx 1.15327223888$$ $$x_5 = U = \frac{\pi}{2} \approx 1.57079633$$ (Let $L$ and $U$ be the lower and upper bounds, respectively). We find pairs of vertically-bounding curves: curves $(1)$ and $(3)$ bound between $x=L$ and $x=b$. Curves $(3)$ and $(4)$ bound between $x=b$ and $x=0$. Curves $(1)$ and $(2)$ bound between $x=0$ and $x=a$. Curves $(2)$ and $(4)$ bound between $x=a$ and $x=U$. \\ \\ Because curves $(1),(2),(3),(4)$ are hyperbolas, each can be written as a function for the sake of the integration. For each of our previous $4$ curves, we solve for $y$, yielding:
+$$y = \frac{L - x}{1 + x} \;\;\;\;\;\;\;\;\; \text{(1)}$$
+$$y = \frac{U-x}{1 + x} \;\;\;\;\;\;\;\;\;\; \text{(2)}$$
+$$y = \frac{L - x}{1 - x} \;\;\;\;\;\;\;\;\; \text{(3)}$$
+$$y = \frac{U - x}{1 - x} \;\;\;\;\;\;\;\;\;\; \text{(4)}$$
+Hence, our bounded area is $$\int_L^b \left(\frac{L-x}{1+x} - \frac{L-x}{1-x}\right)dx$$
+$$ + \int_b^0 \left(\frac{U-x}{1-x} - \frac{L-x}{1-x}\right)dx$$
+$$ + \int_0^a \left(\frac{U-x}{1 + x} - \frac{L - x}{1 + x}\right)dx$$
+$$ + \int_a^U \left(\frac{U-x}{1 + x} - \frac{U - x}{1 - x}\right)dx$$
+$$ = 14.7660251359$$
+$$ = 14.76603 \;\;\; \text{(rounded to 5 decimal places)}$$
+\vspace{0.1in}
+
+
+\end{document}

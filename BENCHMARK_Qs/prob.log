@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  26 AUG 2026 08:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  1 SEP 2026 09:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**hw1.tex
-(./hw1.tex
+**prob.tex
+(./prob.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/usr/local/texlive/2026/texmf-dist/tex/latex/base/article.cls
@@ -167,8 +167,8 @@ Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count296
 )
-(./hw1.aux)
-\openout1 = `hw1.aux'.
+(./prob.aux)
+\openout1 = `prob.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
@@ -219,67 +219,46 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 39--50
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--50
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 50--50
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
 
 [1
 
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<1.png, id=14, 819.06pt x 502.87875pt>
-File: 1.png Graphic file (type png)
-<use 1.png>
-Package pdftex.def Info: 1.png  used on input line 59.
-(pdftex.def)             Requested size: 234.87749pt x 144.20436pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--61
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--61
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--82
-
- []
-
-[2 <./1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 89--117
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 117--117
-
- []
-
-[3] [4] [5] (./hw1.aux)
+[3] (./prob.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3162 strings out of 467525
- 44971 string characters out of 5418982
- 466181 words of memory out of 5000000
- 32056 multiletter control sequences out of 15000+600000
- 633400 words of font info for 62 fonts, out of 8000000 for 9000
+ 3140 strings out of 467525
+ 44597 string characters out of 5418982
+ 459183 words of memory out of 5000000
+ 32036 multiletter control sequences out of 15000+600000
+ 632779 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,13n,65p,777b,339s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,6n,65p,1651b,163s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -289,10 +268,10 @@ sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 cal/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
 /texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw1.pdf (5 pages, 184062 bytes).
+Output written on prob.pdf (3 pages, 99363 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 59 PDF objects out of 1000 (max. 8388607)
+ 35 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
