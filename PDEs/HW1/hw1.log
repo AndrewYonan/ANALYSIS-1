@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  1 SEP 2026 12:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  7 SEP 2026 11:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -252,34 +252,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--61
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--82
+Underfull \hbox (badness 10000) in paragraph at lines 67--86
 
  []
 
 [2 <./1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 89--117
+Underfull \hbox (badness 10000) in paragraph at lines 93--121
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--117
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
 
  []
 
-[3] [4] [5] (./hw1.aux)
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
+
+ []
+
+[4] [5] (./hw1.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3162 strings out of 467525
- 44971 string characters out of 5418982
- 466181 words of memory out of 5000000
- 32056 multiletter control sequences out of 15000+600000
- 633400 words of font info for 62 fonts, out of 8000000 for 9000
+ 3167 strings out of 467525
+ 45017 string characters out of 5418982
+ 467181 words of memory out of 5000000
+ 32059 multiletter control sequences out of 15000+600000
+ 634045 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,13n,65p,785b,339s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,13n,65p,794b,339s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -289,7 +294,7 @@ sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 cal/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
 /texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw1.pdf (5 pages, 184058 bytes).
+Output written on hw1.pdf (5 pages, 184632 bytes).
 PDF statistics:
  68 PDF objects out of 1000 (max. 8388607)
  40 compressed objects within 1 object stream
