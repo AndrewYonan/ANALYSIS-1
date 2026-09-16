@@ -130,16 +130,17 @@ be periodic functions (defined via periodic extension) for $x \in \mathbb{R}$.
 For each function
 \begin{enumerate}[(a)]
 \item Determine whether or not the function is in $\mathrm{PC}^1$ on the interval over which it is defined. \\  \\
-\textcolor{blue}{\textbf{Solution —} $f(x) = x\cos(x) \in PC^1[-\pi/2, \pi/2]$ because both $x$ and $\cos(x)$ are differentiable everywhere, so their product must be differentiable everywhere. \\ \\ $g(x) = x\cos(x) \in PC^1[-1, 1]$ for an identical reason. \\ \\ $h(x) \in PC^1[-3, 3]$ because it is built from slices of $0$, $1$, and $x$, all three of which are differentiable on their entire domain.}
+\textcolor{blue}{\textbf{Solution —} $f(x) = x\cos(x) \in PC^1[-\pi/2, \pi/2]$ because both $x$ and $\cos(x)$ are in $C^{\infty}(\mathbb{R})$, so their product must be in $C^{\infty}(\mathbb{R})$, which implies $f(x) \in PC^1[-\pi/2, \pi/2]$. \\ \\ $g(x) = x\cos(x) \in PC^1[-1, 1]$ for an identical reason. \\ \\ $h(x) \in PC^1[-3, 3]$ because it is built from finitely-many slices of $0$, $1$, and $x$, all three of which are in $C^{\infty}(\mathbb{R})$ (which is sufficient to imply that their first derivatives approach finite values at all the junction points).}
 \item State the function to which its Fourier series (defined on the interval: $\left [-\frac{\pi}{2},\frac{\pi}{2} \right ]$ for $f(x)$, $[-1,1]$ for $g(x)$, and $[-3,3]$ for $h(x)$) converges\\
 Note: Do not compute the Fourier series (or coefficients) to do this! \\ \\
-\textcolor{blue}{\textbf{Solution —} Since $f(x) \in PC^1[-\pi/2, \pi/2]$ and $f(-\pi/2) = f(\pi/2)$ its Fourier series $F(x)$ is exactly the periodic extension of $f(x)$ to all $x\in\mathbb{R}$: $\boxed{F(x)=x\cos(x)}$ \\ \\
+\textcolor{blue}{\textbf{Solution —} We use the Fourier convergence theorem, which asserts that for a function $f \in PC^1[a,b]$, its Fourier series shall converge to the midpoint $(f(a^+) + f(a^-)/2$ of the left and right limits at each point $x=a$. \\ \\ Since $f(x) \in PC^1[-\pi/2, \pi/2]$ and $f(-\pi/2) = f(\pi/2)$ its Fourier series $F(x)$ is exactly the periodic extension of $f(x)$ to all $x\in\mathbb{R}$: 
+$$\boxed{F(x) = x\cos(x) \;\;\; \text{for $x \in \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right] \;\;\;$ With $F(x + n\pi) := F(x)$ for $n \in \mathbb{Z}$}}$$
 Since $g(x) \in PC^1[-1, 1]$ and $g(-1) \neq g(1)$, its Fourier series $G(x)$ is the periodic extension of $g(x)$  to all $x \in \mathbb{R}$ but with left-right-averaged jump discontinuities filled in (left endpoint $-\cos(1)$ and right endpoint $\cos(1)$ averaging to $0$):
 $$\boxed{G(x) =
 \begin{cases}
 	x\cos(x), & \mathrm{if} \ |x| < 1 \\ 
 	0, & \mathrm{if} \ |x| = 1 \\ 
-\end{cases}}$$
+\end{cases} \;\;\; \text{With $G(x + 2n) := G(x)$ for $n \in \mathbb{Z}$}}$$
 Similarly, since $h(x) \in PC^1[-3,3]$ the Fourier series of $h(x)$ converges to the periodic extension of $h(x)$ with left-right-averaged jump discontinuities filled in:
 $$\boxed{H(x) =
 \begin{cases}
@@ -148,8 +149,8 @@ $$\boxed{H(x) =
 	1, & \mathrm{if} \ -1 < x < 1 \\ 
 	0 & \mathrm{if} \ x = -1 \\  
 	x, & \mathrm{if} \ -3 < x < -1 \\
-	-\frac{3}{2}, & \mathrm{if} \ x = -3
-\end{cases}}$$}
+	-\frac{3}{2}, & \mathrm{if} \ |x| = 3
+\end{cases} \;\;\; \text{With $H(x + 6n) := H(x)$ for $n \in \mathbb{Z}$}}$$}
 \item Sketch by hand three periods of the Fourier series in part (b). \\ \\ 
 \textcolor{blue}{\textbf{Solution —} A}
 \end{enumerate}
