@@ -1,0 +1,2 @@
+the $n$ $F^{(6)}(x)$ is the smallest derivative that no longer converges (at all) for some value of $x$: thus have asymptotic magnitude $$ \frac{1}{n^{1/2}} $$  \\ \\
+Which makes $$F^{(6)}(x) \sim \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^{1/2}} $$ a cosine series with coefficients $|a_n| = 1/n^{1/2}$. This series diverges absolutely by a $p$-series test. Since $F$ thus has $5$ absolutely-convergent derivatives, it equivalently must have at least $\boxed{\text{$5$ continuous derivatives.}}$ 

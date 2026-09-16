@@ -65,8 +65,8 @@ a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} g(x) \cos(nx) dx \\
 \end{align*}
 Hence 
 \begin{align*}
-F(x) &= \frac{1}{2} + \sum_{n=0}^{\infty} \left[ \frac{2}{n\pi} \sin \left( \frac{n\pi}{2} \right)  \right] \cos(nx) \\
-&= \frac{1}{2} + \frac{2}{\pi}\sum_{n=0}^{\infty} \left[ \frac{1}{n} \sin \left( \frac{n\pi}{2} \right)  \right] \cos(nx) \\
+F(x) &= \frac{1}{2} + \sum_{n=1}^{\infty} \left[ \frac{2}{n\pi} \sin \left( \frac{n\pi}{2} \right)  \right] \cos(nx) \\
+&= \frac{1}{2} + \frac{2}{\pi}\sum_{n=1}^{\infty} \left[ \frac{1}{n} \sin \left( \frac{n\pi}{2} \right)  \right] \cos(nx) \\
 \end{align*}
 Since
 $$\sin \left( \frac{n\pi}{2} \right) = \begin{cases}
@@ -96,7 +96,7 @@ Note that $\sin(2nx)$ is odd about $x=\frac{\pi}{2}$:
 &= -\sin\left( n\pi - 2nh \right) \\
 &= - \sin\left( 2n \left( \frac{\pi}{2} - h \right) \right)
 \end{align*}
-$x = \frac{\pi}{2}$ is the midpoint of our integration range $[0, \pi]$, so the $[0, \pi]$-integral of any function that is odd about $x=\frac{\pi}{2}$ must be zero. Hence, for $\int_{0}^{\pi} f(x)\sin(2nx)dx$ to be zero, it is sufficient for $f(x)$ to be \textbf{even about $x = \frac{\pi}{2}$} (in addition to being odd about $x=0$). \\ \\
+$x = \frac{\pi}{2}$ also happens to be the midpoint of our integration range $[0, \pi]$, so the $[0, \pi]$-integral of any function that is odd about $x=\frac{\pi}{2}$ must be zero. Hence, for $\int_{0}^{\pi} f(x)\sin(2nx)dx$ to be zero, it is sufficient for $f(x)$ to be \textbf{even about $x = \frac{\pi}{2}$} (in addition to being odd about $x=0$). \\ \\
 One such function that is odd (about $x=0$) and even about $x=\frac{\pi}{2}$ is $$\boxed{f(x) = \sin(x)}$$ 
 \begin{align*}
 \sin(h) &= \sin(0 + h) \\
@@ -133,7 +133,7 @@ For each function
 \textcolor{blue}{\textbf{Solution —} $f(x) = x\cos(x) \in PC^1[-\pi/2, \pi/2]$ because both $x$ and $\cos(x)$ are in $C^{\infty}(\mathbb{R})$, so their product must be in $C^{\infty}(\mathbb{R})$, which implies $f(x) \in PC^1[-\pi/2, \pi/2]$. \\ \\ $g(x) = x\cos(x) \in PC^1[-1, 1]$ for an identical reason. \\ \\ $h(x) \in PC^1[-3, 3]$ because it is built from finitely-many slices of $0$, $1$, and $x$, all three of which are in $C^{\infty}(\mathbb{R})$ (which is sufficient to imply that their first derivatives approach finite values at all the junction points).}
 \item State the function to which its Fourier series (defined on the interval: $\left [-\frac{\pi}{2},\frac{\pi}{2} \right ]$ for $f(x)$, $[-1,1]$ for $g(x)$, and $[-3,3]$ for $h(x)$) converges\\
 Note: Do not compute the Fourier series (or coefficients) to do this! \\ \\
-\textcolor{blue}{\textbf{Solution —} We use the Fourier convergence theorem, which asserts that for a function $f \in PC^1[a,b]$, its Fourier series shall converge to the midpoint $(f(a^+) + f(a^-)/2$ of the left and right limits at each point $x=a$. \\ \\ Since $f(x) \in PC^1[-\pi/2, \pi/2]$ and $f(-\pi/2) = f(\pi/2)$ its Fourier series $F(x)$ is exactly the periodic extension of $f(x)$ to all $x\in\mathbb{R}$: 
+\textcolor{blue}{\textbf{Solution —} We use the Fourier convergence theorem, which asserts that for a function $f \in PC^1[a,b]$, its Fourier series shall converge to the midpoint $(f(x_0^+) + f(x_0^-))/2$ of the left and right limits at each point $x=x_0$. \\ \\ Since $f(x) \in PC^1[-\pi/2, \pi/2]$ and $f(-\pi/2) = f(\pi/2)$ its Fourier series $F(x)$ is exactly the periodic extension of $f(x)$ to all $x\in\mathbb{R}$: 
 $$\boxed{F(x) = x\cos(x) \;\;\; \text{for $x \in \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right] \;\;\;$ With $F(x + n\pi) := F(x)$ for $n \in \mathbb{Z}$}}$$
 Since $g(x) \in PC^1[-1, 1]$ and $g(-1) \neq g(1)$, its Fourier series $G(x)$ is the periodic extension of $g(x)$  to all $x \in \mathbb{R}$ but with left-right-averaged jump discontinuities filled in (left endpoint $-\cos(1)$ and right endpoint $\cos(1)$ averaging to $0$):
 $$\boxed{G(x) =
@@ -152,7 +152,20 @@ $$\boxed{H(x) =
 	-\frac{3}{2}, & \mathrm{if} \ |x| = 3
 \end{cases} \;\;\; \text{With $H(x + 6n) := H(x)$ for $n \in \mathbb{Z}$}}$$}
 \item Sketch by hand three periods of the Fourier series in part (b). \\ \\ 
-\textcolor{blue}{\textbf{Solution —} A}
+\textcolor{blue}{\textbf{Solution —} 
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.5\textwidth]{Q3_C1_E}
+\end{figure} 
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.5\textwidth]{Q3_C2_E}
+\end{figure} 
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.6\textwidth]{Q3_C3_E}
+\end{figure} 
+\\}
 \end{enumerate}
 
 
@@ -163,7 +176,9 @@ $$\boxed{H(x) =
 $$F(x) = \sum_{n=1}^\infty \frac{(-1)^n n^{3/2} + 2}{n^8 + 2n^6 + 1} \cos(nx)$$
 How many continuous derivatives can we be sure that $F$
 possesses? Justify your answer using tools from Calculus II. \\ \\
-\textcolor{blue}{\textbf{Solution —} A}
+\textcolor{blue}{\textbf{Solution —} For an infinite series-representation of a function, it is guaranteed to be continuous if the series converges uniformly for all $x$. Hence we must find how many $x$-derivatives we can apply to $F$ and still have a uniformly-convergent series. Let $$a_n = \frac{(-1)^n n^{3/2} + 2}{n^8 + 2n^6 + 1}$$ 
+Since $|\cos(nx)| \leq 1$ (also regardless of $x$), we have $|a_n \cos(nx)| \leq |a_n|$, so each term is bounded in magnitude by $|a_n|$. Hence $F$ converges independently of $x$ (and uniformly), because $\sum |a_n|$ behaves like a convergent $p$-series with asymptotic term behavior: $$|a_n| \sim \frac{1}{n^{13/2}} \;\;\;\; \text{as $n \to \infty$}$$
+After differentiating $F(x)$ $k$ times with respect to $x$, the $n$th term has asymptotic magnitude $$n^k |a_n| \sim \frac{1}{n^{13/2 - k}}$$ We see that we exit the realm of comfortably (uniformly) converging series at $k=6$ derivatives, where the term coefficient $n^6|a_n| \sim n^{-1/2}$. Because $F^{(6)}(x)$ behaves as a reciprocal-of-square-roots series, it is not guaranteed to converge for all $x$ (much less uniformly). Hence, $F$ is guaranteed to have $\boxed{5}$ continuous derivatives. \\ }
 
 
 \end{document}
