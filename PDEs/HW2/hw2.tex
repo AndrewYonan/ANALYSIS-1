@@ -75,9 +75,7 @@ $$\sin \left( \frac{n\pi}{2} \right) = \begin{cases}
 	-1 & \mathrm{if} \;\; n \equiv 3 \mod (4) \\
 \end{cases}$$
 we want to skip the even terms, hopping over the odd terms instead, and alternating between a $1$ and $-1$ coefficient, starting with $1$:
-\begin{align*}
-F(x) &= \frac{1}{2} + \frac{2}{\pi}\sum_{n=0}^{\infty} \frac{(-1)^n}{2n+1} \cos((2n+1)x) \\
-\end{align*}
+$$ \boxed{F(x) = \frac{1}{2} + \frac{2}{\pi}\sum_{n=0}^{\infty} \frac{(-1)^n}{2n+1} \cos((2n+1)x)} \\$$
 }
 
 \vspace{0.3in}
@@ -98,15 +96,20 @@ Note that $\sin(2nx)$ is odd about $x=\frac{\pi}{2}$:
 &= -\sin\left( n\pi - 2nh \right) \\
 &= - \sin\left( 2n \left( \frac{\pi}{2} - h \right) \right)
 \end{align*}
-$x = \frac{\pi}{2}$ is the midpoint of our integration range $[0, \pi]$, so the $[0, \pi]$-integral of any function that is odd about $x=\frac{\pi}{2}$ must be zero. Hence, for $\int_{0}^{\pi} f(x)\sin(2nx)dx$ to be zero, we require $f(x)$ to be even about $x = \frac{\pi}{2}$. \\ \\
-One such function is $f(x) = (x - \frac{\pi}{2})^2$ \\ \\ This function satisfies evenness about $\frac{\pi}{2}$:
+$x = \frac{\pi}{2}$ is the midpoint of our integration range $[0, \pi]$, so the $[0, \pi]$-integral of any function that is odd about $x=\frac{\pi}{2}$ must be zero. Hence, for $\int_{0}^{\pi} f(x)\sin(2nx)dx$ to be zero, it is sufficient for $f(x)$ to be \textbf{even about $x = \frac{\pi}{2}$} (in addition to being odd about $x=0$). \\ \\
+One such function that is odd (about $x=0$) and even about $x=\frac{\pi}{2}$ is $$\boxed{f(x) = \sin(x)}$$ 
 \begin{align*}
-f\left( \frac{\pi}{2} - h \right) &= \left( \left( \frac{\pi}{2}-h \right) - \frac{\pi}{2} \right)^2 \\
-&= (-h)^2 \\
-&= (h)^2 \\
-&= \left( \frac{\pi}{2} + h - \frac{\pi}{2} \right)^2\\
-&= \left( \left( \frac{\pi}{2} + h \right) - \frac{\pi}{2} \right)^2\\
-&= f\left( \frac{\pi}{2} + h \right) \\
+\sin(h) &= \sin(0 + h) \\
+&= \sin(0)\cos(h) + \cos(0)\sin(h) \\
+&= -\sin(0)\sin(h) + \cos(0)\sin(h) \\
+&= -(\sin(0)\sin(h) - \cos(0)\sin(h)) \\
+&= -\sin(0 - h) \\
+&= -\sin(-h) \\
+\end{align*}
+\begin{align*}
+\sin \left( \frac{\pi}{2} + h \right) &= \sin \left( \frac{\pi}{2} \right) \cos(h) + \cos \left( \frac{\pi}{2} \right) \sin(h) \\
+&= \sin \left( \frac{\pi}{2} \right) \cos(h) - \cos \left( \frac{\pi}{2} \right) \sin(h) \\
+&= \sin \left( \frac{\pi}{2} - h \right)
 \end{align*}
 }
 
