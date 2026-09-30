@@ -1,0 +1,44 @@
+
+\documentclass[12pt]{article}
+\pagestyle{empty} \topmargin -0.5in \textheight 9in \textwidth 6.5in
+\oddsidemargin -0in
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\begin{document}
+
+\begin{flushleft}
+
+\textbf{Department of Applied Mathematics and Statistics}
+
+\textbf{COLORADO SCHOOL OF MINES}\\
+
+
+MATH $455$: Partial Differential Equations
+\end{flushleft}
+
+Consider the 2D curve $\Gamma = \{(x, \sin x) : -\frac{\pi}{2} \leq x \leq \frac{7\pi}{2}\}$. A point mass $m$ slides along $\Gamma$ under the acceleration $g$ of gravity and the normal force (oriented up) of $\Gamma$ on $m$. Whenever the normal force vanishes, $m$ deviates from $\Gamma$ and comes solely under the influence of $g$, until re-contacting the ramp. Assume restitution is zero. The point mass starts at the left endpoint of $\Gamma$ and is imparted $v_0$ horizontal speed to the right. We are interested only in scenarios where $v_0$ is calibrated precisely so that $m$ launches off the first hump of $\Gamma$, clears the trough centered at $x=3\pi/2$, and has its first contact-after-launch on the down-ramp of $\Gamma$ on $(5\pi/2, 7\pi/2)$. Find $v_0$ that minimizes the magnitude of $m$'s incoming normal velocity at re-contact. Round your answer to 4 significant figures. \\ \\
+
+\textcolor{blue}{Solution — Let $x=a$ be the particle's launch point. We first work to find a $a$ as a function of $v_0$. While the particle is constrained to $y = \sin{x}$, conservation of energy determines the magnitude of its velocity at $x$ by $$v^2(x) = v_0^2 -2g(\sin{x} + 1)$$. By the standard unit normal formula for a parametrized curve, the upward unit normal at $(x, \sin{x})$ is $$\mathbf{\hat{n}} = \frac{(-\cos{x}, 1)}{\sqrt{1 + \cos^2{x}}}$$ 
+At any point $x$ along the $y = \sin{x}$, the normal component of acceleration $a_n = v^2 \kappa$ (where $\kappa$ is 2D curvature) is $$\frac{-v^2 \sin{x}}{(1 + \cos^2{x})^{3/2}}$$ (This is the normal acceleration required to follow the curve). The gravitational component of acceleration perpendicular to the ramp is $$a_g = (0, -g) \cdot \mathbf{\hat{n}} = \frac{-g}{\sqrt{1 + \cos^2{x}}}$$ The gravitational normal acceleration and the normal acceleration supplied by the ramp's normal force must sum to the net normal acceleration required to follow the curve: $$\frac{N}{m} + \frac{-g}{\sqrt{1 + \cos^2{x}}} = - \frac{v^2 \sin{x}}{(1 + \cos^2{x})^{3/2}}$$. At launch $x=a$, the normal force vanishes ($N=0$), giving: $$v_a^2 = g \left( \frac{1 + \cos^2{x}}{\sin x} \right)$$ where $v_a$ is speed at loss of contact. From conservation of energy, we obtain 
+$$v_a^2 = v_0^2 - 2g(\sin{x} + 1)$$
+$$$$
+}
+
+
+
+
+
+
+
+
+
+\end{document}

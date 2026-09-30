@@ -1,0 +1,36 @@
+
+\documentclass[12pt]{article}
+\pagestyle{empty} \topmargin -0.5in \textheight 9in \textwidth 6.5in
+\oddsidemargin -0in
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\begin{document}
+
+\begin{flushleft}
+
+\textbf{Department of Applied Mathematics and Statistics}
+
+\textbf{COLORADO SCHOOL OF MINES}\\
+
+
+MATH $455$: Partial Differential Equations
+\end{flushleft}
+
+Let $$S(N,m) := Nm + \sum_{k=0}^{N-1} k$$ Let $a$ be a positive integer. Determine the remainder when $$\left( \sum_{i=1}^a S(a,i) - a \right)$$ is divided by $6$. \\ \\ 
+$$\sum_{i=1}^a S(a,i) - a$$
+$$ = \sum_{i=1}^a \left(ai + \sum_{k=0}^{a-1} k \right)- a$$
+$$ = \frac{a^2(a+1)}{2} + \frac{a^2(a-1)}{2} - a$$
+$$ = a^3 - a$$
+$$ = (a-1)a(a+1)$$
+Note that this is the product of $3$ consecutive integers, which is always divisible by $6$. Hence the remainder when the expression is divided by $6$ is $\boxed{0}$
+
+\end{document}
