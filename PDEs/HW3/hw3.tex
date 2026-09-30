@@ -67,10 +67,10 @@ $$u(0,x) = f(x) \quad \mathrm{and} \quad \frac{\partial u}{\partial t}(0,x) = 0$
 for $x \in \mathbb{R}$. In particular, write the solution in terms of the $f(x)$ function. Then, graph by hand $u(\frac{1}{c},x)$, $u(\frac{2}{c},x)$, and $u(\frac{3}{c},x)$ using different axes. \\ \\
 \textcolor{blue}{\textbf{Solution} — To find the general solution of (WE), apply the substitution
 \begin{align*}
-& r(x,t) = x - ct \\
-& s(x,t) = x + ct
+& r(t, x) = x - ct \\
+& s(t, x) = x + ct
 \end{align*}
-Assume $u(x,t) = U(r,s)$ is a solution and substitute (we first calculate the needed derivatives of $u$):
+Assume $u(t,x) = U(r,s)$ is a solution and substitute (we first calculate the needed derivatives of $u$):
 \begin{align*}
 \frac{\partial u}{\partial x} &= \frac{\partial U}{\partial r} \frac{\partial r}{\partial x} + \frac{\partial U}{\partial s} \frac{\partial s}{\partial x} \\ \\
 &= \frac{\partial U}{\partial r} +  \frac{\partial U}{\partial s}
@@ -91,13 +91,130 @@ Let us assume that $U(r,s)$ is smooth and well-behaved enough for the cross-deri
 \begin{align*}
 \frac{\partial^2 u}{\partial x^2} &= \frac{\partial^2 U}{\partial r^2} + 2 \left( \frac{\partial^2 U}{\partial r \partial s} \right) + \frac{\partial^2 U}{\partial s^2} 
 \end{align*}
+By similar mechanics, we obtain 
+\begin{align*}
+\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 U}{\partial r^2} - 2 \left( \frac{\partial^2 U}{\partial r \partial s} \right) + \frac{\partial^2 U}{\partial s^2}  \right)
+\end{align*}
+Substituting these second derivatives in the general wave equation yields: \\
+\begin{align*}
+& \left[ c^2 \left( \frac{\partial^2 U}{\partial r^2} - 2 \left( \frac{\partial^2 U}{\partial r \partial s} \right) + \frac{\partial^2 U}{\partial s^2}  \right) \right] \\
+-& c^2 \left[  \frac{\partial^2 U}{\partial r^2} + 2 \left( \frac{\partial^2 U}{\partial r \partial s} \right) + \frac{\partial^2 U}{\partial s^2}  \right] \\ \\
+&=-4c^2 \left( \frac{\partial^2 U}{\partial r \partial s} \right) = 0 \\ \\
+&\iff  \frac{\partial^2 U}{\partial r \partial s} = 0
+\end{align*}
+Our change-of-variables has transformed the original wave equation into this more workable form, which we can now simply integrate to extract $U$:
+\begin{align*}
+& \frac{\partial}{\partial r} \frac{\partial U}{\partial s}  = 0\\ \\
+&\iff \frac{\partial U}{\partial s}  = C_1(s)\\ \\
+&\iff U = C_2(s) + C_3(r)\\ \\
+&\iff U(r,s) = F(r) + G(s)\\ \\
+&\iff u(t,x) = F(x - ct) + G(x + ct)\\ \\
+\end{align*}
+We now apply our initial conditions.
+\begin{align*}
+u(0,x) = f(x) &\implies F(x) + G(x) = f(x) \\ \\
+\left. \frac{\partial u}{\partial t} \right |_{(0,x)} = 0 &\implies -cF'(x) + cG'(x) = 0 \\
+&\implies F'(x) = G'(x) \\
+&\implies F(x) = G(x) + \delta \;\;\; \text{for some $\delta \in \mathbb{R}$} \\
+\end{align*}
+Our two constraints combine to imply
+\begin{align*}
+& 2G(x) + \delta = f(x) \\
+&\implies G(x) = \frac{1}{2}(f(x) - \delta) \\
+&\implies F(x) = \frac{1}{2}(f(x) + \delta)
+\end{align*}
+Hence
+\begin{align*}
+u(t,x) &= \frac{1}{2} (f(x-ct) + \delta) + \frac{1}{2}(f(x + ct) - \delta) \\ \\
+&= \boxed{\frac{1}{2} f(x-ct)  + \frac{1}{2} f(x + ct)} \\ 
+\end{align*}
+\[
+\boxed{
+\begin{aligned}
+u\left( \frac{1}{c}, x \right) &= \frac{1}{2} f(x-1) + \frac{1}{2} f(x + 1) \\ \\
+u\left( \frac{2}{c}, x \right) &= \frac{1}{2} f(x-2) + \frac{1}{2} f(x + 2) \\ \\
+u\left( \frac{3}{c}, x \right) &= \frac{1}{2} f(x-3) + \frac{1}{2} f(x + 3) \\ \\
+\end{aligned}}
+\]
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.5\textwidth]{Q1B1}
+     \includegraphics[width=0.5\textwidth]{Q1B2}
+      \includegraphics[width=0.5\textwidth]{Q1B3}
+\end{figure} \\
 }
 
 
 \item Find the solution of \eqref{WE} for $x \in \mathbb{R}, t > 0$ with 
 $$u(0,x) = 0 \quad \mathrm{and} \quad \frac{\partial u}{\partial t}(0,x) = g(x)$$
 for $x \in \mathbb{R}$. In particular, write the solution in terms of the $g(x)$ function. Then, graph by hand $u(\frac{1}{c},x)$, $u(\frac{2}{c},x)$, and $u(\frac{3}{c},x)$ using different axes. \\ \\
-\textcolor{blue}{\textbf{Solution} — }
+\textcolor{blue}{\textbf{Solution} — Now we apply different initial conditions to the same general solution we obtained $u(t,x) = F(x-ct) + G(x+ct)$: \\
+\begin{align*}
+u(0,x) = 0 \implies& F(x) = -G(x) \\ \\
+\left. \frac{\partial u}{\partial t} \right |_{(0,x)} = g(x) \implies& -cF'(x) + cG'(x) = g(x)
+\end{align*}
+From our first constraint, $F'(x) = -G'(x)$, so
+\begin{align*}
+-c(-G'(x)) + cG'(x) &= g(x) \\ \\
+G'(x) &= \frac{g(x)}{2c} \\ \\
+G(x) &= \frac{1}{2c} \int g(x)dx + \delta \\ \\
+F(x) &= -\frac{1}{2c} \int g(x)dx - \delta
+\end{align*} \\
+Let $A(x)$ be the antiderivative of $g$, so that $A'(x) = g(x)$: \\
+\begin{align*}
+G(x) = \frac{1}{2c}A(x) + \delta &\;\;\;\;\;\;\;\;\; F(x) = -\frac{1}{2c} A(x) - \delta \\
+\end{align*}
+Hence
+\begin{align*}
+u(t,x) &=  \left( -\frac{1}{2c} A(x-ct) - \delta \right) + \left( \frac{1}{2c}A(x+ct) + \delta \right)  \\ \\
+&=  \frac{1}{2c}  \left( \vphantom{\frac{1}{2c}} A(x+ct) - A(x-ct) \right)   \\ \\
+&=  \boxed{\frac{1}{2c}  \int_{x-ct}^{x+ct} g(\zeta) d\zeta } \\ \\
+\end{align*}
+We compute a few solution functions at various times. First, note that the area under $g$ from $a$ to $b$ is
+$$A(x) =
+\begin{cases}
+	0, & \mathrm{if} \ x < -1 \\ 
+	x + 1, & \mathrm{if} \ |x| < 1 \\ 
+	2, & \mathrm{if} \ x > 1
+\end{cases}$$
+Now, at different time increments $\frac{n}{c}$ for $n=1,2,3\cdots$, the solution is
+\[
+\begin{aligned}
+u\left( \frac{n}{c}, x \right) &= \frac{1}{2c}  \int_{x-n}^{x+n} g(\zeta) d\zeta \\ \\
+&= \frac{1}{2c} \left(\vphantom{\frac12}A(x+n) - A(x-n)\right) \\ \\
+&= \frac{1}{2c} \left( \begin{cases}
+	0, & \mathrm{if} \ x < -1 \\ 
+	(x+n) + 1, & \mathrm{if} \ |x| < 1 \\ 
+	2, & \mathrm{if} \ x > 1
+\end{cases} - 
+\begin{cases}
+	0, & \mathrm{if} \ x < -1 \\ 
+	(x-n) + 1, & \mathrm{if} \ |x| < 1 \\ 
+	2, & \mathrm{if} \ x > 1
+\end{cases}
+ \right) \\ \\
+&= \frac{1}{2c} \begin{cases}
+	2n & \mathrm{if} \ |x| < 1 \\ 
+	0, & \mathrm{else}
+\end{cases} \\ \\
+&= \begin{cases}
+	\frac{n}{c} & \mathrm{if} \ |x| < 1 \\ 
+	0, & \mathrm{else}
+\end{cases}
+\end{aligned}
+\]
+Hence
+\[
+\boxed{
+\begin{aligned}
+u\left( \frac{1}{c}, x \right) = 
+\begin{cases}
+	\frac{1}{c} & \mathrm{if} \ |x| < 1 \\ 
+	0, & \mathrm{else}
+\end{cases}
+\end{aligned}
+}\]
+}
 
 \end{enumerate}
 
