@@ -27,10 +27,36 @@ MATH $455$: Partial Differential Equations
 
 Consider the 2D curve $\Gamma = \{(x, \sin x) : -\frac{\pi}{2} \leq x \leq \frac{7\pi}{2}\}$. A point mass $m$ slides along $\Gamma$ under the acceleration $g$ of gravity and the normal force (oriented up) of $\Gamma$ on $m$. Whenever the normal force vanishes, $m$ deviates from $\Gamma$ and comes solely under the influence of $g$, until re-contacting the ramp. Assume restitution is zero. The point mass starts at the left endpoint of $\Gamma$ and is imparted $v_0$ horizontal speed to the right. We are interested only in scenarios where $v_0$ is calibrated precisely so that $m$ launches off the first hump of $\Gamma$, clears the trough centered at $x=3\pi/2$, and has its first contact-after-launch on the down-ramp of $\Gamma$ on $(5\pi/2, 7\pi/2)$. Find $v_0$ that minimizes the magnitude of $m$'s incoming normal velocity at re-contact. Round your answer to 4 significant figures. \\ \\
 
-\textcolor{blue}{Solution — Let $x=a$ be the particle's launch point. We first work to find a $a$ as a function of $v_0$. While the particle is constrained to $y = \sin{x}$, conservation of energy determines the magnitude of its velocity at $x$ by $$v^2(x) = v_0^2 -2g(\sin{x} + 1)$$. By the standard unit normal formula for a parametrized curve, the upward unit normal at $(x, \sin{x})$ is $$\mathbf{\hat{n}} = \frac{(-\cos{x}, 1)}{\sqrt{1 + \cos^2{x}}}$$ 
-At any point $x$ along the $y = \sin{x}$, the normal component of acceleration $a_n = v^2 \kappa$ (where $\kappa$ is 2D curvature) is $$\frac{-v^2 \sin{x}}{(1 + \cos^2{x})^{3/2}}$$ (This is the normal acceleration required to follow the curve). The gravitational component of acceleration perpendicular to the ramp is $$a_g = (0, -g) \cdot \mathbf{\hat{n}} = \frac{-g}{\sqrt{1 + \cos^2{x}}}$$ The gravitational normal acceleration and the normal acceleration supplied by the ramp's normal force must sum to the net normal acceleration required to follow the curve: $$\frac{N}{m} + \frac{-g}{\sqrt{1 + \cos^2{x}}} = - \frac{v^2 \sin{x}}{(1 + \cos^2{x})^{3/2}}$$. At launch $x=a$, the normal force vanishes ($N=0$), giving: $$v_a^2 = g \left( \frac{1 + \cos^2{x}}{\sin x} \right)$$ where $v_a$ is speed at loss of contact. From conservation of energy, we obtain 
-$$v_a^2 = v_0^2 - 2g(\sin{x} + 1)$$
-$$$$
+\textcolor{blue}{Solution — Let $x=a$ be the particle's launch point. We first work to find $a$ as a function of $v_0$. While the particle is constrained to $y = \sin{x}$, conservation of energy determines the magnitude of its velocity at $x$ by $$v^2(x) = v_0^2 -2g(\sin{x} + 1)$$. By the standard unit normal formula for a parametrized curve, the upward unit normal at $(x, \sin{x})$ is $$\mathbf{\hat{n}} = \frac{(-\cos{x}, 1)}{\sqrt{1 + \cos^2{x}}}$$ 
+At any point $x$ along the $y = \sin{x}$, the normal component of acceleration $a_n = v^2 \kappa$ (where $\kappa$ is 2D curvature) is $$\frac{-v^2 \sin{x}}{(1 + \cos^2{x})^{3/2}}$$ (This is the normal acceleration required to follow the curve). The gravitational component of acceleration perpendicular to the ramp is $$a_g = (0, -g) \cdot \mathbf{\hat{n}} = \frac{-g}{\sqrt{1 + \cos^2{x}}}$$ The gravitational normal acceleration and the normal acceleration supplied by the ramp's normal force must sum to the net normal acceleration required to follow the curve: $$\frac{N}{m} + \frac{-g}{\sqrt{1 + \cos^2{x}}} = - \frac{v^2 \sin{x}}{(1 + \cos^2{x})^{3/2}}$$ At launch $x=a$, the normal force vanishes ($N=0$), giving: $$v_a^2 = g \left( \frac{1 + \cos^2{a}}{\sin a} \right)$$ where $v_a$ is speed at loss of contact. From conservation of energy, we obtain 
+$$v_0^2 - v_a^2 =  2g(\sin{a} + 1)$$ $$v_0^2 - g\left( \frac{1 + \cos^2{a}}{\sin{a}} \right) = 2g(\sin a + 1)$$
+$$\implies v_0 = \sqrt{2g(\sin{a} + 1) + g\left( \frac{1 + \cos^2{a}}{\sin{a}} \right)}$$
+We now have $v_0$ as a function of the particle's launch point $a$, as we intended. Now we proceed to find $a$ (and by extension $v_0$) such that the particle has an optimal landing back on the track. Note that the unit tangent at $x=a$ is $$\frac{(1, \cos{a})}{\sqrt{1 + \cos^2 a}}$$ so the particle's components of velocity here simplify to $$v_x = \sqrt{\frac{g}{\sin{a}}} \;\;\;\;\;\; v_y = \cos{a} \sqrt{\frac{g}{\sin{a}}}$$ Let $x=b$ be the particle's touch-down point. Since horizontal velocity is constant while airborne, the air time must be $$t_{air} = (b-a)\sqrt{\frac{\sin{a}}{g}}$$ and (by basic projectile motion), it's height at $b$ must be
+$$y_b = \sin{a} + (b-a)\cos{a} - \frac{1}{2} \sin{a} (b-a)^2$$ Recontact with the ramp requires $\sin{b} = y_b$. Let us now obtain the incoming normal velocity. Right before contact, we have $v_x = \sqrt{g/ \sin{a}}$, and $$v_y = \cos {a} \sqrt{\frac{g}{\sin a}} - gt_{air} = \sqrt{\frac{g}{\sin a}} (\cos{a} - (b-a)\sin{a})$$ The normal component of velocity at contact is 
+$$v_n = (v_x, v_y) \cdot \mathbf{\hat{n_b}} = (v_x, v_y) \cdot \frac{(-\cos b, 1)}{\sqrt{1 + \cos^2 b}} $$
+$$ = \frac{\sqrt{g / \cos a}}{\sqrt{1 + \cos^2 b}} (\cos a - \sin a (b-a) - \cos b)$$
+The minimum possible value of $|v_n|$ is zero, so we see if a launch point $a$ exists that forces $v_n = 0$ at re-contact. $v_n = 0$ is satisfied when
+$$\cos a - \sin a (b-a) = \cos{b}$$
+From this equation and from the constraint $y_b = \sin{b}$, we have a system of two equations in $\sin{a}$ and $\cos{a}$:
+$$\begin{cases}
+\cos{a} - \sin{a} (b - a) = \cos {b} \\
+\sin{a} + (b-a)\cos{a} - \frac{1}{2} \sin {a} (b-a)^2 = \sin {b}
+\end{cases}$$
+(Note that the first equation enforces tangency and the second equation enforces contact). Let's simplify the notation with $d = b-a$:
+$$\begin{cases}
+\cos{a} - \sin{a} (d) = \cos {(a+d)} \\
+\sin{a} + d\cos{a} - \frac{1}{2} \sin {a} (d)^2 = \sin {(a+d)}
+\end{cases}$$
+and expand $\cos{(a + d)}$ and $\sin{(a+d)}$ to express the system as a linear, homogeneous system in $(\sin{a}, \cos{a})$:
+$$\begin{cases}
+\cos{a}(1 - \cos{d}) + \sin a (\sin d -d) = 0 \\
+\cos{a}(d - \sin{d}) + \sin a (1 - \frac{1}{2} d^2 - \cos{d}) = 0
+\end{cases}$$
+Since $\sin a $ and $\cos a$ can't both be zero, this system can only be satisfied when it has a non-trivial solution—equivalently, when its determinant is zero:
+$$(1 - \cos d)(1 - \frac{1}{2} d^2 - \cos d) + (d - \sin d)^2 = 0$$
+$$\implies d = 8.98682$$
+$$\implies a = 0.21898$$
+Hence the particle must lift off at $x = a = 0.21898$, which, by our $v_0(a)$ function, occurs when $v_0 = 10.5808384338$. We round to $4$ significant figures: $$\boxed{v_0 = 10.58}$$
 }
 
 
