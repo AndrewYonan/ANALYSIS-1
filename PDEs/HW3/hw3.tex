@@ -274,7 +274,30 @@ with the boundary conditions
 $$\frac{\partial u}{\partial x}(t,0) = \frac{\partial u}{\partial x}(t,L) =0 , \qquad t > 0$$
 and the initial conditions for $0 < x < L$
 $$ u(0,x) = f(x), \quad \frac{\partial u}{\partial t}(0,x) = g(x).$$ \\ \\
-\textcolor{blue}{\textbf{Solution} — }
+\textcolor{blue}{\textbf{Solution} — Since we now impose boundary conditions (in addition to initial conditions), we must now solve the wave equation on a bounded domain, which requires separation of variables. We assume the solution takes the separated form
+$$u(t,x) = T(t)X(x)$$ For all $t,x \in \mathbb{R}$. Then $$\frac{\partial^2 u}{\partial t^2} = T''(t)X(x) \;\;\;\;\;\;\; \frac{\partial^2 u}{\partial x^2} = T(t)X''(x)$$ \\ and the wave equation takes the form \\
+\begin{align*}
+& T''(t)X(x) - c^2 T(t)X''(x) = 0 \implies \frac{T''(t)}{T(t)} = c^2 \frac{X''(x)}{X(x)} \\
+\end{align*}
+which is of the form $F(t) = G(x)$. Because we're assuming this equality holds for all $x,t$, then both sides of the equation must be constant (fix $x=x_0$ and we have $F(t) = G(x_0)$, which is equivalent to saying that $F(t)$ is (in general) equal to some constant $G(x_0)$. The same can be deduced by fixing $t=t_0$). Let $\lambda$ be this constant: $$\frac{T''(t)}{T(t)} = c^2 \frac{X''(x)}{X(x)} = \lambda \implies 
+\begin{cases}
+T'' - \lambda T = 0 \\
+c^2X'' - \lambda X = 0 \\
+\end{cases}$$
+This is a system of independent second-order homogeneous linear ODEs, each of which can be solved with the characteristic equation to obtain the solutions \\ 
+\begin{align*}
+T(t) &= c_1 e^{-\sqrt{\lambda} t} + c_2 e^{\sqrt{\lambda}t} \\
+X(x) &= c_2 e^{-\frac{\sqrt{\lambda}}{c} x} + c_3 e^{\frac{\sqrt{\lambda}}{c}x}
+\end{align*}
+Or, if $\lambda = 0$,
+\begin{align*}
+T(t) &= A + Bt \\
+X(x) &= C + Dx
+\end{align*}
+We will now apply our boundary conditions \\ $$\frac{\partial u}{\partial x}(t,0) = \frac{\partial u}{\partial x}(t,L) = 0$$ \\ Note that these are Neumann boundary conditions because they fix the physical slope of the string in space at the boundaries (as opposed to fixing the position of the string in space with Dirichlet boundaries).
+$$\frac{\partial u}{\partial x}(t,0) = T(t)X'(x) \left. \right|_{(t,0)} = T(t)X'(0) = 0$$
+$$\frac{\partial u}{\partial x}(t,L) = T(t)X'(x) \left. \right|_{(t,L)} = T(t)X'(L) = 0$$ 
+}
 
 \vspace{0.2in}
 
