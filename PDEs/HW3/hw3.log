@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  30 SEP 2026 15:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  3 OCT 2026 19:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -263,61 +263,77 @@ Package pdftex.def Info: Q1B3.png  used on input line 145.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--217
+Underfull \hbox (badness 10000) in paragraph at lines 149--265
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--217
+Underfull \hbox (badness 10000) in paragraph at lines 149--265
 
  []
 
 [4] [5 <./Q1B1.png> <./Q1B2.png> <./Q1B3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 217--217
+Underfull \hbox (badness 10000) in paragraph at lines 265--265
 
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 228--230
+[6] [7]
+<Q1C1.png, id=43, 690.58pt x 385.44pt>
+File: Q1C1.png Graphic file (type png)
+<use Q1C1.png>
+Package pdftex.def Info: Q1C1.png  used on input line 265.
+(pdftex.def)             Requested size: 234.87749pt x 131.08904pt.
+<Q1C2.png, id=44, 698.61pt x 392.46625pt>
+File: Q1C2.png Graphic file (type png)
+<use Q1C2.png>
+Package pdftex.def Info: Q1C2.png  used on input line 265.
+(pdftex.def)             Requested size: 234.87749pt x 131.95158pt.
+<Q1C3.png, id=45, 782.925pt x 418.56375pt>
+File: Q1C3.png Graphic file (type png)
+<use Q1C3.png>
+Package pdftex.def Info: Q1C3.png  used on input line 265.
+(pdftex.def)             Requested size: 234.87749pt x 125.56369pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 276--278
 
  []
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 239--241
+[8 <./Q1C1.png> <./Q1C2.png> <./Q1C3.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 287--289
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 245--247
+Underfull \hbox (badness 10000) in paragraph at lines 293--295
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--251
+Underfull \hbox (badness 10000) in paragraph at lines 297--299
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 254--257
+Underfull \hbox (badness 10000) in paragraph at lines 302--305
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 278--282
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 326--330
 
  []
 
-[8] [9] (./hw3.aux)
+[10] (./hw3.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3213 strings out of 467525
- 45786 string characters out of 5418982
- 468951 words of memory out of 5000000
- 32105 multiletter control sequences out of 15000+600000
+ 3246 strings out of 467525
+ 46242 string characters out of 5418982
+ 469953 words of memory out of 5000000
+ 32138 multiletter control sequences out of 15000+600000
  634045 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,15n,65p,316b,372s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -330,10 +346,10 @@ sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 cal/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
 /texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw3.pdf (9 pages, 392044 bytes).
+Output written on hw3.pdf (10 pages, 537637 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
+ 97 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -183,23 +183,43 @@ Now, at different time increments $\frac{n}{c}$ for $n=1,2,3\cdots$, the solutio
 u\left( \frac{n}{c}, x \right) &= \frac{1}{2c}  \int_{x-n}^{x+n} g(\zeta) d\zeta \\ \\
 &= \frac{1}{2c} \left(\vphantom{\frac12}A(x+n) - A(x-n)\right) \\ \\
 &= \frac{1}{2c} \left( \begin{cases}
-	0, & \mathrm{if} \ x < -1 \\ 
-	(x+n) + 1, & \mathrm{if} \ |x| < 1 \\ 
-	2, & \mathrm{if} \ x > 1
+	0, & \mathrm{if} \ x+n < -1 \\ 
+	(x+n) + 1, & \mathrm{if} \ |x+n| < 1 \\ 
+	2, & \mathrm{if} \ x+n > 1
 \end{cases} - 
 \begin{cases}
-	0, & \mathrm{if} \ x < -1 \\ 
-	(x-n) + 1, & \mathrm{if} \ |x| < 1 \\ 
-	2, & \mathrm{if} \ x > 1
+	0, & \mathrm{if} \ x-n < -1 \\ 
+	(x-n) + 1, & \mathrm{if} \ |x-n| < 1 \\ 
+	2, & \mathrm{if} \ x-n > 1
 \end{cases}
  \right) \\ \\
 &= \frac{1}{2c} \begin{cases}
-	2n & \mathrm{if} \ |x| < 1 \\ 
-	0, & \mathrm{else}
+	0 & \mathrm{if} \ x \leq -n-1 \\ 
+	n+1+x, & \mathrm{if} \ -n -1 \leq x \leq -n + 1 \\
+	2, & \mathrm{if} \ -n+1 \leq x < n-1 \\
+	n+1 -x, & \mathrm{if} \ n - 1 \leq x \leq n + 1 \\
+	0, & \mathrm{if} \ x \geq n + 1 \\ 
 \end{cases} \\ \\
-&= \begin{cases}
-	\frac{n}{c} & \mathrm{if} \ |x| < 1 \\ 
-	0, & \mathrm{else}
+\end{aligned}
+\]
+Consider the symmetry of the $n+1+x$ and $n+1-x$ cases. If we apply the substitution $A = n-1$ and $B=n+1$, then these cases reduce to $$
+\begin{cases}
+B + x & \mathrm{if} \ -B \leq x \leq -A  \\
+B - x & \mathrm{if} \ A \leq x \leq B
+\end{cases}$$
+Which reduces to $$
+\begin{cases}
+B - |x| & \mathrm{if} \ A \leq |x| \leq B  \\
+\end{cases}$$
+(Note that $B+x = B-|x|$ when $x$ is negative (in the first interval) and $B-x = B-|x|$ when $x$ is positive (in the second interval)). Also note that the two zero cases can be described by $|x| \geq n + 1$.
+Hence
+\[
+\begin{aligned}
+u\left( \frac{n}{c}, x \right) = \frac{1}{2c}
+\begin{cases}
+0 & \mathrm{if} \ |x| \geq n+1 \\
+n+1 - |x| & \mathrm{if} \ n-1 \leq |x| \leq n+1 \\
+2 & \mathrm{if} \ |x| \leq n - 1 \\
 \end{cases}
 \end{aligned}
 \]
@@ -207,13 +227,41 @@ Hence
 \[
 \boxed{
 \begin{aligned}
-u\left( \frac{1}{c}, x \right) = 
+u\left( \frac{1}{c}, x \right) = \frac{1}{2c}
 \begin{cases}
-	\frac{1}{c} & \mathrm{if} \ |x| < 1 \\ 
-	0, & \mathrm{else}
+0 & \mathrm{if} \ |x| \geq 2 \\
+2 - |x| & \mathrm{if} \ 0 \leq |x| \leq 2 \\
 \end{cases}
 \end{aligned}
 }\]
+\[
+\boxed{
+\begin{aligned}
+u\left( \frac{2}{c}, x \right) = \frac{1}{2c}
+\begin{cases}
+0 & \mathrm{if} \ |x| \geq 3 \\
+3 - |x| & \mathrm{if} \ 1 \leq |x| \leq 3 \\
+2 & \mathrm{if} \ |x| \leq 1 \\
+\end{cases}
+\end{aligned}
+}\]
+\[
+\boxed{
+\begin{aligned}
+u\left( \frac{3}{c}, x \right) = \frac{1}{2c}
+\begin{cases}
+0 & \mathrm{if} \ |x| \geq 4 \\
+4 - |x| & \mathrm{if} \ 2 \leq |x| \leq 4 \\
+2 & \mathrm{if} \ |x| \leq 2 \\
+\end{cases}
+\end{aligned}
+}\]
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.5\textwidth]{Q1C1}
+     \includegraphics[width=0.5\textwidth]{Q1C2}
+      \includegraphics[width=0.5\textwidth]{Q1C3}
+\end{figure} \\
 }
 
 \end{enumerate}
