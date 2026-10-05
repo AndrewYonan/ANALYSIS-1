@@ -289,14 +289,42 @@ This is a system of independent second-order homogeneous linear ODEs, each of wh
 T(t) &= c_1 e^{-\sqrt{\lambda} t} + c_2 e^{\sqrt{\lambda}t} \\
 X(x) &= c_2 e^{-\frac{\sqrt{\lambda}}{c} x} + c_3 e^{\frac{\sqrt{\lambda}}{c}x}
 \end{align*}
-Or, if $\lambda = 0$,
+When $\lambda > 0$, or
 \begin{align*}
 T(t) &= A + Bt \\
 X(x) &= C + Dx
 \end{align*}
-We will now apply our boundary conditions \\ $$\frac{\partial u}{\partial x}(t,0) = \frac{\partial u}{\partial x}(t,L) = 0$$ \\ Note that these are Neumann boundary conditions because they fix the physical slope of the string in space at the boundaries (as opposed to fixing the position of the string in space with Dirichlet boundaries).
+When $\lambda = 0$, or 
+\begin{align*}
+T(t) &= A_1 \cos(\sqrt{-\lambda} t) + B_1 \sin(\sqrt{-\lambda} t)\\
+X(x) &= C_1 \cos\left( \frac{\sqrt{-\lambda}}{c} x \right) + D_1 \sin \left( \frac{\sqrt{-\lambda}}{c} x \right)\\
+\end{align*}
+When $\lambda < 0$.
+We will now apply our boundary conditions \\ $$\frac{\partial u}{\partial x}(t,0) = \frac{\partial u}{\partial x}(t,L) = 0$$ \\ Note that these are Neumann boundary conditions because they fix the physical slope of the string in space at the boundaries (as opposed to fixing the position of the string in space with Dirichlet boundaries). \\
 $$\frac{\partial u}{\partial x}(t,0) = T(t)X'(x) \left. \right|_{(t,0)} = T(t)X'(0) = 0$$
-$$\frac{\partial u}{\partial x}(t,L) = T(t)X'(x) \left. \right|_{(t,L)} = T(t)X'(L) = 0$$ 
+$$\frac{\partial u}{\partial x}(t,L) = T(t)X'(x) \left. \right|_{(t,L)} = T(t)X'(L) = 0$$ \\
+\textbf{For $\mathbf{\lambda > 0}$}: Ignoring the trivial case where $T(t) = 0$ (which causes the wave solution $u(t,x) = T(t)X(x)$ to be zero everywhere), these initial conditions reduce to \\
+\begin{align*}
+X'(0) = 0 \;\;\;\;\;\;\;\;\;& X'(L) = 0 \\
+\implies c_2 = c_3 \;\;\;\;\;\;\;\;\;& \implies -c_2 e^{\frac{-\sqrt{\lambda}}{c} L} + c_3 e^{\frac{\sqrt{\lambda}}{c} L} = 0 \\
+& \implies c_3 \left[2 \sinh{\frac{\sqrt{\lambda}}{c}L}\right] = 0 \\
+& \implies c_3 = 0 \;\;\;\; \text{(because $\lambda \neq 0$, $c \neq 0$, $L \neq 0$)}\\
+& \implies c_2 = 0 \\
+\end{align*}
+$$\implies X(x) = 0 \implies u(t,x) = 0$$
+\textbf{For $\mathbf{\lambda = 0}$}:
+\begin{align*}
+X'(0) = 0 \;\;\;\;\;\;\;\;\;& X'(L) = 0 \\
+\implies D = 0 \;\;\;\;\;\;\;\;\;& \implies D = 0 \\
+& \implies X(x) = C \\
+& \implies u(t,x) = C(A + Bt) \\
+\end{align*}
+\textbf{For $\mathbf{\lambda < 0}$}:
+\begin{align*}
+X'(0) = 0 \;\;\;\;\;\;\;\;\;& X'(L) = 0 \\
+\implies \frac{D_1 \sqrt{-\lambda}}{c} = 0\;\;\;\;\;\;\;\;\;& \implies -C_1 \sin\left( \frac{\sqrt{-\lambda}}{c} L \right) + D_1 \cos \left( \frac{\sqrt{-\lambda}}{c} L \right) = 0\\
+\implies D_1 = 0 \;\;\; \text{(since $\lambda \neq 0$, $c \neq 0$)}\;\;\;\;\;\;\;\;\;&  \\
+\end{align*}
 }
 
 \vspace{0.2in}
