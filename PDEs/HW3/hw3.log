@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  6 OCT 2026 11:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  6 OCT 2026 11:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -339,67 +339,72 @@ Underfull \hbox (badness 10000) in paragraph at lines 343--343
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 353--388
+Underfull \hbox (badness 10000) in paragraph at lines 353--387
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 388--388
+Underfull \hbox (badness 10000) in paragraph at lines 387--387
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--387
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 393--400
+Underfull \hbox (badness 10000) in paragraph at lines 392--399
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--414
+Underfull \hbox (badness 10000) in paragraph at lines 402--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--433
+Underfull \hbox (badness 10000) in paragraph at lines 417--432
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 433--434
+Underfull \hbox (badness 10000) in paragraph at lines 432--433
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 455--492
+Underfull \hbox (badness 10000) in paragraph at lines 454--491
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 455--492
+Underfull \hbox (badness 10000) in paragraph at lines 454--491
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 455--492
+Underfull \hbox (badness 10000) in paragraph at lines 454--491
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 492--492
+Underfull \hbox (badness 10000) in paragraph at lines 491--491
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 492--492
+Underfull \hbox (badness 10000) in paragraph at lines 491--491
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 492--492
+Underfull \hbox (badness 10000) in paragraph at lines 491--491
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 492--492
+Underfull \hbox (badness 10000) in paragraph at lines 491--491
 
  []
 
@@ -430,7 +435,7 @@ ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
 /2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
 026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw3.pdf (18 pages, 594581 bytes).
+Output written on hw3.pdf (18 pages, 594639 bytes).
 PDF statistics:
  142 PDF objects out of 1000 (max. 8388607)
  81 compressed objects within 1 object stream

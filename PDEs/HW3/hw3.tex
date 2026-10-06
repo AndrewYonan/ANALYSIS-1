@@ -330,7 +330,7 @@ X'(0) = 0 \;\;\;\;\;\;\;\;\;& X'(L) = 0 \\
 Hence $$T(t) = A_1 \cos \left( \frac{n\pi c}{L} t \right) + B_1 \sin \left( \frac{n \pi c}{L} t \right)$$
 $$X(x) = C_1 \cos \left( \frac{n\pi x}{L} \right)$$ \\ and 
 $$u(t,x) = \left[ A_1 \cos \left( \frac{n\pi c}{L} t \right) + B_1 \sin \left( \frac{n \pi c}{L} t \right) \right] C_1 \cos \left( \frac{n\pi x}{L} \right)$$ \\ 
-By linearity of the wave equation, the superposition principle states that the general solution is the sum of all separated solution modes. Hence, the provided Neumann boundary conditions lead to the following general solution (over all possible $\lambda$)\\
+By linearity of the wave equation, the superposition principle states that the general solution is the sum of all separated solution modes (for each $\lambda$). Hence, the provided Neumann boundary conditions lead to the following general solution (over all possible $\lambda$)\\
 $$\boxed{u(t,x) = a_0 + b_0 t + \sum_{n=1}^{\infty} \left[ a_n \cos \left( \frac{n\pi c}{L} t \right) + b_n \sin \left( \frac{n \pi c}{L} t \right) \right]  \cos \left( \frac{n\pi x}{L} \right)} $$ \\
 We now apply the initial conditions:
 $$u(0,x) = f(x) \implies  a_0  + \sum_{n=1}^{\infty} a_n \cos \left( \frac{n\pi x}{L} \right) = f(x)$$
@@ -374,16 +374,15 @@ Note that the partial derivative of a function of independent parameters (parame
 \end{align*}
 Let 
 \begin{align*}
-\mathbf{dV} = \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \implies& \mathbf{V} = \int \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \\
-&= \int \frac{\partial}{ \partial x}\left( \frac{\partial u}{\partial x} \right)  dx \\
-&=  \frac{d}{dx} \int \left( \frac{\partial u}{\partial x} \right)  dx \\
-&=  \frac{\partial u}{\partial x} \\
+\mathbf{dV} = \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \implies& \mathbf{V} = \int \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \\ \\
+&=  \frac{\partial u}{\partial x} + C(t)  = \frac{\partial u}{\partial x} \\ \\
 \end{align*}
+Note that we can ignore the "constant" of integration $C(t)$ because it always cancels through the process of integration by parts. \\ \\
 Hence
 \begin{align*}
 \mcE'(t) &= c^2 \left[ \left. \left( \frac{\partial u}{\partial t} \right) \left( \frac{\partial u}{\partial x} \right) \right|_{x=0}^{x=L} - \int_{0}^{L} \left( \frac{\partial u}{\partial x} \right) \left( \frac{\partial^2 u}{\partial x \partial t} \right) dx \right] + c^2 \int_0^L\left( \frac{\partial u}{\partial x}\right) \left( \frac{\partial^2 u}{\partial t \partial x} \right)  dx \\\\
 \end{align*}
-Assuming $u(t,x)$ is sufficiently smooth, the cross derivatives can be considered equal and will thus cancel out, giving:
+Assuming $u(t,x)$ is sufficiently smooth, the cross derivatives are equal and their corresponding terms will thus cancel out, giving:
 $$\mcE'(t) = c^2 \left. \left( \frac{\partial u}{\partial t} \right) \left( \frac{\partial u}{\partial x} \right) \right|_{x=0}^{x=L}$$
 }
 
