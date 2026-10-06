@@ -458,10 +458,37 @@ Here, $\Delta \phi = \nabla \cdot (\nabla \phi)$ is the Laplacian of $\phi$, whi
 \textcolor{blue}{\textbf{Solution} — This problem reduces to showing that if a vector function satisfies Maxwell's equations, then it must necessarily satisfy the wave equation. \\ \\ Note that the presence of $\nabla \times E$ and $\nabla \times B$ in the equations indicates that $E$ and $B$ must be vector quantities. Hence we will notate them as $\mathbf{E}$ and $\mathbf{B}$. A vacuum is also $3$-dimensional which means the spatial parameter $x$ in $\mathbf{E}(t,x)$ and $\mathbf{B}(t,x)$ is actually a $3$-dimensional vector itself. So the unambiguous notation here would be $\mathbf{E}(t, \mathbf{x})$ and $\mathbf{B}(t, \mathbf{x})$  \\ \\ Proof — Let an arbitrary $\mathbf{E}(t, \mathbf{x})$ and $\mathbf{B}(t, \mathbf{x})$ satisfy Maxwell's equations. Then $\mathbf{E}$ and $\mathbf{B}$ must satisfy the second Maxwell equation: 
 $$\mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t} - \nabla \times \mathbf{B} = 0$$
 Taking the time derivative of both sides, we get that
-$$\mu_0 \epsilon_0 \frac{\partial^2 \mathbf{E}}{\partial t^2} - \frac{\partial }{\partial t} \left(  \nabla \times \mathbf{B} \right) = 0$$
+$$\mu_0 \epsilon_0 \frac{\partial^2 \mathbf{E}}{\partial t^2} - \frac{\partial }{\partial t} \left(  \nabla \times \mathbf{B} \right) = 0$$ \\
 Dividing through by the constant factor, we get something that is almost the wave equation for $\mathbf{E}$:
-$$\frac{\partial^2 \mathbf{E}}{\partial t^2} - \frac{\partial }{\partial t} \left(  \nabla \times \mathbf{B} \right) = 0$$
+\begin{equation}
+\label{eq:eq1}
+\frac{\partial^2 \mathbf{E}}{\partial t^2} - \frac{1}{\mu_0 \epsilon_0} \left( \frac{\partial }{\partial t} \left(  \nabla \times \mathbf{B} \right) \right) = 0
+\end{equation} \\
+All we need to do is show that $\frac{\partial }{\partial t} \left(  \nabla \times \mathbf{B} \right) = \Delta \mathbf{E}$. \\ \\ Note that it can easily be shown that the partial time derivative operator and the curl operator commute with each other if the function is smooth enough to have equal cross-derivatives. That is, 
+$$\frac{\partial }{\partial t} \left( \nabla \times \mathbf{B} \right) = \nabla \times \frac{\partial \mathbf{B}}{\partial t}$$ \\
+Hence we can write equation (\ref{eq:eq1}) as \\
+$$\frac{\partial^2 \mathbf{E}}{\partial t^2} - \frac{1}{\mu_0 \epsilon_0} \left( \nabla \times \frac{\partial \mathbf{B}}{\partial t} \right) = 0$$ \\
+And note that the first Maxwell equation establishes that $\partial \mathbf{B}/ \partial t = -\nabla \times E$. Substituting this into the left-hand side, we get \\
+\begin{align*}
+& \frac{\partial^2 \mathbf{E}}{\partial t^2} - \frac{1}{\mu_0 \epsilon_0} \left( \nabla \times \left( -\nabla \times \mathbf{E} \right) \right) \\ \\
+&= \frac{\partial^2 \mathbf{E}}{\partial t^2} + \frac{1}{\mu_0 \epsilon_0} \left( \nabla \times \left( \nabla \times \mathbf{E} \right) \right) \\ \\
+&= \frac{\partial^2 \mathbf{E}}{\partial t^2} + \frac{1}{\mu_0 \epsilon_0} \left( \nabla  ( \underbrace{\nabla \cdot \mathbf{E}}_{0}  ) - \Delta \mathbf{E}  \right) \;\;\; \text{(by curl-curl identity)} \\ \\
+&= \frac{\partial^2 \mathbf{E}}{\partial t^2} - \frac{1}{\mu_0 \epsilon_0} \Delta \mathbf{E} = 0 \\
+\end{align*}
+Hence $\mathbf{E}$ must satisfy the wave equation with speed of propagation $$c = \frac{1}{\sqrt{\mu_0 \epsilon_0}}$$ 
+We now show that $\mathbf{B}$ satisfies the wave equation by a similar method. From the first Maxwell equation, we have that \\
+\[
+\begin{aligned}
+& \frac{\partial \mathbf{B}}{\partial t} + \nabla \times \mathbf{E} = 0 \\ \\
+&\implies \frac{\partial^2 \mathbf{B}}{\partial t^2} + \frac{\partial}{\partial t} \left( \nabla \times \mathbf{E} \right) = 0 \\ \\
+&= \frac{\partial^2 \mathbf{B}}{\partial t^2} + \left( \nabla \times \frac{\partial \mathbf{E}}{\partial t} \right)  \\ \\
+&= \frac{\partial^2 \mathbf{B}}{\partial t^2} + \left( \nabla \times \frac{1}{\mu_0 \epsilon_0} (\nabla \times \mathbf{B}) \right) \;\;\;\;\; \text{(by Maxwell's 2nd equation)}  \\ \\
+&= \frac{\partial^2 \mathbf{B}}{\partial t^2} + \frac{1}{\mu_0 \epsilon_0}  \left( \nabla \times (\nabla \times \mathbf{B}) \right) \\ \\
+&= \frac{\partial^2 \mathbf{B}}{\partial t^2} + \frac{1}{\mu_0 \epsilon_0}  \left( \nabla  ( \underbrace{\nabla \cdot \mathbf{B}}_{0}  ) - \Delta \mathbf{B}  \right) \\ \\
+&= \frac{\partial^2 \mathbf{B}}{\partial t^2} - \frac{1}{\mu_0 \epsilon_0} \Delta \mathbf{B} = 0 \\ \\
+\end{aligned}
+\]
+Hence $\mathbf{B}$ must satisfy the wave equation with identical speed of propagation $$c = \frac{1}{\sqrt{\mu_0 \epsilon_0}}$$
 }
-
 
 \end{document}
