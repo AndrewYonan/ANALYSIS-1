@@ -366,31 +366,71 @@ since $u(t,x)$ satisfies the wave equation
 \end{align*}
 We can now apply integration by parts to the first term. Let \\
 \begin{align*}
-\mathbf{U} =& \frac{\partial u}{\partial t} \implies \frac{dU}{dx} = \frac{\partial^2 u}{\partial x \partial t} \implies \mathbf{dU} = \frac{\partial^2 u}{\partial x \partial t} dx   \\
+\mathbf{U} = \frac{\partial u}{\partial t} \\
+\end{align*}
+Note that the partial derivative of a function of independent parameters (parameters which themselves aren't functions of other variables) is equivalent to the total derivative because both types of derivatives simply treat everything else as a constant in this context. Hence, we can write
+\begin{align*}
+\frac{dU}{dx} = \frac{d}{dx} U= \frac{\partial }{\partial x} U = \frac{\partial^2 u}{\partial x \partial t} \implies \mathbf{dU} = \frac{\partial^2 u}{\partial x \partial t} dx   \\ 
 \end{align*}
 Let 
 \begin{align*}
-\mathbf{dV} &= \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \implies V = \int \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \\
+\mathbf{dV} = \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \implies& \mathbf{V} = \int \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \\
+&= \int \frac{\partial}{ \partial x}\left( \frac{\partial u}{\partial x} \right)  dx \\
+&=  \frac{d}{dx} \int \left( \frac{\partial u}{\partial x} \right)  dx \\
+&=  \frac{\partial u}{\partial x} \\
 \end{align*}
+Hence
+\begin{align*}
+\mcE'(t) &= c^2 \left[ \left. \left( \frac{\partial u}{\partial t} \right) \left( \frac{\partial u}{\partial x} \right) \right|_{x=0}^{x=L} - \int_{0}^{L} \left( \frac{\partial u}{\partial x} \right) \left( \frac{\partial^2 u}{\partial x \partial t} \right) dx \right] + c^2 \int_0^L\left( \frac{\partial u}{\partial x}\right) \left( \frac{\partial^2 u}{\partial t \partial x} \right)  dx \\\\
+\end{align*}
+Assuming $u(t,x)$ is sufficiently smooth, the cross derivatives can be considered equal and will thus cancel out, giving:
+$$\mcE'(t) = c^2 \left. \left( \frac{\partial u}{\partial t} \right) \left( \frac{\partial u}{\partial x} \right) \right|_{x=0}^{x=L}$$
 }
-
-
 
 \vspace{0.01in}
 
 \item Show that the energy is conserved, meaning $\mcE(t) = \mcE(0)$ for all $t \geq 0$, for the zero Neumann boundary condition, namely assume that for $t \geq 0$
 $$ \frac{\partial u}{\partial x} (t,0) = 0 \qquad \mathrm{and}  \qquad \frac{\partial u}{\partial x} (t,L) = 0.$$ \\ \\ 
-\textcolor{blue}{\textbf{Solution} — }
+\textcolor{blue}{\textbf{Solution} — 
+\begin{align*}
+\mcE'(t) &= c^2 \left. \left( \frac{\partial u}{\partial t} \right) \left( \frac{\partial u}{\partial x} \right) \right|_{x=0}^{x=L} \\ \\
+&=  c^2 \left[ \frac{\partial u}{\partial t} (t, L) \underbrace{\frac{\partial u}{\partial x} (t,L)}_{0} - \frac{\partial u}{\partial t} (t, 0) \underbrace{\frac{\partial u}{\partial x} (t,0)}_{0} \right]  = 0 
+\end{align*}
+And $\mcE'(t) = 0 \implies \mcE(0) = \mcE(t)$ for all $t$. \\ 
+}
 
 \item Show that the energy is conserved for any Dirichlet boundary conditions, namely for given $A,B \in \mathbb{R}$ assume that for $t \geq 0$
 $$u(t,0) = A \qquad \mathrm{and} \qquad u(t,L) = B.$$ \\ \\
-\textcolor{blue}{\textbf{Solution} — }
+\textcolor{blue}{\textbf{Solution} — 
+\begin{align*}
+u(t,0) = A \implies& \frac{\partial u}{\partial t} (t,0) = 0 \\ \\
+u(t,L) = B \implies& \frac{\partial u}{\partial t} (t,L) = 0 \\
+\end{align*}
+And
+\begin{align*}
+\mcE'(t) &= c^2 \left[ \underbrace{\frac{\partial u}{\partial t} (t, L)}_{0} \frac{\partial u}{\partial x} (t,L) - \underbrace{\frac{\partial u}{\partial t} (t, 0)}_{0} \frac{\partial u}{\partial x} (t,0) \right]  = 0 \\ \\
+\end{align*}
+Hence energy is conserved.
+}
 
 
 \item Show that the potential energy and kinetic energy are equal for a traveling wave solution
 $$u(t,x) = v(x-ct)$$
 where $v$ is a sufficiently smooth function. \\ \\
-\textcolor{blue}{\textbf{Solution} — }
+\textcolor{blue}{\textbf{Solution} — Take the kinetic and potential energy of a wave function $u(t,x)$ to be, respectively, 
+$$K = \frac{1}{2} \int_0^L \left| \frac{\partial u}{\partial t} \right|^2 dx \;\;\;\;\;\;\;\; U = \frac{1}{2} c^2 \int_0^L \left| \frac{\partial u}{\partial x} \right|^2 dx$$
+For $u(t,x) = v(x - ct)$,
+\begin{align*}
+K = \frac{1}{2} \int_0^L \left| \frac{\partial}{\partial t} v(x - ct) \right|^2 dx &= \frac{1}{2} \int_0^L \left| (-c)v'(x - ct) \right|^2 dx  \\ \\
+&= \frac{1}{2} c^2 \int_0^L (v'(x - ct) )^2 dx \\ \\
+\end{align*}
+And 
+\begin{align*}
+U = \frac{1}{2} c^2 \int_0^L \left| \frac{\partial}{\partial x} v(x - ct) \right|^2 dx &= \frac{1}{2} c^2 \int_0^L ( v'(x - ct) )^2 dx\\ \\
+&= \frac{1}{2} c^2 \int_0^L \left| v'(x - ct) \right|^2 dx\\ \\
+\end{align*}
+Hence $K=U$ for such a wave. \\ \\ Note that we only need $v$ to be smooth enough to have a first derivative (the only derivative of $v$ this proof depends on existing).
+}
 \end{enumerate}
 
 \vspace{0.2in}
