@@ -351,7 +351,30 @@ to be the associated total energy, where the first term in $\mcE(t)$ represents 
 \begin{enumerate}[(a)]
 \item Use \textbf{integration by parts} to show that the total energy satisfies
 $$\mcE'(t) = c^2  \frac{\partial u}{\partial t}(t,x)  \frac{\partial u}{\partial x}(t,x)  \biggr \vert_{x=0}^{x=L}.$$ \\ \\
-\textcolor{blue}{\textbf{Solution} — }
+\textcolor{blue}{\textbf{Solution} — Note that $|A|^2 = A^2$ regardless of the sign of $A$. Hence the absolute values in $\mcE(t)$ can be dropped:
+$$\mcE(t) = \frac{1}{2} \int_0^L \left( \frac{\partial u}{\partial t} \right)^2 dx + \frac{1}{2}c^2 \int_0^L \left( \frac{\partial u}{\partial x}\right)^2  dx$$
+Then 
+\begin{align*}
+\mcE'(t) &= \frac{d}{dt} \left[ \frac{1}{2} \int_0^L \left( \frac{\partial u}{\partial t} \right)^2 dx + \frac{1}{2}c^2 \int_0^L \left( \frac{\partial u}{\partial x}\right)^2  dx \right] \\ \\
+&=  \frac{1}{2} \int_0^L \frac{\partial}{\partial t}  \left( \frac{\partial u}{\partial t} \right)^2 dx + \frac{1}{2}c^2 \int_0^L \frac{\partial}{\partial t} \left( \frac{\partial u}{\partial x}\right)^2  dx \\ \\
+&=  \int_0^L \left( \frac{\partial u}{\partial t} \right) \underbrace{\left( \frac{\partial^2 u}{\partial t^2} \right)}_{\text{$c^2 \frac{\partial^2 u}{\partial 
+x^2}$}}  dx + c^2 \int_0^L\left( \frac{\partial u}{\partial x}\right) \left( \frac{\partial^2 u}{\partial t \partial x} \right)  dx \\ \\
+\end{align*}
+since $u(t,x)$ satisfies the wave equation
+\begin{align*}
+&=  c^2\int_0^L \left( \frac{\partial u}{\partial t} \right) \left( \frac{\partial^2 u}{\partial x^2} \right)  dx + c^2 \int_0^L\left( \frac{\partial u}{\partial x}\right) \left( \frac{\partial^2 u}{\partial t \partial x} \right)  dx \\
+\end{align*}
+We can now apply integration by parts to the first term. Let \\
+\begin{align*}
+\mathbf{U} =& \frac{\partial u}{\partial t} \implies \frac{dU}{dx} = \frac{\partial^2 u}{\partial x \partial t} \implies \mathbf{dU} = \frac{\partial^2 u}{\partial x \partial t} dx   \\
+\end{align*}
+Let 
+\begin{align*}
+\mathbf{dV} &= \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \implies V = \int \left( \frac{\partial^2 u}{\partial x^2} \right)  dx \\
+\end{align*}
+}
+
+
 
 \vspace{0.01in}
 
