@@ -1,1 +1,32 @@
 \\ \\ These boundary conditions enforce zero change in temperature between the space just inside the end of the rod and the space just outside the end of the rod—in effect, forcing zero temperature change (over space) at the ends of the rod, so that there is no heat flow from hot to cold and thus no heat entering or escaping the rod. \\ \\ Hence, these are homogeneous Neumann boundary conditions.
+
+
+
+
+
+
+
+We apply the characteristic equation to both ODEs, yielding solutions $$T(t) = c e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_1 e^{\sqrt{-\frac{\lambda}{k}} x} + c_2 e^{-\sqrt{-\frac{\lambda}{k}} x}$$ \\
+Note that the structure of these solutions depends on the sign of $\lambda$. We write each form of the solution explicitly: \\ \\ 
+\textbf{For $\lambda < 0$:} \\
+$$T(t) = c e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_1 e^{\sqrt{-\frac{\lambda}{k}} x} + c_2 e^{-\sqrt{-\frac{\lambda}{k}} x}$$
+\textbf{For $\lambda = 0$:} \\
+$$T(t) = c \;\;\;\;\;\;\;  X(x) = c_1 + c_2$$
+\textbf{For $\lambda > 0$:} \\ 
+$$T(t) = c e^{\lambda t} \;\;\;\;\;\;\; X(x) = c_1 \cos \left( \sqrt{\frac{\lambda}{k}} x \right) + c_2 \sin \left( \sqrt{\frac{\lambda}{k}} x \right)$$ \\ \\
+For nontrivial $T(t)$, the boundary conditions reduce to $$\frac{\partial u}{\partial x}(t,0) = 0 \implies T(t)X'(0) = 0 \implies X'(0) = 0$$ $$\frac{\partial u}{\partial x}(t,L) = 0 \implies T(t)X'(L) = 0 \implies X'(L) = 0$$ \\ \\
+$$X'(0) = 0 \implies c_1 = c_2$$
+\begin{align*}
+X'(L) = 0 \implies& c_1 \sqrt{-\frac{\lambda}{k}} e^{\sqrt{-\frac{\lambda}{k}} L} - c_2 \sqrt{-\frac{\lambda}{k}} e^{-\sqrt{-\frac{\lambda}{k}} L} = 0 \\ \implies& e^{\sqrt{-\frac{\lambda}{k}} L} = e^{-\sqrt{-\frac{\lambda}{k}} L} \;\;\; \text{(applying $c_1 = c_2$)} \\ 
+\implies& \sqrt{-\frac{\lambda}{k}} = - \sqrt{-\frac{\lambda}{k}} \\
+\implies& \lambda = 0 \;\;\; \text{(since $L \neq 0, k \neq 0$)}
+\end{align*}
+
+
+
+
+
+
+
+
+The general solution is then the superposition of all separated $u(t,x) = T(t)X(x)$ solutions over all $\lambda$. Note that when $\lambda < 0$, the Neumann boundary conditions we applied force $c_1 = c_2 = 0$ and hence $X(t) = 0$ and hence $u(t,x) = 0$. The general solution is thus

@@ -46,17 +46,85 @@ Due Tuesday, October 20, 2026 \\
 $$\frac{\partial u}{\partial x}(t,0) = \frac{\partial u}{\partial x}(t,L) =0 , \qquad t > 0$$
 and the initial condition
 $$ u(0,x) = f(x), \qquad 0 < x < L.$$ \\
-\textcolor{blue}{\textbf{Solution} — As with the wave equation, we apply an identical strategy of assuming the solution takes the separated form $$u(t,x) = T(t)X(x)$$ Then $$\frac{\partial^2 u}{\partial x^2} = T(t)X''(x) \;\;\;\;\;\;\;\; \frac{\partial u}{\partial t} = T'(t)X(x)$$ \\ and plugging into the heat equation, we obtain: \\ $$k\frac{X''(x)}{X(x)} = \frac{T'(t)}{T(t)}$$ The left-hand side is a function of $x$ only and the right-hand side is a function of $t$ only. For them to be equal to one another for all values of $t,x$, they must both be equal to the same constant, which (for future convenience) we will notate as $-\lambda$. Hence our separated wave equation reduces to a system of independent, linear, homogeneous ordinary differential equations:
+\textcolor{blue}{\textbf{Solution} — As with the wave equation, we apply an identical strategy of assuming the solution takes the separated form $$u(t,x) = T(t)X(x)$$ Then $$\frac{\partial^2 u}{\partial x^2} = T(t)X''(x) \;\;\;\;\;\;\;\; \frac{\partial u}{\partial t} = T'(t)X(x)$$ \\ and plugging into the heat equation, we obtain: \\ $$k\frac{X''(x)}{X(x)} = \frac{T'(t)}{T(t)} = -\lambda$$ The left-hand side is a function of $x$ only and the right-hand side is a function of $t$ only. For them to be equal to one another for all values of $t,x$, they must both be equal to the same constant, which (for future convenience) we will notate as $-\lambda$. Hence our separated heat equation reduces to a system of independent, linear, homogeneous ordinary differential equations:
 $$\begin{cases}
 kX''(x) + \lambda X(x) = 0 \\
 T'(t) + \lambda T = 0
 \end{cases}$$\\
-We apply the characteristic equation to both ODEs, yielding solutions $$A$$ \\
-For nontrivial $T(t)$, the boundary conditions reduce to $$\frac{\partial u}{\partial x}(t,0) \implies T(t)X'(0) = 0 \implies X'(0) = 0$$ $$\frac{\partial u}{\partial x}(t,L) \implies T(t)X'(L) = 0 \implies X'(L) = 0$$
+We see that the structure of solutions to these equations depends on the sign of $\lambda$, so we split into cases accordingly: \\ \\
+\textbf{For $\lambda < 0$:} \\
+$$T(t) = c_0 e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_1 e^{\sqrt{-\frac{\lambda}{k}} x} + c_2 e^{-\sqrt{-\frac{\lambda}{k}} x}$$
+\textbf{For $\lambda = 0$:} \\
+$$T(t) = c_3 \;\;\;\;\;\;\;  X(x) = c_4 + c_5x$$
+\textbf{For $\lambda > 0$:} \\ 
+$$T(t) = c_6 e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_7 \cos \left( \sqrt{\frac{\lambda}{k}} x \right) + c_8 \sin \left( \sqrt{\frac{\lambda}{k}} x \right)$$ \\ \\
+We now constrain these general solutions with the homogenous Neumann boundary conditions: \\ $$\frac{\partial u}{\partial x} (t,0) = 0 \implies T(t)X'(0) = 0 \implies X'(0) = 0 $$ 
+$$\frac{\partial u}{\partial x}(t,L) = 0 \implies T(t)X'(L) = 0 \implies X'(L) = 0$$ \\
+\textbf{For $\lambda < 0$}:
+\begin{align*}
+X'(0) = 0 \implies& c_1 \sqrt{-\frac{\lambda}{k}} - c_2 \sqrt{-\frac{\lambda}{k}} = 0 \implies \boxed{c_1 = c_2} \\
+X'(L) = 0 \implies& c_1 \sqrt{-\frac{\lambda}{k}} e^{\sqrt{-\frac{\lambda}{k}} L} - c_2 \sqrt{-\frac{\lambda}{k}} e^{-\sqrt{-\frac{\lambda}{k}} L} = 0 \\ 
+\implies& c_1 \sqrt{-\frac{\lambda}{k}} \left( e^{\sqrt{-\frac{\lambda}{k}} L} - e^{-\sqrt{-\frac{\lambda}{k}} L}   \right) = 0 \;\;\;\; \text{(since $c_1 = c_2$)} \\
+\implies& \boxed{c_1 = 0} \;\;\; \text{(Exponential factor $\neq 0$ for $\lambda \neq 0$)}
+\end{align*}
+\textbf{For $\lambda = 0$:} \\
+\begin{align*}
+X'(0) = X'(L) = 0 \implies& \boxed{c_5 = 0} \\
+\end{align*}
+\textbf{For $\lambda > 0$:} \\
+\begin{align*}
+X'(0) = 0 \implies& c_8 \sqrt{\frac{\lambda}{k}} = 0 \\
+\implies& \boxed{c_8 = 0} \;\;\; \text{(since $\lambda > 0, k > 0$)} \\
+X'(L) = 0 \implies& -c_7 \sqrt{\frac{\lambda}{k}} \sin \left( \sqrt{\frac{\lambda}{k}} L \right) = 0 \\
+\implies& \sin \left( \sqrt{\frac{\lambda}{k}} L \right) = 0 \;\;\; \text{(since $\lambda \neq 0, k \neq 0$, and assuming $c_7 \neq 0$)} \\
+\end{align*}
+Note that $c_7 = 0$ would produce a trivial solution since $c_8$ already equals zero, and the trivial solution is already accounted for in the other $\lambda$-cases.
+\begin{align*}
+\implies& \sqrt{\frac{\lambda}{k}} L = n\pi \;\;\; \text{(for any $n \in \mathbb{Z}$)} \\
+\implies& \boxed{\lambda = k \left( \frac{n\pi}{L} \right)^2}
+\end{align*}
+We write the general solutions produced by each case (with the Neumann boundary conditions applied): \\ \\
+\textbf{For $\lambda < 0$}: \\ \\
+$$c_1 = c_2 = 0 \implies X(x) = 0 \implies u(t,x) = 0$$
+\textbf{For $\lambda = 0$}: \\ \\
+$$c_5 = 0 \implies X(x) = c_4 \implies u(t,x) = c_3 c_4 = C_0 \;\;\; \text{for some $C_0 \in \mathbb{R}$}$$ \\ \\
+\textbf{For $\lambda > 0$}: \\ \\
+$$c_8 = 0 \implies u_n(t,x) = C_n e^{- k \left( \frac{n\pi}{L} \right)^2 t} \cos \left( \frac{n\pi x}{L} \right) \;\;\; \text{for $C_n \in \mathbb{R}$}$$ \\
+Note that each separated eigenfunction solution will have its own constant $C_n$. Hence the general solution is the superposition of all solutions from each of these 3 cases:
+$$\boxed{u(t,x) = C_0 + \sum_{n=1}^{\infty} C_n e^{- k \left( \frac{n\pi}{L} \right)^2 t} \cos \left( \frac{n\pi x}{L} \right)}$$ \\ \\
+Let us now apply the initial condition $u(0,x) = f(x)$ for $0 \leq x \leq L$.
+$$\implies C_0 + \sum_{n=1}^{\infty} C_n \cos \left( \frac{n\pi x}{L} \right) = f(x)$$
+Notice that the application of this initial condition creates an equation that is exactly the Fourier series expression of $f(x)$. For both sides to be equal, we must have that each $C_n$ is exactly the $n$th Fourier coefficient in the expansion of $f(x)$ on $[0,L]$. Hence $$\boxed{C_0 = \frac{1}{L} \int_{0}^L f(x) dx}$$
+$$\boxed{C_n = \frac{2}{L} \int_{0}^L f(x) \cos \left( \frac{n \pi x}{L} \right) dx \;\;\;\;\; n \geq 1}$$
 }
 \item Let $T_1 > 0$, take
 $$f(x) = T_1 \frac{x}{L},$$
-and determine the resulting solution by computing the Fourier coefficients and the corresponding Fourier series.
+and determine the resulting solution by computing the Fourier coefficients and the corresponding Fourier series. \\ \\ \textcolor{blue}{\textbf{Solution} — 
+\begin{align*}
+C_0 &= \frac{1}{L} \int_0^L \left( T_1 \frac{x}{L} \right) dx \\
+&= \frac{T_1}{L^2} \int_0^L x dx \\
+&= \frac{T_1}{L^2} \left( \frac{1}{2} L^2 \right) \\
+&= \frac{T_1}{2}
+\end{align*}
+For the general coefficients
+\begin{align*}
+C_n &= \frac{2}{L} \int_0^L \left( T_1 \frac{x}{L} \right) \cos \left( \frac{n\pi x}{L} \right) dx \\
+&= \frac{2T_1}{L^2} \int_0^L x \cos \left( \frac{n\pi x}{L} \right) dx
+\end{align*}
+Apply integration by parts:
+\begin{align*}
+U = x \;\;\;\;\;\;\;\;& dV = \cos \left( \frac{n\pi x}{L} \right) dx \\
+dU = dx \;\;\;\;\;\;\;\;& V = \frac{L}{n\pi} \sin \left( \frac{n\pi x}{L} \right)
+\end{align*}
+\begin{align*}
+C_n &= \frac{2T_1}{L^2} \left[ \underbrace{ \left. \frac{Lx}{n\pi} \sin \left( \frac{n\pi x}{L} \right) \right|_{x=0}^{x=L}}_{0} -  \frac{L}{n\pi} \int_0^L \sin \left( \frac{n\pi x}{L} \right) dx   \right] \\
+&= \frac{-2T_1}{n\pi L} \left[ - \frac{L}{n\pi} \cos \left( \frac{n \pi x}{L} \right) \right]_{x=0}^{x=L} \\ 
+&= \frac{2T_1}{(n\pi)^2} \left[ \cos \left( \frac{n \pi x}{L} \right) \right]_{x=0}^{x=L} \\
+&= \frac{2T_1}{(n\pi)^2} \left[ \cos (n\pi) - 1 \right] \\
+&= \frac{2T_1}{(n\pi)^2} \left[ (-1)^n - 1 \right] \\
+\end{align*}
+Hence the solution is $$\boxed{u(t,x) = \frac{T_1}{2} + \frac{2T_1}{\pi^2} \sum_{n=1}^{\infty} \left[ \frac{(-1)^n - 1}{n^2} \right] e^{- k \left( \frac{n\pi}{L} \right)^2 t} \cos \left( \frac{n\pi x}{L} \right)}$$
+}
 \end{enumerate}
 
 \vspace{0.3in}
@@ -70,8 +138,47 @@ with given boundary conditions
 $$u(t, 0) = T_0 \qquad \mathrm{and} \qquad \frac{\partial u}{\partial x}(t, L) = 0$$
 and initial temperature distribution
 $$u(0,x) = f(x).$$
-Determine the temperature throughout the bar at all later times, namely compute $u(t,x)$.
-
+Determine the temperature throughout the bar at all later times, namely compute $u(t,x)$. \\ \\
+\textcolor{blue}{\textbf{Solution} — Because this is the inhomogeneous heat equation (caused by the presence of the $h$ term), we cannot separate the equation that results from assuming $u(t,x) = T(t)X(x)$ and plugging in. Hence we need a different method—namely, the one that involves finding a steady-state solution. \\ \\ Assume the bar settles on the steady-state distribution $u_s(x)$ as $t \to \infty$. Because this particular variation of the heat equation should be valid for all time, it's definitely valid for $u(t,x) = u_s(x)$ at $t = \infty$. Hence, plugging in $u_s(x)$, we obtain
+\begin{align*}
+&0 = u_s''(x) + h \\
+\implies& u_s''(x) = -h\\
+\implies& u_s'(x) = -hx + C_0\\
+\implies& u_s(x) = -\frac{1}{2} hx^2 + C_0 x + C_1\\
+\end{align*}
+We can apply the boundary conditions to the steady-state solution:
+\begin{align*}
+u(t,0) = T_0 \implies& u_s(0) = T_0 \\
+\implies& C_1 = T_0 \\
+\frac{\partial u}{\partial x}(t, L) = 0 \implies& u_s'(L) = 0 \\
+\implies& -hL + C_0 = 0 \\
+\implies& C_0 = hL \\
+\end{align*}
+Hence the steady-state solution with applied boundary conditions is $$u_s(x) = -\frac{1}{2} h x^2 + hLx + T_0$$ We can now perform a change-of-variable transformation that uses this steady-state solution to transform the given heat equation into a homogeneous (and separable) form. Namely, let $v(t,x)$ be the difference in heat between the current heat $u(t,x)$ and the eventual final heat $u_s(x)$: $$v(t,x) = u(t,x) - u_s(x)$$
+We plug this new expression of $u(t,x)$ into the given heat equation (Note that $u = v + u_s$)
+$$\frac{1}{k} \frac{\partial v}{\partial t} = \frac{\partial^2 v}{\partial x^2} + u_s''(x) + h$$
+And note that $u_s''(x) = -h$, so we recover the homogeneous form
+$$\frac{1}{k} \frac{\partial v}{\partial t} = \frac{\partial^2 v}{\partial x^2}$$
+With boundary conditions 
+\begin{align*}
+u(t,0) = T_0 \implies& v(t,0) + \underbrace{u_s(0)}_{T_0} = T_0 \\
+\implies& v(t,0) = 0 \\
+\end{align*}
+\begin{align*}
+\frac{\partial u}{\partial x} (t,L) = 0 \implies& \frac{\partial v}{\partial x}(t,L) + \underbrace{u_s'(L)}_{0} = 0\\
+\implies& \frac{\partial v}{\partial x}(t,L) = 0
+\end{align*}
+And initial condition
+\begin{align*}
+u(0,x) = f(x) \implies& v(0,x) + u_s(x) = f(x) \\
+\implies& v(0,x) = f(x) - u_s(x) \\
+\end{align*}
+Since we've transformed the problem to a homogeneous form in $v(t,x)$, we proceed to solve regularly in $v$, assuming $v(t,x) = T(t)X(x)$. Then $$k\frac{X''(x)}{X(x)} = \frac{T'(t)}{T(t)} = -\lambda$$
+$$\begin{cases}
+kX''(x) + \lambda X(x) = 0 \\
+T'(t) + \lambda T = 0
+\end{cases}$$\\
+}
 \vspace{0.3in}
 
 \noindent $\textbf{3}$. (13 points) Let $c$ be a given number satisfying $\frac{\pi}{10} < c < \frac{9\pi}{10}$ and define
