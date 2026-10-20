@@ -359,6 +359,98 @@ subject to the given boundary conditions
 $$u(t, 0) = 0 \qquad \mathrm{and} \qquad u(t,\pi) = 0$$
 for $t > 0$ and initial conditions
 $$u(0,x) = f(x) \qquad \mathrm{and} \qquad \frac{\partial u}{\partial t} (0,x) = g(x)$$
-for $0 < x < \pi$.
-
+for $0 < x < \pi$. \\ \\
+\textcolor{blue}{\textbf{Solution} — Because this is the inhomogeneous wave equation, we must now follow a similar solution strategy to solving inhomogeneous differential equations: sum the homogeneous and particular solutions. We find the homogeneous solution first. Solve:
+$$\frac{\partial^2 u}{\partial t^2} - c^2 \frac{\partial^2 u}{\partial x^2}  = 0$$
+As before, assuming the solution takes the form $u(t,x) = T(t)X(x)$ leads to the system of independent ODEs
+$$\begin{cases}
+T'' + \lambda T = 0 \\
+c^2 X'' +\lambda X = 0
+\end{cases}$$
+Which has several solutions depending on the sign of $\lambda$: \\ \\
+\textbf{For $\lambda < 0$}: \\ \\
+$$T(t) = c_0 e^{\sqrt{-\lambda} t} + c_1 e^{ -\sqrt{-\lambda} t} \;\;\;\;\;\;\; X(x) = c_2 e^{\frac{1}{c} \sqrt{-\lambda} x} + c_3 e^{-\frac{1}{c} \sqrt{-\lambda} x}$$
+\textbf{For $\lambda = 0$}: \\ \\
+$$T(t) = c_4 + c_5 t \;\;\;\;\;\;\; X(x) = c_6 + c_7 x$$
+\textbf{For $\lambda > 0$}: \\ \\
+$$T(t) = c_8 \cos \left( \sqrt{\lambda} t \right) + c_9 \sin \left( \sqrt{\lambda} t \right)  \;\;\;\;\;\;\; X(x) = c_{10} \cos \left( \frac{\sqrt{\lambda}}{c} x \right) + c_{11} \sin \left( \frac{\sqrt{\lambda}}{c} x \right)$$ \\
+We apply the (Dirichlet) boundary conditions: \\ \\
+\begin{align*}
+u(t,0) = 0 \implies& T(t)X(0) = 0 \\
+\implies& X(0) = 0 \;\;\;\; \text{(For nontrivial $T(t) \neq 0$)} \\
+u(t,\pi) = 0 \implies& T(t)X(\pi) = 0 \\
+\implies& X(\pi) = 0 \;\;\;\; \text{(For nontrivial $T(t) \neq 0$)} \\
+\end{align*}
+We constrain our unknown general constants by these boundary conditions: \\ \\
+\textbf{For $\lambda < 0$}: \\ \\
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_2 = -c_3} \\
+X(\pi) = 0 \implies& c_2 e^{\frac{1}{c} \sqrt{-\lambda} \pi} + c_3 e^{-\frac{1}{c} \sqrt{-\lambda} \pi} = 0 \\
+X(\pi) = 0 \implies& c_2 \left( \underbrace{ e^{\frac{1}{c} \sqrt{-\lambda} \pi} - e^{-\frac{1}{c} \sqrt{-\lambda} \pi}}_{\neq 0} \right) = 0 \;\;\; \text{(using $-c_2 = c_3$)} \\
+\implies& \boxed{c_2 = 0}
+\end{align*}
+\textbf{For $\lambda = 0$}: \\ \\
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_6 = 0} \\
+X(\pi) = 0 \implies& c_5 + c_6 \pi = 0 \\
+\implies& \boxed{c_5 = 0}
+\end{align*}
+\textbf{For $\lambda > 0$}: \\ \\
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_{10} = 0}\\
+X(\pi) = 0 \implies& c_{11} \sin \left( \frac{\sqrt{\lambda}}{c} \pi \right) = 0
+\end{align*}
+We ignore $c_{11} = 0$ because, since $c_{10} =0$ already, this would produce the trivial solution $X(x) = 0$ and hence $u(t,x) = 0$ that we already accounted for in previous $\lambda$ cases. Hence
+\begin{align*}
+\implies& \sin \left( \frac{\sqrt{\lambda}}{c} \pi \right) = 0 \\
+\implies& \frac{\sqrt{\lambda}}{c} \pi = n\pi \;\;\; \text{(for any $n \in \mathbb{Z}$)} \\
+\implies& \lambda = c^2n^2
+\end{align*}
+Since the $\lambda < 0$ and $\lambda = 0$ cases don't contribute anything except the trivial $u(t,x) = 0$ solution, the general solution consists only of $\lambda > 0$ solutions (the superposition of all of them):
+$$u_h(t,x) = \sum_{n=1}^{\infty} \left[  \vphantom{\frac{1}{1}} A_n \cos \left( cnt \right) + B_n \sin \left( cnt \right) \right] \sin(nx)$$
+Now we solve for the particular solution $u_p(t,x)$ to 
+$$\frac{\partial^2 u}{\partial t^2} - c^2 \frac{\partial^2 u}{\partial x^2} + 1 = 0$$
+In the spirit of the method of undetermined coefficients from ODEs, let's guess a particular solution that matches the form of the forcing function: $-1$. We guess $u(t,x) = A$ for some constant $A$, however we see that any constant $A$ here would never satisfy the PDE due to both second derivatives being zero. \\ \\ We guess $u(t,x) = f(x)$, some function independent of time, since the forcing function is also time-independent. Plugging into the PDE, we get
+\begin{align*}
+& c^2f''(x) = 1 \\
+\implies& f''(x) = \frac{1}{c^2} \\
+\implies& f'(x) = \frac{1}{c^2} x + C_0 \\
+\implies& f(x) = \frac{1}{2c^2} x^2 + C_0 x + C_1 \\
+\end{align*}
+We also constrain the particular solution by the same boundary conditions as we placed on the homogeneous solution:
+\begin{align*}
+u(t,0) = 0 \implies& f(0) = 0 \\
+\implies& \boxed{C_1 = 0} \\
+u(t,\pi) = 0 \implies& f(\pi) = 0 \\
+\implies& \frac{\pi^2}{2c^2} + C_0 \pi = 0 \\
+\implies& C_0 = -\frac{\pi}{2c^2} \\
+\end{align*}
+Hence the particular solution is 
+$$u_p(t,x) = \frac{1}{2c^2} x^2 - \frac{\pi}{2c^2} x$$
+Once we find any particular solution, the general solution is thus the sum $u(t,x) = u_h(t,x) + u_p(t,x)$ : (of course, with $c=1$) 
+$$\boxed{u(t,x) = \frac{1}{2c^2} x^2 - \frac{\pi}{2c^2} x + \sum_{n=1}^{\infty} \left[  \vphantom{\frac{1}{1}} A_n \cos \left( cnt \right) + B_n \sin \left( cnt \right) \right] \sin(nx)}$$
+We now apply the initial conditions \\
+\begin{align*}
+u(0,x) = f(x) \implies&  \frac{1}{2c^2} x^2 - \frac{\pi}{2c^2} x + \sum_{n=1}^{\infty} A_n \sin(nx) = f(x)\\
+\implies& \sum_{n=1}^{\infty} A_n \sin(nx) = f(x) + \frac{\pi}{2c^2} x - \frac{1}{2c^2} x^2 \\
+\end{align*}
+Here we can read off the $A_n$ coefficients as exactly those of the Fourier $\sin$-expansion of the function $$ f(x) + \frac{\pi}{2c^2} x - \frac{1}{2c^2} x^2$$ on the interval $[0,\pi]$. Hence 
+\begin{align*}
+A_n &= \frac{2}{\pi} \int_{0}^{\pi} \left(f(x) +  \frac{\pi}{2c^2} x - \frac{1}{2c^2} x^2 \right) \sin(nx) dx \\
+&= \frac{2}{\pi} \int_{0}^{\pi} f(x) \sin(nx) dx + \frac{1}{c^2} \int_0^\pi x\sin(nx)dx - \frac{1}{\pi c^2} \int_0^\pi x^2 \sin(nx) dx \\
+\end{align*}
+Simplify the first integral:
+\begin{align*}
+\frac{1}{c^2} \int_0^\pi x\sin(nx)dx &= \frac{1}{c^2} \left[ \left. -\frac{x}{n} \cos(n\pi) \right|_{0}^{\pi} + \frac{1}{n} \int_{0}^{\pi} \cos(nx)dx \right] \\ 
+&= \frac{-\pi (-1)^n}{nc^2}
+\end{align*}
+Simplify the second integral:
+\begin{align*}
+\frac{1}{\pi c^2} \int_0^\pi x^2 \sin(nx) dx &= \left. -\frac{x^2}{n} \cos(nx) \right|_{0}^{\pi} + \frac{2}{n} \int_0^\pi x \cos(nx) dx  \\
+&= -\frac{\pi^2}{n} (-1)^n + \frac{2}{n} \left[ \left. \frac{x}{n} \sin(nx) \right|_{0}^{\pi} - \frac{1}{n} \int_0^\pi \sin(nx) dx \right]  \\
+&= -\frac{\pi^2}{n} (-1)^n - \frac{2}{n^2} \int_0^\pi \sin(nx) dx \\
+&=  -\frac{\pi^2}{n} (-1)^n + \frac{2}{n^3} \left[ \cos(nx) \right]_{0}^{\pi} \\
+&=  -\frac{\pi^2}{n} (-1)^n + \frac{2}{n^3} \left[ \cos(nx) \right]_{0}^{\pi} \\
+\end{align*}
+}
 \end{document}
