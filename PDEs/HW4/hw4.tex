@@ -304,8 +304,8 @@ X(\pi) = 0 \implies& c_8 \sin \left( \sqrt{\frac{\lambda}{k}} \pi \right) = 0\\
 \end{align*}
 Hence the general solution (the superposition of all our boundary-constrained solutions over all $\lambda$) is 
 \begin{align*}
-u(t,x) &= \sum_{n=0}^{\infty} C_n e^{-kn^2 t} \sin \left( nx \right) \\
-\text{or} \;\;\;u(t,x) &= \sum_{n=0}^{\infty} C_n e^{-n^2 t} \sin \left( nx \right) \;\;\; \text{(with $k=1$)} \\
+u(t,x) &= \sum_{n=1}^{\infty} C_n e^{-kn^2 t} \sin \left( nx \right) \\
+\text{or} \;\;\; u(t,x) &= \sum_{n=1}^{\infty} C_n e^{-n^2 t} \sin \left( nx \right) \;\;\; \text{(with $k=1$)} \\
 \end{align*}
 We now apply the initial condition \\
 \begin{align*}
@@ -318,19 +318,34 @@ C_n &= \frac{2}{\pi} \int_0^{\pi} h(x) \sin (nx) dx \\
 \end{align*}
 Note that
 \begin{align*}
-& \frac{\pi}{10} < c < \frac{9\pi}{10} \\
-\implies& c - \frac{\pi}{10} > 0 \;\; \text{and} \;\; c + \frac{\pi}{10} < \pi
+& \frac{\pi}{10} < c < \frac{9\pi}{10} \implies c - \frac{\pi}{10} > 0 \;\; \text{and} \;\; c + \frac{\pi}{10} < \pi
 \end{align*}
 So the piecewise interval is contained fully in $[0,\pi]$: $$\left[ c - \frac{\pi}{10}, c + \frac{\pi}{10}\right] \in [0,\pi]$$ Hence
 \begin{align*}
-C_n &= \frac{2}{\pi} \int_{c - \frac{\pi}{10}}^{c + \frac{\pi}{10}} h(x) \sin (nx) dx
+C_n &= \frac{2}{\pi} \int_{c - \frac{\pi}{10}}^{c + \frac{\pi}{10}} (5) \sin (nx) dx \\
+&= \frac{10}{\pi} \int_{c - \frac{\pi}{10}}^{c + \frac{\pi}{10}} \sin (nx) dx \\
+&= -\frac{10}{n\pi} \left[ \cos (nx) \right]_{c - \frac{\pi}{10}}^{c + \frac{\pi}{10}} \\
+&= -\frac{10}{n\pi} \left[ \cos \left( n \left( c + \frac{\pi}{10} \right) \right) - \cos \left( n \left( c - \frac{\pi}{10} \right) \right) \right]\\
 \end{align*}
+We apply the identity$$\cos(\alpha) - \cos(\beta) = -2\sin \left( \frac{\alpha + \beta}{2} \right)\sin \left( \frac{\alpha - \beta}{2} \right)$$ to get
+$$C_n = \frac{20}{n\pi} \sin \left(nc \right) \sin \left( \frac{n\pi}{10} \right)$$
+Hence the solution is
+$$\boxed{u(t,x) = \frac{20}{\pi} \sum_{n=1}^{\infty} \frac{ \sin \left(nc \right) }{n} \sin \left( \frac{n\pi}{10} \right) e^{-n^2 t} \sin \left( nx \right)}$$
 }
 \item Notice that for $t$ sufficiently large, we have
 $$u(t,x) \approx  B_1 e^{-t} \sin(x).$$
-What choice of $c$ as defined above makes $B_1$ largest?
+What choice of $c$ as defined above makes $B_1$ largest? \\ \\
+\textcolor{blue}{\textbf{Solution} — Note that for sufficiently large $t$, the upper solution modes (for $n=2,3,4 \cdots$) become effectively zero in comparison to the $n=1$ solution mode, due to their large(r) negative exponents. At least, the $n=1$ solution mode decays the slowest, so the time-asymptotic behavior of the solution will, in the limit, consist of the first mode entirely. That is, 
+$$u(t,x) \sim \underbrace{\frac{20\sin(c)}{\pi} \sin \left( \frac{\pi}{10} \right)}_{B_1} e^{-t} \sin (x)$$
+Maximize $B_1 \implies$ maximize $\sin(c) \implies$ get $c$ as close to $\pi/2$ as possible. Since $\pi/2$ is already in the defined range of $\frac{\pi}{10} < c < \frac{9\pi}{10}$, we can just choose $c = \pi/2$.
+}
 \item Using the idea in the previous part, answer the following question:
-Suppose that you're forced to put a cup of hot coffee somewhere between two blocks of ice. Where exactly should you put it if you want it to stay as warm as possible?
+Suppose that you're forced to put a cup of hot coffee somewhere between two blocks of ice. Where exactly should you put it if you want it to stay as warm as possible? \\ \\
+\textcolor{blue}{\textbf{Solution} — Note that $c$, as defined in the problem statement, is the center of the initial heat spike in the rod (the initial spike of temperature $5$ exists from $x = c - \frac{\pi}{10}$ to $x = c + \frac{\pi}{10}$) \\ \\
+Also note that because of the homogeneous Dirichlet boundary conditions (forcing temperature zero at the ends of the rod), the two blocks of ice can be thought of as the ends of the rod. Correspondingly, the coffee can be thought of as the location of the $c$-centered temperature spike. \\ \\ Hence answering this question reduces to answering the following: for what value of $c$ will $u(t,x)$ be as large as possible, for as long as possible, near the location $x=c$? \\ \\
+Because we care only about the time-asymptotic behavior of $u$, we can assume $u(t,x) = B_1 e^{-t} \sin(x)$. Because $\sin(x)$ forms a positive hump on $[0, \pi]$, the temperature will always be largest in the middle, at $\pi/2$. To keep $u(t,x)$ large for as long as possible, we'll want its starting amplitude, $B_1$, to be as large as possible as well (which, conveniently, also happens at $c = \pi/2$). \\ \\
+Hence $c = \pi/2$ is the unambiguous best location to place the coffee to preserve its warmth. We want to place the coffee at the \textbf{midpoint} between the two blocks of ice.
+}
 \end{enumerate}
 
 
