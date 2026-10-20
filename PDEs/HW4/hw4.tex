@@ -58,7 +58,7 @@ $$T(t) = c_0 e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_1 e^{\sqrt{-\frac{\lambda}{k
 $$T(t) = c_3 \;\;\;\;\;\;\;  X(x) = c_4 + c_5x$$
 \textbf{For $\lambda > 0$:} \\ 
 $$T(t) = c_6 e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_7 \cos \left( \sqrt{\frac{\lambda}{k}} x \right) + c_8 \sin \left( \sqrt{\frac{\lambda}{k}} x \right)$$ \\ \\
-We now constrain these general solutions with the homogenous Neumann boundary conditions: \\ $$\frac{\partial u}{\partial x} (t,0) = 0 \implies T(t)X'(0) = 0 \implies X'(0) = 0 $$ 
+We now constrain these general solutions with the homogenous \textbf{Neumann} boundary conditions: \\ $$\frac{\partial u}{\partial x} (t,0) = 0 \implies T(t)X'(0) = 0 \implies X'(0) = 0 $$ 
 $$\frac{\partial u}{\partial x}(t,L) = 0 \implies T(t)X'(L) = 0 \implies X'(L) = 0$$ \\
 \textbf{For $\lambda < 0$}:
 \begin{align*}
@@ -173,11 +173,77 @@ And initial condition
 u(0,x) = f(x) \implies& v(0,x) + u_s(x) = f(x) \\
 \implies& v(0,x) = f(x) - u_s(x) \\
 \end{align*}
-Since we've transformed the problem to a homogeneous form in $v(t,x)$, we proceed to solve regularly in $v$, assuming $v(t,x) = T(t)X(x)$. Then $$k\frac{X''(x)}{X(x)} = \frac{T'(t)}{T(t)} = -\lambda$$
+Since we've transformed the problem to a homogeneous form in $v(t,x)$, we proceed to solve regularly in $v$, assuming $v(t,x) = T(t)X(x)$. Then $$k\frac{X''(x)}{X(x)} = \frac{T'(t)}{T(t)} = -\lambda$$ \\
 $$\begin{cases}
 kX''(x) + \lambda X(x) = 0 \\
 T'(t) + \lambda T = 0
 \end{cases}$$\\
+The structures of solutions here are, again, dependent on the sign of $\lambda$, so we examine each one: \\ \\
+\textbf{For $\lambda < 0$:} \\
+$$T(t) = c_0 e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_1 e^{\sqrt{-\frac{\lambda}{k}} x} + c_2 e^{-\sqrt{-\frac{\lambda}{k}} x}$$
+\textbf{For $\lambda = 0$:} \\
+$$T(t) = c_3 \;\;\;\;\;\;\;  X(x) = c_4 + c_5x$$
+\textbf{For $\lambda > 0$:} \\ 
+$$T(t) = c_6 e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_7 \cos \left( \sqrt{\frac{\lambda}{k}} x \right) + c_8 \sin \left( \sqrt{\frac{\lambda}{k}} x \right)$$ \\ \\
+We apply the boundary conditions: \\ \\
+\textbf{For $\lambda < 0$}: \\ \\
+\begin{align*}
+v(t,0)& = 0 \implies T(t)X(0) = 0  \\
+\implies& X(0) = 0 \;\;\; \text{(Assuming $T(t) \neq 0$)} \\ 
+\implies& \boxed{c_1 = -c_2} \\ \\
+\frac{\partial v}{\partial x}(t,L) & = 0 \\
+\implies& T(t)X'(L) = 0 \\
+\implies& X'(L) = 0 \;\;\; \text{(Assuming $T(t) \neq 0$)} \\
+\implies& c_1 \sqrt{-\frac{\lambda}{k}} e^{\sqrt{-\frac{\lambda}{k}} L} - c_2 \sqrt{-\frac{\lambda}{k}} e^{-\sqrt{-\frac{\lambda}{k}} L} = 0 \\ 
+\implies&  c_1 \sqrt{-\frac{\lambda}{k}} \left( \underbrace{ e^{\sqrt{-\frac{\lambda}{k}} L} + e^{-\sqrt{-\frac{\lambda}{k}} L}}_{\neq 0}  \right) \\
+\implies& \boxed{c_1 = 0} \;\;\; \text{(since $\lambda \neq 0, k \neq 0$)}
+\end{align*}
+\textbf{For $\lambda = 0$}: \\ \\
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_4 = 0} \\
+X'(L) = 0 \implies& \boxed{c_5 = 0}
+\end{align*}
+\textbf{For $\lambda > 0$}: \\ \\
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_7 = 0} \\
+X'(L) = 0 \implies& c_8 \sqrt{\frac{\lambda}{k}} \cos \left( \sqrt{\frac{\lambda}{k}} L \right) = 0 \\
+\implies& \sqrt{\frac{\lambda}{k}} L = \frac{\pi}{2} + n\pi \;\;\; \text{for $n \in \mathbb{Z}$ (assuming $c_8 \neq 0$)} \\
+\implies& \lambda = k \left( \frac{\pi}{2L} + \frac{n\pi}{L} \right)^2 \\ 
+\implies& \lambda = \frac{k \pi^2}{L^2} \left( \frac{1}{2} + n \right)^2 \\ 
+\implies& \lambda = \frac{k \pi^2}{4L^2} \left(2n + 1 \right)^2 \\ 
+\end{align*}
+Our boundary condition-constrained constants cause $X(x) = 0$ and hence $u(t,x) = 0$ for $\lambda < 0$ and $\lambda = 0$. Hence, the superposition of all separated solutions consists only of $\lambda > 0$: \\ \\ 
+$$v(t,x) = \sum_{n=0}^{\infty} C_n e^{- \frac{k \pi^2  \left(2n + 1 \right)^2}{4L^2} t} \sin \left( \frac{(2n+1)\pi x}{2L} \right)$$ \\
+We transform back to $u(t,x)$, using $u(t,x) = u_s(x) + v(t,x)$: \\
+$$u(t,x) = -\frac{1}{2} h x^2 + hLx + T_0 + \sum_{n=0}^{\infty} C_n e^{- \frac{k \pi^2  \left(2n + 1 \right)^2}{4L^2} t} \sin \left( \frac{(2n+1)\pi x}{2L} \right)$$ \\
+We now apply the initial condition \\
+\begin{align*}
+u(0,x) = f(x) \implies& -\frac{1}{2} h x^2 + hLx + T_0 + \sum_{n=0}^{\infty} C_n \sin \left( \frac{(2n+1)\pi x}{2L} \right) = f(x)\\
+\implies& \sum_{n=0}^{\infty} C_n \sin \left( \frac{(2n+1)\pi x}{2L} \right) = f(x) + \frac{1}{2} h x^2 - hLx - T_0 \\
+\end{align*}
+We can't read off the $C_n$'s as the coefficients of any identifiable Fourier series yet, because the summand isn't identical to the familiar $n\pi x / L$ frequency. Hence, we need to isolate the $C_n$'s manually using the orthogonality of the $\sin$ eigenfunctions. \\ \\ We multiply both sides by an equivalent $m$-frequency $\sin$ function and integrate from $0$ to $L$. We'll start with the left-hand side:
+\begin{align*}
+& \int_0^L \sin \left( \frac{(2m+1)\pi x}{2L}  \right) \sum_{n=0}^{\infty} C_n \sin \left( \frac{(2n+1)\pi x}{2L} \right) dx \\
+&= \sum_{n=0}^{\infty}  C_n \int_0^L  \sin \left( \frac{(2m+1)\pi x}{2L}  \right) \sin \left( \frac{(2n+1)\pi x}{2L} \right) dx \\
+\end{align*}
+Only the $n=m$ term in this sum is nonzero:
+$$= C_m \int_0^L  \sin \left( \frac{(2m+1)\pi x}{2L} \right)^2 dx$$
+Let $$u = \frac{(2m+1)\pi x}{2L} \;\;\;\;\; du = \frac{(2m+1)\pi}{2L} dx$$  \\
+The integral becomes
+\begin{align*}
+& C_m \frac{2L}{(2m + 1)\pi} \int_0^{\frac{(2m+1)\pi}{2}} \sin^2(u)du \\
+&= C_m \frac{L}{(2m + 1)\pi} \int_0^{\frac{(2m+1)\pi}{2}} 1 - \cos(2u) du \;\;\; \text{(applying $\sin$ power reduction)}  \\
+&= C_m \frac{L}{(2m + 1)\pi} \left( \frac{(2m+1)\pi}{2} \right) - \frac{L}{(2m+1)\pi} \underbrace{\left[ \frac{1}{2} \sin(2u) \right]_{0}^{\frac{(2m+1)\pi}{2}}}_{0} \\
+&= C_m \frac{L}{2}
+\end{align*} \\
+Hence, our $0$-to-$L$-integrated, $m$-frequency-multiplied equation is 
+\begin{align*}
+& C_m \frac{L}{2} = \int_0^L \sin \left( \frac{(2m+1)\pi x}{2L}  \right) \left( f(x) + \frac{1}{2} h x^2 - hLx - T_0 \right) dx \\
+\implies& C_m = \frac{2}{L} \int_0^L \sin \left( \frac{(2m+1)\pi x}{2L}  \right) \left( f(x) + \frac{1}{2} h x^2 - hLx - T_0 \right) dx \\
+\end{align*} \\
+Hence the temperature of the bar at all later times is \\
+$$\boxed{u(t,x) = -\frac{1}{2} h x^2 + hLx + T_0 + \sum_{n=0}^{\infty} C_n e^{- \frac{k \pi^2  \left(2n + 1 \right)^2}{4L^2} t} \sin \left( \frac{(2n+1)\pi x}{2L} \right)}$$
+With $$\boxed{C_n = \frac{2}{L} \int_0^L \sin \left( \frac{(2n+1)\pi x}{2L}  \right) \left( f(x) + \frac{1}{2} h x^2 - hLx - T_0 \right) dx}$$
 }
 \vspace{0.3in}
 
@@ -198,7 +264,68 @@ and
 $$ u(0,x) = h(x), \qquad 0 < x < \pi.$$
 Use the trigonometric identity
 $$ \cos(\alpha) - \cos(\beta) = -2\sin \left ( \frac{\alpha + \beta}{2} \right )\sin \left ( \frac{\alpha - \beta}{2} \right )$$
-to simplify the form of the Fourier coefficients.
+to simplify the form of the Fourier coefficients. \\ \\
+\textcolor{blue}{\textbf{Solution} — Since we already solved the general solution in problem 1, we solve the general heat equation identically (as before) and plug in $k=1$ later. The separated general solutions $u(t,x) = T(t)X(x)$ to the homogenous heat equation takes the forms (as we've seen before in problem 1): \\  \\
+\textbf{For $\lambda < 0$:} \\
+$$T(t) = c_0 e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_1 e^{\sqrt{-\frac{\lambda}{k}} x} + c_2 e^{-\sqrt{-\frac{\lambda}{k}} x}$$
+\textbf{For $\lambda = 0$:} \\
+$$T(t) = c_3 \;\;\;\;\;\;\;  X(x) = c_4 + c_5x$$
+\textbf{For $\lambda > 0$:} \\ 
+$$T(t) = c_6 e^{-\lambda t} \;\;\;\;\;\;\; X(x) = c_7 \cos \left( \sqrt{\frac{\lambda}{k}} x \right) + c_8 \sin \left( \sqrt{\frac{\lambda}{k}} x \right)$$ \\ \\
+We now apply the \textbf{Dirichlet} boundary conditions: \\
+\begin{align*}
+u(t,0) = 0 \implies& T(t)X(0) = 0 \\
+\implies& X(0) = 0 \;\;\; \text{(for non-trivial $T(t) \neq 0$)} \\
+u(t,\pi) = 0 \implies& T(t)X(\pi) = 0 \\
+\implies& X(\pi) = 0 \;\;\; \text{(for non-trivial $T(t) \neq 0$)} \\
+\end{align*}
+\textbf{For $\lambda < 0$:} \\ \\
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_1 = -c_2} \\
+X(\pi) = 0 \implies& c_1 e^{\sqrt{-\frac{\lambda}{k}} \pi} + c_2 e^{-\sqrt{-\frac{\lambda}{k}} \pi} = 0 \\
+\implies& c_1 \left(e^{\sqrt{-\frac{\lambda}{k}} \pi} - e^{-\sqrt{-\frac{\lambda}{k}} \pi} \right) = 0 \;\;\; \text{(using $c_1 = -c_2$)} \\
+\implies& \boxed{c_1 = 0}
+\end{align*}
+(only the trivial solution exists in this case) \\ \\
+\textbf{For $\lambda = 0$:} \\ \\
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_4 = 0} \\
+X(\pi) = 0 \implies& c_4 + \pi c_5 = 0 \\
+\implies& \pi c_5 = 0 \\
+\implies& \boxed{c_5 = 0}
+\end{align*}
+(only the trivial solution exists in this case) \\ \\
+\textbf{For $\lambda > 0$:} \\ \\
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_7 = 0}\\
+X(\pi) = 0 \implies& c_8 \sin \left( \sqrt{\frac{\lambda}{k}} \pi \right) = 0\\
+\implies& \sqrt{\frac{\lambda}{k}} \pi = n\pi \;\;\; \text{for $n \in \mathbb{Z}$ (and assuming $c_8 \neq 0$)} \\
+\implies& \lambda = kn^2
+\end{align*}
+Hence the general solution (the superposition of all our boundary-constrained solutions over all $\lambda$) is 
+\begin{align*}
+u(t,x) &= \sum_{n=0}^{\infty} C_n e^{-kn^2 t} \sin \left( nx \right) \\
+\text{or} \;\;\;u(t,x) &= \sum_{n=0}^{\infty} C_n e^{-n^2 t} \sin \left( nx \right) \;\;\; \text{(with $k=1$)} \\
+\end{align*}
+We now apply the initial condition \\
+\begin{align*}
+& u(0,x) = h(x) \;\;\; \text{(for $0 \leq x \leq \pi$)} \\
+\implies& \sum_{n=1}^{\infty} C_n \sin \left( nx \right) = h(x) \\
+\end{align*}
+This is exactly the Fourier $\sin$ expansion of $h(x)$ on $[0, \pi]$. Hence \\ \\
+\begin{align*}
+C_n &= \frac{2}{\pi} \int_0^{\pi} h(x) \sin (nx) dx \\
+\end{align*}
+Note that
+\begin{align*}
+& \frac{\pi}{10} < c < \frac{9\pi}{10} \\
+\implies& c - \frac{\pi}{10} > 0 \;\; \text{and} \;\; c + \frac{\pi}{10} < \pi
+\end{align*}
+So the piecewise interval is contained fully in $[0,\pi]$: $$\left[ c - \frac{\pi}{10}, c + \frac{\pi}{10}\right] \in [0,\pi]$$ Hence
+\begin{align*}
+C_n &= \frac{2}{\pi} \int_{c - \frac{\pi}{10}}^{c + \frac{\pi}{10}} h(x) \sin (nx) dx
+\end{align*}
+}
 \item Notice that for $t$ sufficiently large, we have
 $$u(t,x) \approx  B_1 e^{-t} \sin(x).$$
 What choice of $c$ as defined above makes $B_1$ largest?
