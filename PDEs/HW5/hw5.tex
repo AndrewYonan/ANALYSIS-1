@@ -1,0 +1,98 @@
+
+\documentclass[12pt]{article}
+\pagestyle{empty} \topmargin -0.5in \textheight 9in \textwidth 6.5in
+\oddsidemargin -0in
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\begin{document}
+
+\begin{flushleft}
+
+\textbf{Department of Applied Mathematics and Statistics}
+
+\textbf{COLORADO SCHOOL OF MINES}\\
+
+
+MATH $455$: Partial Differential Equations
+\end{flushleft}
+
+\vspace{0.1in}
+
+\begin{center}
+{\bf Assignment \#5 - Laplace's Equation} \\
+Due Thursday, November 5, 2026 \\
+\end{center}
+
+\vspace{0.3in}
+
+\noindent $\textbf{1}$. (14 points) Let $a,b > 0$ and $g \in \mathrm{PC}^1[0,a]$ be given. Find the solution $u(x,y)$ of 
+$$\Delta u = 0$$
+on the rectangle $ \Omega = [0,a] \times [0,b],$
+with
+$$\frac{\partial u}{\partial x}(0,y) = \frac{\partial u}{\partial x} (a,y) = 0$$
+for $0 < y < b$ and
+$$\frac{\partial u}{\partial y}(x,0) = 0 \qquad \mathrm{and} \qquad u(x,b) = g(x)$$
+for $0 < x < a$.
+
+\noindent \underline{\emph{Hint:}} It might be easiest to use $\sinh$ and $\cosh$ in some places rather than real exponentials. \\ \\
+\textcolor{blue}{\textbf{Solution} — 
+\begin{align*}
+\Delta u = 0 \implies& \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0
+\end{align*}
+Since this is a linear PDE, we proceed with separation of variables, assuming the solution takes the (separated) form $u(x,y) = X(x)Y(y)$ \\
+\begin{align*}
+\implies& X''(x)Y(y) = -X(x)Y''(y) \\
+\implies& \frac{X''(x)}{X(x)} = -\frac{Y''(y)}{Y(y)} = \lambda
+\end{align*} \\
+This equation takes the form $F(x) = G(y)$ for all $x,y$ $\implies$ both must be equal to some constant $\lambda$ (fix $x = x_0$, and then $F(x_0) = G(y)$ for all $y \implies G(y)$ is constant $\implies F(x)$ is constant since they're equal to each other). This yields the two ordinary differential equations
+\begin{align*}
+\begin{cases}
+X'' - \lambda X = 0 \\
+Y'' + \lambda Y = 0
+\end{cases}
+\end{align*} \\
+whose solutions depend on the sign of $\lambda$. \\ \\
+\textbf{For $\lambda < 0$}: \\ \\
+$$X(x) = c_0 \cos \left( \sqrt{-\lambda} x \right) + c_1 \sin \left( \sqrt{-\lambda} x \right) \;\;\;\;\;\;\;\;\; Y(y) = c_2 e^{\sqrt{\lambda} y} + c_3 e^{-\sqrt{\lambda} y}$$
+\textbf{For $\lambda = 0$}: \\ \\
+$$X(x) = Ax + B \;\;\;\;\;\;\;\;\; Y(y) = Cy + D$$
+\textbf{For $\lambda > 0$}: \\ \\
+$$X(x) = c_4 e^{\sqrt{\lambda} x} + c_5 e^{-\sqrt{\lambda} x} \;\;\;\;\;\;\;\;\; Y(y) = c_6 \cos \left( \sqrt{\lambda} y \right) + c_7 \sin \left( \sqrt{\lambda} y \right)$$
+}
+
+
+\vspace{0.3in}
+
+\noindent $\textbf{2}$. (16 points) Let $a > 0$ be given and find (using polar coordinates) the solution $u(r,\theta)$ of Laplace's equation
+$$\Delta u = 0$$
+on the wedge
+$$ \Omega = \left \{ (r,\theta) : 0 \leq r < a, 0 \leq \theta \leq \frac{\pi}{3} \right \}$$
+with
+$$u(r,0) = u\left (r,\frac{\pi}{3} \right)  = 0$$
+for $0 \leq r < a$ and
+$$u(a,\theta) = a^2$$
+for $0 \leq \theta \leq \frac{\pi}{3}$.
+In particular, make sure to only find solutions that remain bounded as $r \to 0$.
+
+\vspace{0.3in}
+
+
+\noindent $\textbf{3}$. (20 points) Let $0 < R_1 < R_2$ be given and $g$ be a PC$^1$ function. Find the single-valued solution of Laplace's equation on the annulus
+$$ \Omega = \left \{ (r,\theta) : R_1 < r < R_2, -\pi \leq \theta < \pi \right \}$$
+with the boundary conditions
+$$u(R_1, \theta) = 0 \qquad \mathrm{and} \qquad u(R_2, \theta) = g(\theta)$$
+for $-\pi \leq \theta < \pi$.
+In particular, use the periodic boundary conditions
+$$u(r, -\pi) = u(r, \pi) \qquad \mathrm{and} \qquad \frac{\partial u}{\partial \theta}(r, -\pi) = \frac{\partial u}{\partial \theta}(r, \pi)$$\
+for $R_1 < r < R_2$
+in order to compute the solution.
+
+
+\end{document}

@@ -428,7 +428,7 @@ u(t,\pi) = 0 \implies& f(\pi) = 0 \\
 Hence the particular solution is 
 $$u_p(t,x) = \frac{1}{2c^2} x^2 - \frac{\pi}{2c^2} x$$
 Once we find any particular solution, the general solution is thus the sum $u(t,x) = u_h(t,x) + u_p(t,x)$ : (of course, with $c=1$) 
-$$\boxed{u(t,x) = \frac{1}{2c^2} x^2 - \frac{\pi}{2c^2} x + \sum_{n=1}^{\infty} \left[  \vphantom{\frac{1}{1}} A_n \cos \left( cnt \right) + B_n \sin \left( cnt \right) \right] \sin(nx)}$$
+$$u(t,x) = \frac{1}{2c^2} x^2 - \frac{\pi}{2c^2} x + \sum_{n=1}^{\infty} \left[  \vphantom{\frac{1}{1}} A_n \cos \left( cnt \right) + B_n \sin \left( cnt \right) \right] \sin(nx)$$
 We now apply the initial conditions \\
 \begin{align*}
 u(0,x) = f(x) \implies&  \frac{1}{2c^2} x^2 - \frac{\pi}{2c^2} x + \sum_{n=1}^{\infty} A_n \sin(nx) = f(x)\\
@@ -446,11 +446,36 @@ Simplify the first integral:
 \end{align*}
 Simplify the second integral:
 \begin{align*}
-\frac{1}{\pi c^2} \int_0^\pi x^2 \sin(nx) dx &= \left. -\frac{x^2}{n} \cos(nx) \right|_{0}^{\pi} + \frac{2}{n} \int_0^\pi x \cos(nx) dx  \\
-&= -\frac{\pi^2}{n} (-1)^n + \frac{2}{n} \left[ \left. \frac{x}{n} \sin(nx) \right|_{0}^{\pi} - \frac{1}{n} \int_0^\pi \sin(nx) dx \right]  \\
-&= -\frac{\pi^2}{n} (-1)^n - \frac{2}{n^2} \int_0^\pi \sin(nx) dx \\
-&=  -\frac{\pi^2}{n} (-1)^n + \frac{2}{n^3} \left[ \cos(nx) \right]_{0}^{\pi} \\
-&=  -\frac{\pi^2}{n} (-1)^n + \frac{2}{n^3} \left[ \cos(nx) \right]_{0}^{\pi} \\
+\frac{1}{\pi c^2} \int_0^\pi x^2 \sin(nx) dx &= \frac{1}{\pi c^2} \left[ \left. -\frac{x^2}{n} \cos(nx) \right|_{0}^{\pi} + \frac{2}{n} \int_0^\pi x \cos(nx) dx \right]  \\
+&= \frac{1}{\pi c^2} \left[ -\frac{\pi^2}{n} (-1)^n + \frac{2}{n} \left[ \left. \frac{x}{n} \sin(nx) \right|_{0}^{\pi} - \frac{1}{n} \int_0^\pi \sin(nx) dx \right] \right] \\
+&=  \frac{1}{\pi c^2}\left[ -\frac{\pi^2}{n} (-1)^n - \frac{2}{n^2} \int_0^\pi \sin(nx) dx \right] \\
+&=  \frac{1}{\pi c^2} \left[ -\frac{\pi^2}{n} (-1)^n + \frac{2}{n^3} \left[ \cos(nx) \right]_{0}^{\pi} \right] \\
+&=  \frac{1}{\pi c^2} \left[ -\frac{\pi^2}{n} (-1)^n + \frac{2((-1)^n - 1)}{n^3} \right] \\
+&=  \frac{-\pi (-1)^n}{nc^2} + \frac{2((-1)^n - 1)}{\pi c^2 n^3}\\
 \end{align*}
+Hence 
+\begin{align*}
+A_n = \frac{2}{\pi} \int_{0}^{\pi} f(x) \sin(nx) dx + \frac{2(1 - (-1)^n)}{\pi c^2 n^3}
+\end{align*}
+We now apply the second initial condition:
+\begin{align*}
+\frac{\partial u}{\partial t} (0,x) = g(x) \implies& \left[ \frac{\partial}{\partial t} \sum_{n=1}^{\infty} \left[  \vphantom{\frac{1}{1}} A_n \cos \left( cnt \right) + B_n \sin \left( cnt \right) \right] \sin(nx)  \right]_{(0,x)} = g(x) \\
+=& \left[ \sum_{n=1}^{\infty} \left[  \vphantom{\frac{1}{1}} -cn A_n \sin \left( cnt \right) + cn B_n \cos \left( cnt \right) \right] \sin(nx) \right]_{(0,x)} \\
+\implies& \sum_{n=1}^{\infty} cn B_n \sin(nx) = g(x) \\
+\implies& \sum_{n=1}^{\infty} n B_n \sin(nx) = \frac{g(x)}{c}
+\end{align*}
+Here we can read off $nB_n$ as the Fourier coefficients of the $\sin$-expansion of $g(x)/c$ on $[0,\pi]$:
+\begin{align*}
+nB_n &= \frac{2}{\pi} \int_0^{\pi} \left( \frac{g(x)}{c} \right) \sin(nx) dx \\ 
+\implies&  B_n = \frac{2}{n\pi c} \int_0^{\pi} g(x) \sin(nx) dx
+\end{align*}
+Hence, the solution to the PDE is (setting $c=1$) :
+\begin{align*}
+\boxed{u(t,x) = \frac{x^2 - \pi x}{2}+ \sum_{n=1}^{\infty} \left[  \vphantom{\frac{1}{1}} A_n \cos \left(nt \right) + B_n \sin \left( nt \right) \right] \sin(nx)}
+\end{align*}
+Where 
+$$\boxed{A_n = \frac{2}{\pi} \int_{0}^{\pi} f(x) \sin(nx) dx + \frac{2(1 - (-1)^n)}{\pi n^3}}$$
+$$\boxed{B_n = \frac{2}{n\pi} \int_0^{\pi} g(x) \sin(nx) dx}$$ \\ \\
+Note that $f(x),g(x) \in PC^1[0,\pi]$, so these Fourier coefficients must exist.
 }
 \end{document}
