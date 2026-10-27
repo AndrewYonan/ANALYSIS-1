@@ -60,14 +60,83 @@ Y'' + \lambda Y = 0
 \end{align*} \\
 whose solutions depend on the sign of $\lambda$. \\ \\
 \textbf{For $\lambda < 0$}: \\ \\
-$$X(x) = c_0 \cos \left( \sqrt{-\lambda} x \right) + c_1 \sin \left( \sqrt{-\lambda} x \right) \;\;\;\;\;\;\;\;\; Y(y) = c_2 e^{\sqrt{\lambda} y} + c_3 e^{-\sqrt{\lambda} y}$$
+$$X(x) = c_0 \cos \left( \sqrt{-\lambda} x \right) + c_1 \sin \left( \sqrt{-\lambda} x \right) \;\;\;\;\;\;\;\;\; Y(y) = c_2 e^{\sqrt{-\lambda} y} + c_3 e^{-\sqrt{-\lambda} y}$$
 \textbf{For $\lambda = 0$}: \\ \\
 $$X(x) = Ax + B \;\;\;\;\;\;\;\;\; Y(y) = Cy + D$$
 \textbf{For $\lambda > 0$}: \\ \\
-$$X(x) = c_4 e^{\sqrt{\lambda} x} + c_5 e^{-\sqrt{\lambda} x} \;\;\;\;\;\;\;\;\; Y(y) = c_6 \cos \left( \sqrt{\lambda} y \right) + c_7 \sin \left( \sqrt{\lambda} y \right)$$
+$$X(x) = c_4 e^{\sqrt{\lambda} x} + c_5 e^{-\sqrt{\lambda} x} \;\;\;\;\;\;\;\;\; Y(y) = c_6 \cos \left( \sqrt{\lambda} y \right) + c_7 \sin \left( \sqrt{\lambda} y \right)$$ \\
+We apply the boundary conditions to $u(x,y) = X(x)Y(y)$: \\ \\
+\begin{align*}
+\frac{\partial u}{\partial x}(0,y) = 0 \implies& X'(0)Y(y) = 0 \\
+\implies& X'(0) = 0 \;\;\;\; \text{(For $Y(y) \neq 0$)}
+\end{align*}
+\begin{align*}
+\frac{\partial u}{\partial x}(a,y) = 0 \implies& X'(a)Y(y) = 0 \\
+\implies& X'(a) = 0 \;\;\;\; \text{(For $Y(y) \neq 0$)}
+\end{align*}
+We use these results to constrain the unknown constants in our separated solutions: \\ \\
+\textbf{For $\lambda < 0$}: \\ \\
+\begin{align*}
+X'(0) = 0 \implies& \sqrt{-\lambda} c_1 = 0 \\
+\implies& \boxed{c_1 = 0} \\
+X'(a) = 0 \implies& -\sqrt{-\lambda} c_0 \sin \left( \sqrt{-\lambda} a \right) = 0 \\
+\implies& \sin \left( \sqrt{-\lambda} a \right) = 0 \;\;\;\; \text{(for nontrivial solution with $c_0 \neq 0$)} \\
+\implies& \sqrt{-\lambda} a = n\pi \;\;\;\;\; \text{for $n \in \mathbb{Z}$} \\
+\implies& \boxed{\lambda = - \left( \frac{n \pi}{a} \right) ^2}
+\end{align*}
+\textbf{For $\lambda = 0$}: \\
+\begin{align*}
+X'(0) = 0, X'(a) = 0 \implies& \boxed{A = 0}\\
+\end{align*}
+\textbf{For $\lambda > 0$}: \\ \\
+\begin{align*}
+X'(0) = 0 \implies& \sqrt{\lambda} c_4 - \sqrt{\lambda} c_5 = 0 \\
+\implies& \boxed{c_4 = c_5} \\
+X'(a) = 0 \implies& \sqrt{\lambda} c_4 e^{\sqrt{\lambda} a} - \sqrt{\lambda} c_5 e^{-\sqrt{\lambda} a} = 0 \\
+\implies& \sqrt{\lambda} c_4 \left( \underbrace{ e^{\sqrt{\lambda} a} - e^{-\sqrt{\lambda} a} }_{\neq 0} \right) = 0 \;\;\; \text{(using $c_4 = c_5$)} \\
+\implies& \boxed{c_4 = 0}
+\end{align*}
+This leads us to general separated solutions: \\ \\
+\textbf{For $\lambda < 0$}: \\ \\
+$$u(x,y) = \cos \left( \frac{n \pi x}{a} \right) \left( A_n e^{ \frac{n\pi y}{a} } + B_n e^{-\frac{n\pi y}{a}}  \right)$$
+\textbf{For $\lambda = 0$}: \\ \\
+$$u(x,y) = \alpha y + \beta$$
+\textbf{For $\lambda > 0$}: \\ \\
+$$u(x,y) = 0$$
+Hence the general vertically-constrained solution is the superposition of all these separated solutions: \\
+$$u(x,y) = \alpha y + \beta + \sum_{n=1}^{\infty} \cos \left( \frac{n \pi x}{a} \right) \left( A_n e^{ \frac{n\pi y}{a} } + B_n e^{-\frac{n\pi y}{a}}  \right)$$ \\
+We proceed to apply the horizontal boundary conditions. \\
+\begin{align*}
+\frac{\partial u}{\partial y}(x,0) = 0 \implies&  \left. \alpha + \sum_{n=1}^{\infty} \frac{n\pi}{a} \cos \left( \frac{n \pi x}{a} \right) \left( A_n e^{ \frac{n\pi y}{a} } - B_n e^{-\frac{n\pi y}{a}} \right) \right|_{(x,0)} = 0 \\
+\implies& \alpha + \sum_{n=1}^{\infty} \frac{n\pi}{a} (A_n - B_n) \cos \left( \frac{n \pi x}{a} \right) = 0  \\
+\end{align*}
+Hence $\alpha$ is the constant term and each $n \pi (A_n - B_n)  / a$ is the Fourier coefficient of the cosine expansion of $f(x) = 0$ on $x\in[0,a]$. Since the average value of this function is $0$ everyone, we have that $\boxed{\alpha = 0}$. Also, \\
+\begin{align*}
+\implies& \frac{n\pi (A_n - B_n) }{a} = \frac{2}{a} \int_0^a (-\alpha) \cos \left( \frac{n\pi x}{a} \right) dx \\
+\implies& (A_n - B_n)  = -\frac{2\alpha}{n\pi} \int_0^a \cos \left( \frac{n\pi x}{a} \right) dx = 0 \\
+\implies & \boxed{A_n = B_n}
+\end{align*} \\
+Hence we can write the solution as
+$$u(x,y) =  \beta + 2 \sum_{n=1}^{\infty} C_n \cos \left( \frac{n \pi x}{a} \right) \cosh \left( \frac{n \pi y}{a} \right)$$ \\
+We apply the final boundary condition
+\begin{align*}
+u(x,b) = g(x) \implies& \beta + 2 \sum_{n=1}^{\infty} C_n \cos \left( \frac{n \pi x}{a} \right) \cosh \left( \frac{n \pi b}{a} \right) = g(x) \\
+\implies& g(x) = \beta + \sum_{n=1}^{\infty} \left[ \underbrace{ 2C_n \cosh \left( \frac{n \pi b}{a} \right) }_{\zeta_n} \right] \cos \left( \frac{n \pi x}{a} \right) \\
+\implies& g(x) = \beta + \sum_{n=1}^{\infty} \zeta_n \cos \left( \frac{n \pi x}{a} \right)
+\end{align*}
+Which is the cosine-expansion of $g(x)$ on $[0,a]$, with $\beta$ being the average value of $g(x)$ on $[0,a]$. Hence
+\begin{align*}
+\boxed{\beta = \frac{1}{a} \int_0^a g(x) dx} \\ \\
+\end{align*}
+And
+\begin{align*}
+\zeta_n &= \frac{2}{a} \int_0^a g(x) \cos \left( \frac{n \pi x}{a} \right) dx \\
+\implies& 2C_n \cosh \left( \frac{n \pi b}{a} \right) = \frac{2}{a} \int_0^a g(x) \cos \left( \frac{n \pi x}{a} \right) dx \\
+\implies& \boxed{C_n = \frac{1}{a} \operatorname{sech} \left( \frac{n \pi b}{a} \right) \int_0^a g(x) \cos \left( \frac{n \pi x}{a} \right)} dx 
+\end{align*}
+In the general solution
+$$\boxed{u(x,y) =  \beta + 2 \sum_{n=1}^{\infty} C_n \cos \left( \frac{n \pi x}{a} \right) \cosh \left( \frac{n \pi y}{a} \right)}$$
 }
-
-
 \vspace{0.3in}
 
 \noindent $\textbf{2}$. (16 points) Let $a > 0$ be given and find (using polar coordinates) the solution $u(r,\theta)$ of Laplace's equation
