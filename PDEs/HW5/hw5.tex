@@ -15,8 +15,8 @@
 
 \begin{flushleft}
 
-\textbf{Department of Applied Mathematics and Statistics}
-
+\textcolor{blue}{\textbf{NAME: Andrew Yonan}}\\
+\textbf{Department of Applied Mathematics and Statistics}\\
 \textbf{COLORADO SCHOOL OF MINES}\\
 
 
@@ -132,7 +132,7 @@ And
 \begin{align*}
 \zeta_n &= \frac{2}{a} \int_0^a g(x) \cos \left( \frac{n \pi x}{a} \right) dx \\
 \implies& 2C_n \cosh \left( \frac{n \pi b}{a} \right) = \frac{2}{a} \int_0^a g(x) \cos \left( \frac{n \pi x}{a} \right) dx \\
-\implies& \boxed{C_n = \frac{1}{a} \operatorname{sech} \left( \frac{n \pi b}{a} \right) \int_0^a g(x) \cos \left( \frac{n \pi x}{a} \right)} dx 
+\implies& \boxed{C_n = \frac{1}{a} \operatorname{sech} \left( \frac{n \pi b}{a} \right) \int_0^a g(x) \cos \left( \frac{n \pi x}{a} \right) dx }
 \end{align*}
 In the general solution
 $$\boxed{u(x,y) =  \beta + 2 \sum_{n=1}^{\infty} C_n \cos \left( \frac{n \pi x}{a} \right) \cosh \left( \frac{n \pi y}{a} \right)}$$
@@ -148,7 +148,31 @@ $$u(r,0) = u\left (r,\frac{\pi}{3} \right)  = 0$$
 for $0 \leq r < a$ and
 $$u(a,\theta) = a^2$$
 for $0 \leq \theta \leq \frac{\pi}{3}$.
-In particular, make sure to only find solutions that remain bounded as $r \to 0$.
+In particular, make sure to only find solutions that remain bounded as $r \to 0$. \\ \\
+\textcolor{blue}{\textbf{Solution} — Using polar coordinates conveniently transforms the (non-uniform) boundary of the wedge to a uniform boundary (a rectangle) in polar space. Hence, we must also express the laplace equation in polar form. We apply the change-of-variables $$x(r, \theta) = r \cos \theta \;\;\;\;\;\;\; y(r, \theta) = r \sin \theta$$ \\
+And express $$u(x,y) \implies u(r,\theta)$$ \\
+keeping in mind that $r$ and $\theta$ are both functions of $x$ and $y$. We proceed to find $\frac{\partial^2 u}{\partial x^2}$ and $\frac{\partial^2 u}{\partial y^2}$ in terms of $\theta$ and $r$. $$\frac{\partial u}{\partial x} = \frac{\partial u}{\partial r} \frac{\partial r}{\partial x} + \frac{\partial u}{\partial \theta} \frac{\partial \theta}{\partial x}$$ \\
+To find $\frac{\partial r}{\partial x}$ we need $r$ as a function of $x$ and $y$ : $r(x,y)$. We use
+\begin{align*}
+r^2 = x^2 + y^2 \implies& 2r \frac{\partial r}{\partial x} = 2x \\
+\implies& \frac{\partial r}{\partial x} = \frac{x}{r} \\
+\implies& \frac{\partial r}{\partial x} = \cos \theta
+\end{align*}
+To find $\frac{\partial \theta}{\partial x}$ we need $\theta(x,y)$. We use
+\begin{align*}
+\tan \theta = \frac{y}{x} \implies& \sec^2 \theta \frac{\partial \theta}{\partial x} = -\frac{y}{x^2} \\
+\implies& \frac{\partial \theta}{\partial x} = - \cos^2 \theta \frac{y}{x^2} \\
+\implies& \frac{\partial \theta}{\partial x} = - \cos^2 \theta \frac{r \sin \theta}{(r \cos \theta)^2} \\
+\implies& \frac{\partial \theta}{\partial x} = - \frac{\sin \theta}{r} \\
+\end{align*}
+Hence $$\frac{\partial u}{\partial x} = \cos \theta \frac{\partial u}{\partial r} - 
+\frac{\sin \theta}{r} \frac{\partial u}{\partial \theta}$$
+And 
+\begin{align*}
+\frac{\partial^2 u}{\partial x^2} &= \frac{\partial}{\partial x} \left( \cos \theta \frac{\partial u}{\partial r} - \frac{\sin \theta}{r} \frac{\partial u}{\partial \theta} \right) \\
+&= \frac{\partial (\cos \theta)}{\partial x} \frac{\partial u}{\partial r} + \cos \theta \frac{\partial}{\partial x} \frac{\partial u}{ \partial r} - \frac{\partial (\frac{\sin \theta}{r})}{\partial x} \frac{\partial u}{\partial \theta} - \frac{\sin \theta}{r} \frac{\partial }{\partial x}\frac{\partial u}{\partial \theta}
+\end{align*}
+}
 
 \vspace{0.3in}
 
