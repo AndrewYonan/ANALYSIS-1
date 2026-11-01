@@ -156,21 +156,59 @@ To find $\frac{\partial r}{\partial x}$ we need $r$ as a function of $x$ and $y$
 \begin{align*}
 r^2 = x^2 + y^2 \implies& 2r \frac{\partial r}{\partial x} = 2x \\
 \implies& \frac{\partial r}{\partial x} = \frac{x}{r} \\
-\implies& \frac{\partial r}{\partial x} = \cos \theta
+\implies& \boxed{\frac{\partial r}{\partial x} = \cos \theta}
 \end{align*}
 To find $\frac{\partial \theta}{\partial x}$ we need $\theta(x,y)$. We use
 \begin{align*}
 \tan \theta = \frac{y}{x} \implies& \sec^2 \theta \frac{\partial \theta}{\partial x} = -\frac{y}{x^2} \\
 \implies& \frac{\partial \theta}{\partial x} = - \cos^2 \theta \frac{y}{x^2} \\
 \implies& \frac{\partial \theta}{\partial x} = - \cos^2 \theta \frac{r \sin \theta}{(r \cos \theta)^2} \\
-\implies& \frac{\partial \theta}{\partial x} = - \frac{\sin \theta}{r} \\
+\implies& \boxed{\frac{\partial \theta}{\partial x} = - \frac{\sin \theta}{r}} \\
 \end{align*}
 Hence $$\frac{\partial u}{\partial x} = \cos \theta \frac{\partial u}{\partial r} - 
 \frac{\sin \theta}{r} \frac{\partial u}{\partial \theta}$$
 And 
 \begin{align*}
 \frac{\partial^2 u}{\partial x^2} &= \frac{\partial}{\partial x} \left( \cos \theta \frac{\partial u}{\partial r} - \frac{\sin \theta}{r} \frac{\partial u}{\partial \theta} \right) \\
-&= \frac{\partial (\cos \theta)}{\partial x} \frac{\partial u}{\partial r} + \cos \theta \frac{\partial}{\partial x} \frac{\partial u}{ \partial r} - \frac{\partial (\frac{\sin \theta}{r})}{\partial x} \frac{\partial u}{\partial \theta} - \frac{\sin \theta}{r} \frac{\partial }{\partial x}\frac{\partial u}{\partial \theta}
+&= \underbrace{ \frac{\partial (\cos \theta)}{\partial x} }_{\text{A}} \frac{\partial u}{\partial r} + \cos \theta \underbrace{ \frac{\partial}{\partial x} \frac{\partial u}{ \partial r} }_{\text{B}} - \underbrace{ \frac{\partial (\frac{\sin \theta}{r})}{\partial x} }_{\text{C}} \frac{\partial u}{\partial \theta} - \frac{\sin \theta}{r} \underbrace{ \frac{\partial }{\partial x}\frac{\partial u}{\partial \theta} }_{\text{D}}
+\end{align*} \\
+Simplifying these four pieces: \\ \\
+\textbf{A}: \\
+\begin{align*}
+\frac{\partial (\cos \theta)}{\partial x} &= \frac{\partial}{\partial x} \left( \frac{x}{\sqrt{x^2 + y^2}} \right) \\ \\
+&= \frac{\sqrt{x^2 + y^2} - \frac{x^2}{\sqrt{x^2 + y^2}}}{x^2 + y^2} \\ \\
+&= \frac{r - r\cos^2 \theta}{r^2} \\ \\
+&= \frac{\sin^2 \theta}{r} \\ \\
+\end{align*}
+\textbf{B}: Note that $\partial u / \partial r$ is some function of $r,\theta$, so let's temporarily define it as the dummy function $\phi(r,\theta)$. Hence, \\
+\begin{align*}
+\frac{\partial }{\partial x} \frac{\partial u}{\partial r}  &= \frac{\partial }{\partial x} \phi(r, \theta) \\ \\
+ &=  \frac{\partial \phi}{\partial r} \frac{\partial r}{\partial x} + \frac{\partial \phi}{\partial \theta} \frac{\partial \theta}{\partial x} \\ \\
+ &= \frac{\partial^2 u}{\partial r^2} \frac{\partial r}{\partial x} + \frac{\partial^2 u}{\partial \theta \partial r} \frac{\partial \theta}{\partial x} \\ \\
+ &= \cos \theta \frac{\partial^2 u}{\partial r^2} - \frac{\sin \theta}{r}  \frac{\partial^2 u}{\partial \theta \partial r} 
+\end{align*} \\
+\textbf{C}: \\ \\
+\begin{align*}
+ \frac{\partial (\frac{\sin \theta}{r})}{\partial x} &= \frac{\partial}{\partial x} \left( \frac{y}{x^2 + y^2} \right) \\ \\
+ &= \frac{-2xy}{(x^2 + y^2)^2} \\ \\ 
+ &= \frac{-2r^2 \sin \theta \cos \theta}{r^4} \\ \\
+ &= \frac{-2 \sin \theta \cos \theta}{r^2} \\ \\
+ &= -\frac{\sin 2 \theta}{r^2} \\ \\
+\end{align*}
+\textbf{D}: Note that $\partial u / \partial \theta$ is some function $r, \theta$, so let's also temporarily define it as the dummy function $\phi(r, \theta)$. Then
+\begin{align*}
+\frac{\partial }{\partial x}\frac{\partial u}{\partial \theta} &= \frac{\partial }{\partial x} \phi(r, \theta) \\ \\
+&= \frac{\partial \phi}{\partial r} \frac{\partial r}{\partial x} + \frac{\partial \phi}{\partial \theta} \frac{\partial \theta}{\partial x} \\ \\
+&= \frac{\partial^2 u}{\partial r \partial \theta} \frac{\partial r}{\partial x} + \frac{\partial^2 u}{\partial \theta^2} \frac{\partial \theta}{\partial x} \\ \\
+&= \cos \theta \frac{\partial^2 u}{\partial r \partial \theta} - \frac{\sin \theta}{r}  \frac{\partial^2 u}{\partial \theta^2}
+\end{align*}
+Hence \\
+\begin{align*}
+\frac{\partial^2 u}{\partial x^2} =& \frac{\sin^2 \theta}{r} \frac{\partial u}{\partial r} + \cos \theta \left[ \cos \theta \frac{\partial^2 u}{\partial r^2} - \frac{\sin \theta}{r} \frac{\partial^2 u}{\partial \theta \partial r} \right] \\
++&  \frac{\sin 2\theta}{r^2} \frac{\partial u}{\partial \theta} - \frac{\sin \theta}{r} \left[ \cos \theta \frac{\partial^2 u}{\partial r \partial \theta} - \frac{\sin \theta}{r} \frac{\partial^2 u}{\partial \theta^2}\right]
+\end{align*}
+\begin{align*}
+\boxed{\frac{\partial^2 u}{\partial x^2} = \cos^2 \theta \frac{\partial^2 u}{\partial r^2} + \frac{\sin^2 \theta}{r} \frac{\partial u}{\partial r} - \frac{\sin 2 \theta}{r} \frac{\partial^2 u}{\partial r \partial \theta} + \frac{\sin^2 \theta}{r^2} \frac{\partial^2 u}{\partial \theta^2} + \frac{\sin 2\theta}{r^2} \frac{\partial u}{\partial \theta}}
 \end{align*}
 }
 
