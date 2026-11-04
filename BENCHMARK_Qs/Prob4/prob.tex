@@ -1,0 +1,71 @@
+
+\documentclass[12pt]{article}
+\pagestyle{empty} \topmargin -0.5in \textheight 9in \textwidth 6.5in
+\oddsidemargin -0in
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\begin{document}
+
+\begin{flushleft}
+
+\textbf{Department of Applied Mathematics and Statistics}
+
+\textbf{COLORADO SCHOOL OF MINES}\\
+MATH $455$: Partial Differential Equations
+\end{flushleft}
+
+Let $\mathcal{R}$ be the region bounded by $y = \sin{x}$ for $0 \leq x \leq \pi$, $x = \sin{y}$ for $0 \leq y \leq \pi$, and $y = \pi - x$ for $0 \leq x \leq \pi$. Find the maximum-radius ball that fits in $\mathcal{R}$. \\ 
+
+\textcolor{blue}{Solution — The maximum-radius ball that fits in $\mathcal{R}$ is one that is tangent to all three sides of $\mathcal{R}$. We proceed to build a system of equations according to these tangency conditions. First, by the symmetry of the region, note that a ball tangent to both the $y=\sin(x)$ and $x=\sin(y)$ curves must have its center along $y=x$. That is, we can represent its center as $(c,c)$ for some $c\in \mathbb{R}$. Let $(a, \sin{a})$ be the ball's point of contact against $y=\sin{x}$. Note that the unit normal to $\sin(x)$ at this point is 
+$$\mathbf{\hat{n}} = \frac{(-\cos{a}, 1)}{\sqrt{1 + \cos^2 {a}}}$$ Let $r$ be the radius of the ball. Then the ball's center must be $r$ away from $(a, \sin a)$ along $\mathbf{\hat{n}}$:
+$$(c,c) = (a, \sin{a}) + r \left( \frac{(-\cos{a}, 1)}{\sqrt{1 + \cos^2 {a}}} \right)$$
+Component-wise:
+\begin{equation}
+c = a - \frac{r\cos{a}}{\sqrt{1 + \cos^2 a}}
+\end{equation}
+\begin{equation}
+c = \sin a + \frac{r}{\sqrt{1 + \cos^2 a}}
+\end{equation}
+Eliminating $c$ from these two equations yields:
+$$a - \sin{a} = r \left( \frac{1+\cos{a}}{\sqrt{1 + \cos^2{a}}} \right)$$
+\begin{equation}
+\implies r = \frac{(a - \sin a) \sqrt{1 + \cos^2{a}}}{1 + \cos a}
+\end{equation}
+Note that this is the constraint equation that forces tangency to the curvilinear edges $y=\sin(x)$ and $x=\sin{y}$. Note that we can substitute $(3)$ in $(2)$ to obtain an equation for $c$ in terms of only $a$:
+\begin{equation}
+c = \sin{a} + \frac{a - \sin{a}}{1 + \cos{a}} = \frac{a + \sin{a}\cos{a}}{1 + \cos{a}}
+\end{equation}
+Now we need a final equation to force tangency to $y = \pi - x$. To enforce this, the distance from the center $(c,c)$ to the line must be $r$. Note that the perpendicular distance from any $(x_0, y_0)$ to $Ax + By + C = 0$ is given (via normal vector projections) by $$\frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}$$
+Hence 
+\begin{equation}
+r = \frac{\pi - 2c}{\sqrt{2}}
+\end{equation}
+Plugging $(3)$ in for $r$ and $(4)$ in for $c$ gives us a one-variable constraint equation in $a$:
+\begin{equation*}
+\frac{(a - \sin a) \sqrt{1 + \cos^2{a}}}{1 + \cos a} = \frac{1}{\sqrt{2}} \left( \pi - 2 \left( \frac{a + \sin{a}\cos{a}}{1 + \cos{a}}  \right) \right)
+\end{equation*}
+Multiplying through by $\sqrt{2} (1 + \cos{a})$,
+\begin{equation*}
+\sqrt{2} (a - \sin a) \sqrt{1 + \cos^2{a}} = \pi (1 + \cos{a}) - 2a - 2\sin{a}\cos{a}
+\end{equation*}
+Which yields the numerical result $a = 1.38742$, and by $(3)$ we have $r = 0.347486$. Rounding to $4$ significant figures, we obtain $$\boxed{r = 0.3475}$$
+}
+
+
+
+
+
+
+
+
+
+\end{document}

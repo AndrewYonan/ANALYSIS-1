@@ -1,2 +1,11 @@
-the $n$ $F^{(6)}(x)$ is the smallest derivative that no longer converges (at all) for some value of $x$: thus have asymptotic magnitude $$ \frac{1}{n^{1/2}} $$  \\ \\
-Which makes $$F^{(6)}(x) \sim \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^{1/2}} $$ a cosine series with coefficients $|a_n| = 1/n^{1/2}$. This series diverges absolutely by a $p$-series test. Since $F$ thus has $5$ absolutely-convergent derivatives, it equivalently must have at least $\boxed{\text{$5$ continuous derivatives.}}$ 
+Money can get you many things on the outside; it can't do much on the inside. It can't buy inner drive, passion, thirst, yearning. And, in some sense, money might even dull these things.
+
+America does live in a market society. This may be from America's roots in pioneering the capitalist experiment (as opposed to, for instance, Russia's socialist experiment). This is not a bad thing, although the money obsession is so extreme in America that it's allowed the festering of some rather questionable situations:
+
+1) Healthcare as big business. Just as the shady auto mechanic might incentivize you to come back by screwing up (instead of fixing) your car further, healthcare-as-big-business allows for analogous moral corruption in the realm of our own bodies (for instance, in spinal- and neuro-surgery, as detailed in I Was An MIT Educated Neurosurgeon Now I'm Unemployed And Alone In The Mountains).
+
+2) The junk-food industry-pharmaceutical alliance. The complete lack of ingredient regulation in America is frustrating, although it's not surprising. Pumping us full of ultra-processed food and then wagging GLP-1s at us is pretty much an infinite-money glitch for Big Pharma. We never ask how we can start eating better food; we only ask how we can keep eating bad food without the (visible) consequences. 
+
+When you consider all the entangled (and potentially corrupt) incentives that permeate our food industry, it's just no surprise that we continue to produce food with ingredients banned in other countries for safety reasons. One particularly eye-opening experience for me was learning how to make ice cream from scratch—you only need three ingredients (milkfat, sugar, vanilla) to produce it, yet most commercial units have upwards of 10 (and still manage to taste the same, if not worse).
+
+In every realm, whether it's food or health, we seem content to pay for temporary solutions (and companies love their consumers for this). The spinal surgeon doesn't want you to take the simple and permanent solution of changing your lifestyle; the junk food industry doesn't want you to take the simple and permanent solution of eating real food.

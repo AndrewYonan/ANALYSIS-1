@@ -208,8 +208,71 @@ Hence \\
 +&  \frac{\sin 2\theta}{r^2} \frac{\partial u}{\partial \theta} - \frac{\sin \theta}{r} \left[ \cos \theta \frac{\partial^2 u}{\partial r \partial \theta} - \frac{\sin \theta}{r} \frac{\partial^2 u}{\partial \theta^2}\right]
 \end{align*}
 \begin{align*}
-\boxed{\frac{\partial^2 u}{\partial x^2} = \cos^2 \theta \frac{\partial^2 u}{\partial r^2} + \frac{\sin^2 \theta}{r} \frac{\partial u}{\partial r} - \frac{\sin 2 \theta}{r} \frac{\partial^2 u}{\partial r \partial \theta} + \frac{\sin^2 \theta}{r^2} \frac{\partial^2 u}{\partial \theta^2} + \frac{\sin 2\theta}{r^2} \frac{\partial u}{\partial \theta}}
+\frac{\partial^2 u}{\partial x^2} = \cos^2 \theta \frac{\partial^2 u}{\partial r^2} + \frac{\sin^2 \theta}{r} \frac{\partial u}{\partial r} - \frac{\sin 2 \theta}{r} \frac{\partial^2 u}{\partial r \partial \theta} + \frac{\sin^2 \theta}{r^2} \frac{\partial^2 u}{\partial \theta^2} + \frac{\sin 2\theta}{r^2} \frac{\partial u}{\partial \theta}
 \end{align*}
+An analogous process yields
+\begin{align*}
+\frac{\partial^2 u}{\partial y^2} = \sin^2 \theta \frac{\partial^2 u}{\partial r^2} + \frac{\cos^2 \theta}{r} \frac{\partial u}{\partial r} + \frac{\sin 2 \theta}{r} \frac{\partial^2 u}{\partial r \partial \theta} + \frac{\cos^2 \theta}{r^2} \frac{\partial^2 u}{\partial \theta^2} - \frac{\sin 2\theta}{r^2} \frac{\partial u}{\partial \theta}
+\end{align*}
+Hence $$\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial u^2}{\partial \theta^2}$$ \\
+So the polar Laplacian equation must be
+$$\boxed{\frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \theta^2} = 0}$$
+Now we proceed to find the general solution of this differential equation, using the same separation of variables method as before. We assume $u(r,\theta)$ takes the form $R(r)\Theta(\theta)$. Then 
+$$R''(r) \Theta(\theta) +\frac{R'(r) \Theta(\theta)}{r} + \frac{R(r) \Theta''(\theta)}{r^2} = 0$$
+Dividing through by $R(r) \Theta(\theta)$ yeilds \\
+$$\frac{R''(r)}{R(r)} +\frac{R'(r)}{r R(r)} + \frac{\Theta''(\theta)}{r^2 \Theta(\theta)} = 0$$
+$$\implies \underbrace{ r^2 \frac{R''(r)}{R(r)} + r\frac{R'(r)}{R(r)} }_{F(r)}= \underbrace {- \frac{\Theta''(\theta)}{\Theta(\theta)} }_{G(\theta)} = \mu$$ \\
+The left and right are functions of $r$ only, and $\theta$ only, respectively. So our differential equal that we assume works for all $r, \theta$ implies this equation, which, also, supposedly works for all $r, \theta$. And since $F(r) = G(\theta)$ for all $r, \theta$, then both sides must be equal to the same constant (fix $\theta = \theta_0$ and we get $F(r) = G(\theta_0)$ for all $r$, the definition of a constant function). We call this constant (the separation constant) $\mu$.
+$$ \implies \begin{cases}
+r^2 R'' + r R' - \mu R = 0 \\
+\Theta'' + \mu \Theta= 0
+\end{cases}$$
+Since the radial equation is non-trivial, let us solve the easier angular equation in its entirety first. By the characteristic equation, we obtain \\ \\
+\textbf{For $\mu > 0$}: \\ \\
+$$\Theta(\theta) = c_0 \cos \left( \sqrt{\mu} \theta \right) + c_1 \sin \left( \sqrt{\mu} \theta \right)$$
+\textbf{For $\mu = 0$}: \\ \\
+$$\Theta(\theta) = c_2 + c_3 \theta$$
+\textbf{For $\mu < 0$}: \\ \\
+$$\Theta(\theta) = c_4 e^{\sqrt{-\mu} \theta} +c_5 e^{-\sqrt{-\mu} \theta} $$  \\
+We apply the angular Neumann boundary condition
+\begin{align*}
+& u(r,0) = u\left (r,\frac{\pi}{3} \right)  = 0 \\ 
+\implies& R(r) \Theta(0) = 0 \implies \Theta(0) = 0 \;\;\; \text{(For nontrivial $R(r)$)} \\
+\implies& R(r) \Theta \left( \frac{\pi}{3} \right) = 0 \implies \Theta \left( \frac{\pi}{3} \right) = 0 \;\;\; \text{(For nontrivial $R(r)$)}
+\end{align*}
+\textbf{For $\mu > 0$}: \\ \\
+\begin{align*}
+\Theta(0) = 0 \implies& \boxed{c_0 = 0} \\
+\Theta \left( \frac{\pi}{3} \right) = 0 \implies& c_1 \sin \left( \sqrt{\mu} \frac{\pi}{3} \right) = 0 \\
+\implies& \sin \left( \sqrt{\mu} \frac{\pi}{3} \right) = 0 \;\;\; \text{(for $c_1 \neq 0$)} \\
+\implies& \frac{\pi \sqrt{\mu}}{3} = n\pi \;\;\; \text{For $n \in \mathbb{Z}$} \\
+\implies& \boxed{\mu = (3n)^2}
+\end{align*}
+\textbf{For $\mu = 0$}: \\ \\
+\begin{align*}
+\Theta(0) = 0 \implies& \boxed{c_2 = 0} \\
+\Theta \left( \frac{\pi}{3} \right) = 0 \implies& \boxed{c_3 = 0}
+\end{align*}
+\textbf{For $\mu < 0$}: \\ \\
+\begin{align*}
+\Theta(0) = 0 \implies& \boxed{c_4 = -c_5}\\
+\Theta \left( \frac{\pi}{3} \right) = 0 \implies& c_4 e^{\sqrt{-\mu} \frac{\pi}{3}} +c_5 e^{-\sqrt{-\mu} \frac{\pi}{3}} = 0 \\
+\implies& c_4 \left( e^{\sqrt{-\mu} \frac{\pi}{3}} - e^{-\sqrt{-\mu} \frac{\pi}{3}} \right) = 0 \;\;\; \text{(substituting $c_5 = -c_4$)} \\
+\implies& 2 c_4 \underbrace{ \sinh \left( \sqrt{-\mu} \frac{\pi}{3} \right) }_{\neq 0} = 0 \\
+\implies& \boxed{c_4 = 0}
+\end{align*}
+We obtain trivial solutions for everything except the $\mu > 0$ case, so that case is the only contributor of angular eigenfunction solutions:
+$$\Theta_n(\theta) = c_1 \sin \left(3n\theta \right)$$
+Let us now solve the radial equation, given that we know $\mu = (3n)^2$. We must hence solve
+$$r^2 R'' + r R' - (3n)^2 R = 0$$
+This is linear but has \textbf{non}-constant coefficients, making it impossible to solve using the characteristic equation. Instead, this has the form of a Cauchy-Euler differential equation, which suggests the solution guess $R(r) = r^k$. Plugging in yields
+\begin{align*}
+& k(k-1) r^k + k r^k - (3n)^2 r^k = 0 \\
+\implies& k(k-1) + k - (3n)^2 = 0 \\
+\implies& k^2 - (3n)^2 = 0 \\
+\implies& k = 3n \\
+\end{align*}
+Hence the general solution is
 }
 
 \vspace{0.3in}
