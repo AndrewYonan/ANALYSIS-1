@@ -418,12 +418,45 @@ $$u(r,\theta) = \alpha + \beta \ln r + \sum_{n=1}^{\infty} \left[ \vphantom{\fra
 We now apply the radial boundary conditions:
 \begin{align*}
 & u(R_1, \theta) = 0 \\
-\implies& \alpha + \beta \ln R_1 + \sum_{n=1}^{\infty} \left[ \vphantom{\frac{1}{1}} \left( A_n R_1^n + C_n R_1^{-n} \right) \cos(n\theta) + \left( B_n R_1^n + D_n R_1^{-n} \right) \sin(n\theta) \right] = 0 \\
-\implies& \sum_{n=1}^{\infty} \left[ \vphantom{\frac{1}{1}} \left( A_n R_1^n + C_n R_1^{-n} \right) \cos(n\theta) + \left( B_n R_1^n + D_n R_1^{-n} \right) \sin(n\theta) \right] = -(\alpha + \beta \ln R_1)
+\implies& \alpha + \beta \ln R_1 + \sum_{n=1}^{\infty} \left[ \vphantom{\frac{1}{1}} \left( A_n R_1^n + C_n R_1^{-n} \right) \cos(n\theta) + \left( B_n R_1^n + D_n R_1^{-n} \right) \sin(n\theta) \right] = 0
 \end{align*}
-Notice the summation has the form
-$$ \sum_{n=1}^{\infty} \left[ \vphantom{\frac{1}{1}} \eta_n \cos(n\theta) +\zeta_n \sin(n\theta) \right] = -(\alpha + \beta \ln R_1) $$
-which is the Fourier expansion of $f(\theta) = -(\alpha + \beta \ln R_1)$ on $\theta \in [-\pi, \pi]$
+which is of the Fourier series form
+$$\alpha + \beta \ln R_1 + \sum_{n=1}^{\infty} \left[ \vphantom{\frac{1}{1}} \eta_n \cos(n\theta) +\zeta_n \sin(n\theta) \right] = 0$$
+This is the Fourier-expansion of the function $f(\theta) = 0$ on $\theta \in [-\pi, \pi]$, with constant term $\alpha + \beta \ln R_1$. Notice that this constant term must be zero because the function that is being Fourier expanded is zero itself (so its average value is also zero). This implies $\boxed{\alpha = -\beta \ln R_1}$.
+Because this is the Fourier expansion of the zero-function, then the Fourier coefficients must all be zero. In particular,
+\begin{align*}
+\eta_n &= 0\\
+\zeta_n &= 0 \\ \\
+\implies& A_n R_1^n + C_n R_1^{-n}  = 0 \\
+& \;\;\;\;\; \implies C_n R_1^{-n} = -A_n R_1^n \\
+& \;\;\;\;\; \implies C_n = -A_n R_1^{2n} \\ \\
+\implies& B_n R_1^n + D_n R_1^{-n} = 0 \\
+& \;\;\;\;\; \implies D_n R_1^{-n} = - B_n R_1^n \\
+& \;\;\;\;\; \implies D_n = - B_n R_1^{2n} 
+\end{align*}
+Hence, the general solution with all angular boundary conditions and the inner radial boundary condition is
+$$u(r,\theta) = -\beta \ln R_1 + \beta \ln r + \sum_{n=1}^{\infty} \left[ \vphantom{\frac{1}{1}} A_n \left( r^n - \left( \frac{R_1^2}{r} \right)^n \right) \cos(n\theta) + B_n \left( r^n - \left( \frac{R_1^2}{r} \right)^n \right) \sin(n\theta) \right]$$
+$$\boxed{u(r,\theta) = \beta \ln \left( \frac{r}{R_1} \right) + \sum_{n=1}^{\infty} \left( r^n - \left( \frac{R_1^2}{r} \right)^n \right) \left[ \vphantom{\frac{1}{1}}   A_n \cos(n\theta) + B_n \sin(n\theta) \right]}$$ \\
+We now apply the outer radial boundary condition on $R_2$.
+\begin{align*}
+& u(R_2, \theta) = g(\theta) \\
+\implies& \beta \ln \left( \frac{R_2}{R_1} \right) + \sum_{n=1}^{\infty} \left( R_2^n - \left( \frac{R_1^2}{R_2} \right)^n \right) \left[ \vphantom{\frac{1}{1}}   A_n \cos(n\theta) + B_n \sin(n\theta) \right] = g(\theta) \\
+\end{align*}
+This is the Fourier-expansion of $g(\theta)$ on $\theta \in [-\pi, \pi]$, where
+\begin{align*}
+& \beta \ln \left( \frac{R_2}{R_1} \right) = \frac{1}{2\pi} \int_{-\pi}^{\pi} g(\theta) d\theta \\
+\implies& \boxed{\beta = \frac{1}{2\pi \ln(R_2 / R_1)} \int_{-\pi}^{\pi} g(\theta) d\theta} \\
+\end{align*}
+And
+\begin{align*}
+& A_n \left( R_2^n - \left( \frac{R_1^2}{R_2} \right)^n  \right) = \frac{1}{\pi} \int_{-\pi}^{\pi} g(\theta) \cos(n\theta) d\theta \\
+\implies& \boxed{A_n = \frac{R_2^n}{\pi (R_2^{2n} - R_1^{2n}) } \int_{-\pi}^{\pi} g(\theta) \cos(n\theta) d\theta} \\
+\end{align*}
+And
+\begin{align*}
+& B_n \left( R_2^n - \left( \frac{R_1^2}{R_2} \right)^n  \right) = \frac{1}{\pi} \int_{-\pi}^{\pi} g(\theta) \sin(n\theta) d\theta \\
+\implies& \boxed{B_n = \frac{R_2^n}{\pi (R_2^{2n} - R_1^{2n}) } \int_{-\pi}^{\pi} g(\theta) \sin(n\theta) d\theta} \\
+\end{align*}
 }
 
 
