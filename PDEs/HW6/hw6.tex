@@ -1,0 +1,119 @@
+
+\documentclass[12pt]{article}
+\pagestyle{empty} \topmargin -0.5in \textheight 9in \textwidth 6.5in
+\oddsidemargin -0in
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+\usepackage{xcolor}
+
+\newcommand{\mcE}{\mathcal{E}}
+
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\begin{document}
+
+\begin{flushleft}
+
+\textcolor{blue}{\textbf{NAME: Andrew Yonan}}\\
+\textbf{Department of Applied Mathematics and Statistics}
+
+\textbf{COLORADO SCHOOL OF MINES}\\
+
+
+MATH $455$: Partial Differential Equations
+\end{flushleft}
+
+\vspace{0.1in}
+
+\begin{center}
+{\bf Assignment \#6 - Problems in Higher Dimensions} \\
+Due Tuesday, November 17, 2026 \\
+\end{center}
+
+\vspace{0.2in}
+
+
+\noindent $\textbf{1}$. (12 points) Consider the doubly-indexed Fourier series
+$$f(x,y) = \sum_{m=1}^\infty \sum_{n=1}^\infty b_{mn} \sin \left ( \frac{n\pi x}{a} \right )\sin \left ( \frac{m\pi y}{b} \right )$$
+for a given function $f \in \mathrm{PC}^1 \left ( [0,a] \times [0,b] \right ).$
+\begin{enumerate}[(a)]
+\item Rewrite the series in the form
+\begin{equation}
+\label{f}
+f(x,y) = \sum_{m=1}^\infty B_m(x) \sin \left ( \frac{m\pi y}{b} \right )
+\end{equation}
+and identify $B_m(x)$ in terms of the expressions given above. \\ \\
+\textcolor{blue}{\textbf{Solution} — 
+\begin{align*}
+f(x,y) =& \sum_{m=1}^\infty \sum_{n=1}^\infty b_{mn} \sin \left ( \frac{n\pi x}{a} \right )\sin \left ( \frac{m\pi y}{b} \right ) \\
+=& \sum_{m=1}^\infty \sin \left ( \frac{m\pi y}{b} \right ) \underbrace{ \left[  \sum_{n=1}^\infty b_{mn} \sin \left ( \frac{n\pi x}{a} \right ) \right] }_{B_m(x)}
+\end{align*}
+$$\boxed{B_m(x) =  \sum_{n=1}^\infty b_{mn} \sin \left ( \frac{n\pi x}{a} \right )}$$
+}
+
+\item Consider $0 < x < a$ fixed. Then \eqref{f} is a Fourier series in $y$. Using our previous knowledge of (singly-indexed) Fourier series, write down an expression for $B_m(x)$ in terms of $f(x,y)$ and $\sin \left ( \frac{m\pi y}{b} \right )$. \\ \\
+\textcolor{blue}{\textbf{Solution } — If we fix $x = x_0$, then $B_m(x) = B_m(x_0)$ becomes a function only of $m$. Let us call this function $C_m = B_m(x_0)$. So
+\begin{align*}
+f(x_0,y) &= \sum_{m=1}^\infty \sin \left ( \frac{m\pi y}{b} \right ) B_m(x_0) \\
+&= \sum_{m=1}^\infty C_m \sin \left ( \frac{m\pi y}{b} \right )
+\end{align*}
+Since this is the Fourier sin-expansion of $f(x_0, y)$ on $y \in [0, b]$, then the Fourier coefficient $C_m$ must be
+\begin{align*}
+C_m = \frac{2}{b} \int_0^b f(x_0, y) \sin \left( \frac{m \pi y}{b} \right) dy
+\end{align*}
+So
+\begin{align*}
+\boxed{B_m(x) = \frac{2}{b} \int_0^b f(x, y) \sin \left( \frac{m \pi y}{b} \right) dy}
+\end{align*}
+}
+
+\item Consider $m \in \mathbb{N}$ fixed. Using the expression for $B_m(x)$ derived in part (a) and our previous knowledge of Fourier series, solve for $b_{mn}$ in terms of $B_m(x)$ and $\sin \left ( \frac{n\pi x}{a} \right )$. \\ \\
+\textcolor{blue}{\textbf{Solution} — Fix $m = m_0$. Then from
+\begin{align*}
+B_m(x) &=  \sum_{n=1}^\infty b_{mn} \sin \left ( \frac{n\pi x}{a} \right ) \\
+\implies& B_{m_0}(x) =  \sum_{n=1}^\infty b_{m_0n}\sin \left ( \frac{n\pi x}{a} \right )
+\end{align*}
+Hence 
+\begin{align*}
+B_{m_0n} = \frac{2}{a} \int_0^a B_{m_0}(x) \sin \left( \frac{n \pi x}{a} \right) dx \\
+\end{align*}
+And, re-generalizing to to non-fixed $m$, 
+\begin{align*}
+\boxed{b_{mn} = \frac{2}{a} \int_0^a B_{m}(x) \sin \left( \frac{n \pi x}{a} \right) dx} \\
+\end{align*}
+}
+
+\item Finally, substitute the formula for $B_m$ derived in part (b) within the formula for $b_{mn}$ found by part (c), and use this to identify a final formula for the Fourier coefficients $b_{mn}$ that depends upon $f(x,y)$. \\  \\
+\textcolor{blue}{\textbf{Solution} — 
+\begin{align*}
+b_{mn} &= \frac{2}{a} \int_0^a B_{m}(x) \sin \left( \frac{n \pi x}{a} \right) dx \\
+&= \frac{2}{a} \int_0^a \left[ \frac{2}{b} \int_0^b f(x, y) \sin \left( \frac{m \pi y}{b} \right) dy \right] \sin \left( \frac{n \pi x}{a} \right) dx \\
+&= \boxed{\frac{4}{ab} \int_0^a  \int_0^b f(x, y) \sin \left( \frac{n \pi x}{a} \right) \sin \left( \frac{m \pi y}{b} \right) dy dx} \\
+\end{align*}
+}
+
+\end{enumerate}
+
+
+\vspace{0.3in}
+
+\noindent $\textbf{2}$. (18 points) 
+Find the solution $u(t,x,y)$ of the wave equation
+\begin{equation}
+\label{WE}
+\tag{WE}
+\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} - \frac{1}{c^2} \frac{\partial^2 u}{\partial t^2}  = 0
+\end{equation}
+on the square 
+$$\Omega = \{(x,y) : 0 < x < \pi , 0 < y < \pi \}$$
+with homogenous Dirichlet boundary conditions and the initial conditions 
+$$u(0,x,y) = xy(\pi-x)(\pi-y) \qquad \mathrm{and} \qquad \frac{\partial u}{\partial t}(0,x,y) = 0$$
+for $(x,y) \in \Omega$.
+As in class, you may assume that the solution is oscillatory in $t$. Also, notice the symmetry in $u(0,x, y)$.
+Upon separating variables, you do NOT need to go through all of the cases to solve for the eigenfunctions and eigenvalues. Just use our previous work!
+
+\end{document}
