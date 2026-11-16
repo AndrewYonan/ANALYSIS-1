@@ -130,15 +130,143 @@ T'' = \mu c^2 T \\
 X'' = \lambda X \\
 Y'' = (\mu - \lambda) Y
 \end{cases}$$ \\
-As before, the structure of these solutions depends on the signs of $\mu$ and $\lambda$. Because the homogeneous Dirichlet boundary conditions are spatial ($u(t,0,y) = u(t,\pi,y) = u(t,x,0) = u(t,x,\pi) = 0$), we should first examine the $X$ and $Y$ equations and use whatever information we get to constrain the signs of $\mu,\lambda$ to then solve the $T$ equation. \\ \\ For the following deductions, we assume none of $T(t), X(x)$, or $Y(y)$ are zero everywhere (otherwise the solution would be a trivial $u(t,x,y) = 0$).
+As before, the structure of these solutions depends on the signs of $\mu$, $\lambda$ and $\mu - \lambda$. Because the homogeneous Dirichlet boundary conditions are spatial ($u(t,0,y) = u(t,\pi,y) = u(t,x,0) = u(t,x,\pi) = 0$), we should first examine the spatial $X$ and $Y$ equations and use whatever information we get to constrain the signs of $\mu,\lambda$ to then solve the $T$ equation. \\ \\ For the following deductions, we assume none of $T(t), X(x)$, or $Y(y)$ are zero everywhere (otherwise the solution would be a trivial $u(t,x,y) = 0$). \\
 \begin{align*}
 u(t,0,y) &= T(t)X(0)Y(y) = 0 \;\;\;\;\;\;\;\; u(t,\pi,y) = T(t)X(\pi)Y(y) = 0  \\
 \implies& X(0) = 0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;  \implies X(\pi) = 0  \\ \\
 u(t,x,0) &= T(t)X(x)Y(0) = 0 \;\;\;\;\;\;\;\; u(t,x,\pi) = T(t)X(x)Y(\pi) = 0  \\
-\implies& Y(0) = 0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;  \implies Y(\pi) = 0  \\ \\
+\implies& Y(0) = 0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;  \implies Y(\pi) = 0 
 \end{align*}
-\textbf{For $\lambda < 0$}: \\ \\
-a
+\begin{align*}
+\text{\textbf{For $\lambda < 0$}:} \;\;\;\;\;\; & X(x) = c_0 \cos \left( \sqrt{-\lambda} x \right) + c_1 \sin \left( \sqrt{-\lambda} x \right) \\
+\text{\textbf{For $\lambda = 0$}:} \;\;\;\;\;\; & X(x) = c_2 + c_3 x \\
+\text{\textbf{For $\lambda > 0$}:} \;\;\;\;\;\; & X(x) = c_4 e^{\sqrt{\lambda} x} + c_5 e^{-\sqrt{\lambda}x }
+\end{align*}
+\textbf{For $\lambda < 0$}:
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_0 = 0} \\
+X(\pi) = 0 \implies& c_1 \sin \left( \sqrt{-\lambda} \pi \right) = 0 \\
+\implies& \sin \left( \sqrt{-\lambda} \pi \right) = 0 \;\;\;\; \text{(assuming non-trivial $c_1 \neq 0$)} \\
+\implies& \sqrt{-\lambda} \pi = n\pi \;\;\;\; \text{(for some $n \in \mathbb{N}$)} \\
+\implies& \boxed{\lambda = -n^2} \\
+\end{align*}
+\textbf{For $\lambda = 0$}:
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_2 = 0} \\
+X(\pi) = 0 \implies& \boxed{c_3 = 0} \\
+\end{align*}
+\textbf{For $\lambda > 0$}:
+\begin{align*}
+X(0) = 0 \implies& \boxed{c_4 = -c_5} \\
+X(\pi) = 0 \implies& c_4 e^{\sqrt{\lambda} \pi} + c_5 e^{-\sqrt{\lambda} \pi} = 0 \\
+\implies& c_4 \left(  e^{\sqrt{\lambda} \pi} - e^{-\sqrt{\lambda} \pi} \right) = 0 \;\;\;\;\; \text{(applying $c_5 = -c_4$)} \\
+\implies& 2c_4 \underbrace{\sinh{\sqrt{\lambda} \pi}}_{\neq 0 \;\; \text{for $\lambda > 0$}}= 0 \\
+\implies& \boxed{c_4 = 0} \\
+\end{align*}
+Since none of the $\lambda \geq 0$ cases contributed non-trivial solutions, $\lambda$ must be negative, with $X$ having purely sinusoidal eigenfunction solutions. Because $\lambda < 0$, we also know that $n \neq 0$, since $\lambda = -n^2$. Applying $c_0 = 0$ and $\lambda = -n^2$, the only $X$ eigenfunctions we get are
+$$X_n(x) = \sin \left( nx \right) \;\;\;\;\; n \in \mathbb{N}^{+}$$
+We now investigate the $Y$ spatial equation: $Y'' = (\mu - \lambda) Y$. Notice that this has an identical structure to the $X$ equation, just with $\mu - \lambda$ as the constant instead of $\lambda$. The $Y$ boundary conditions have an identical form to the $X$ boundary conditions since our domain $\Omega$ is a square. Were we to solve the $Y$ equation, our work would be identical to the work above, just with $\mu - \lambda$ everywhere where there was a $\lambda$ before. We'd obtain
+\begin{align*}
+& \mu - \lambda = -m^2 \;\;\;\; \text{for some $m \in \mathbb{N}$} \\
+\implies& \mu = -m^2 + \lambda \\
+\implies& \mu = -m^2 - n^2
+\end{align*}
+With
+$$Y_m(y) = \sin \left( my \right) \;\;\;\;\; m \in \mathbb{N}^{+}$$ \\
+Having solved the $X$ and $Y$ boundary value problems, we now know that $\lambda < 0$, that $\mu - \lambda < 0$, and, since $\mu = -(m^2 + n^2)$, that $\mu < 0$. This forces oscillatory solutions for the time equation $T''= \mu c^2 T$:
+\begin{align*}
+& T(t) = c_6 \cos \left(\sqrt{-\mu} c t \right) + c_7 \sin \left( \sqrt{-\mu} c t \right) \\ 
+\implies& T_{mn}(t) = A_{mn} \cos \left(c \sqrt{m^2 + n^2} t \right) + B_{mn} \sin \left( c \sqrt{m^2 + n^2} t \right)
+\end{align*}
+Hence, our general solution is 
+$$u(t,x,y) = \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \left[ A_{mn} \cos \left(c \sqrt{m^2 + n^2} t \right) + B_{mn} \sin \left( c \sqrt{m^2 + n^2} t \right) \right] \sin(nx) \sin(my)$$
+We can now apply our initial conditions, to find the values of the doubly-indexed Fourier coefficients $A_{mn}$ and $B_{mn}$. \\ \\
+\begin{align*}
+& u(0,x,y) = xy(\pi-x)(\pi-y) \\
+\implies& xy(\pi-x)(\pi-y) =  \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty}  A_{mn} \sin(nx) \sin(my)
+\end{align*}
+Consider the previous problem's work for the Fourier series of a multivariable function over $\Omega = [0,a] \times [0, b]$:
+\[
+\begin{cases}
+\displaystyle f(x,y) =
+\sum_{m=1}^\infty \sum_{n=1}^\infty
+b_{mn} \sin\left(\frac{n\pi x}{a}\right)
+\sin\left(\frac{m\pi y}{b}\right)
+\\[20pt]
+\displaystyle b_{mn} =
+\frac{4}{ab}\int_0^a \int_0^b
+f(x,y)\sin\left(\frac{n\pi x}{a}\right)
+\sin\left(\frac{m\pi y}{b}\right)\,dy\,dx
+\end{cases}
+\]
+On the domain $\Omega = [0, \pi] \times [0, \pi]$, this general formula reduces to:
+$$f(x,y) = \sum_{m=1}^\infty \sum_{n=1}^\infty b_{mn} \sin \left ( nx \right )\sin \left ( my \right )$$
+$$b_{mn} = \frac{4}{\pi^2} \int_0^{\pi}  \int_0^{\pi} f(x, y) \sin \left(nx \right) \sin \left( my \right) dy dx$$ \\
+Hence $A_{mn}$ is the general coefficient for the Fourier sin-expansion of $ xy(\pi-x)(\pi-y)$ on $[0, \pi] \times [0, \pi]$:
+\begin{align*}
+A_{mn} &= \frac{4}{\pi^2} \int_0^{\pi}  \int_0^{\pi} xy(\pi-x)(\pi-y)\sin \left(nx \right) \sin \left( my \right) dy dx \\
+&=  \frac{4}{\pi^2} \int_0^{\pi} x(\pi - x) \sin(nx) \underbrace{ \left[  \int_0^{\pi} y(\pi-y) \sin \left( my \right) dy \right] }_{\text{just a constant}}  dx \\
+&=  \frac{4}{\pi^2} \left[  \int_0^{\pi} x(\pi - x) \sin(nx) dx \right]  \left[  \int_0^{\pi} y(\pi-y) \sin \left( my \right) dy \right] \\
+\end{align*}
+Let us figure out the solution to the integral
+\begin{align*}
+I_{k} &= \int_0^{\pi} s (\pi - s) \sin(k s) ds \\
+&= \pi \int_0^{\pi} s \sin(k s) ds - \int_0^{\pi} s^2 \sin(k s) ds \\
+&= \pi \left[ \left.  -\frac{s}{k} \cos(k s) \right|_{s=0}^{s=\pi}  + \frac{1}{k} \int_0^{\pi} \cos(k s) ds \right] - \int_0^{\pi} s^2 \sin(k s) ds \\
+&= -\frac{ \pi^2 (-1)^k}{k} - \int_0^{\pi} s^2 \sin(k s) ds
+\end{align*}
+Now,
+\begin{align*}
+\int_0^{\pi} s^2 \sin(k s) ds &= \left. -\frac{s^2}{k} \cos(ks) \right|_{s=0}^{s=\pi} + \frac{2}{k} \int_{0}^{\pi} s \cos(ks) ds \\
+&= -\frac{\pi^2 (-1)^k}{k} + \frac{2}{k} \left[ \left. \frac{s}{k} \sin(ks) \right|_{s=0}^{s=\pi} - \frac{1}{k} \int_0^{\pi} \sin(ks) ds  \right] \\
+&= -\frac{\pi^2 (-1)^k}{k} - \frac{2}{k^2}  \int_0^{\pi} \sin(ks) ds \\
+&= -\frac{\pi^2 (-1)^k}{k} - \frac{2}{k^2} \left[ \left. -\frac{1}{k} \cos(ks) \right|_{s=0}^{s=\pi}  \right]  \\
+&= -\frac{\pi^2 (-1)^k}{k} - \frac{2 (1 - (-1)^k ) }{k^3} \\
+\end{align*}
+\begin{align*}
+I_k &= -\frac{\pi^2 (-1)^k}{k} - \left[ -\frac{\pi^2 (-1)^k}{k} - \frac{2 (1 - (-1)^k ) }{k^3} \right] \\
+&= \frac{2 (1 - (-1)^k ) }{k^3} \\
+\end{align*}
+From this, note that
+$$\begin{cases}
+I_k = 0 \;\;\; \text{for even $k$}\\
+I_k = \frac{4}{k^3} \;\;\; \text{for odd $k$}\\
+\end{cases}$$
+Now
+\begin{align*}
+A_{mn} &= \frac{4}{\pi^2} I_n I_m
+\end{align*}
+And
+$$\begin{cases}
+\displaystyle A_{mn} = 0 \;\;\; \text{when either of $m,n$ are even}\\
+\\[-10pt]
+\displaystyle A_{mn} = \frac{64}{\pi^2 m^3 n^3} \;\;\; \text{when both $m,n$ are odd}\\
+\end{cases}$$ \\ \\
+Now let us apply the velocity initial condition. Recall that our general solution was
+$$u(t,x,y) = \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \left[ A_{mn} \cos \left(c \sqrt{m^2 + n^2} t \right) + B_{mn} \sin \left( c \sqrt{m^2 + n^2} t \right) \right] \sin(nx) \sin(my)$$
+For compactness let's rename the constant $c\sqrt{m^2 + n^2}$ from our general solution to $\omega_{mn}$.
+$$u(t,x,y) = \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \left[ \vphantom{\frac{1}{1}} A_{mn} \cos \left(\omega_{mn} t \right) + B_{mn} \sin \left( \omega_{mn} t \right) \right] \sin(nx) \sin(my)$$
+Then
+\begin{align*}
+& \frac{\partial u}{\partial t}(0,x,y) = 0 \\
+\implies& 0 =  \left. \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \left[  \vphantom{\frac{1}{1}} -A_{mn} \omega_{mn} \sin \left(\omega_{mn} t \right) + B_{mn} \omega_{mn} \cos \left( \omega_{mn} t \right) \right] \sin(nx) \sin(my) \right|_{t=0} \\
+\implies& 0 = \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} B_{mn} \omega_{mn} \sin(nx) \sin(my)
+\end{align*}
+As before, we see that $B_{mn} \omega_{mn}$ is the coefficient for the Fourier-sin expansion of the function $f(x,y)=0$ on $\Omega = [0,\pi] \times [0, \pi]$. Hence
+\begin{align*}
+B_{mn} \omega_{mn} &= \frac{4}{\pi^2} \int_0^{\pi} (0) \sin(nx) \sin(my) dy dx \\
+&= 0
+\end{align*}
+This means either $\omega_{mn} = 0$ or $B_{mn} = 0$. However, $\omega_{mn} = c \sqrt{m^2 + n^2} \neq 0$ since we found $m > 0$ and $n > 0$. Hence $B_{mn} = 0$. Our general solution, with all initial conditions applied, is then
+\begin{align*}
+u(t,x,y) = \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} A_{mn} \cos \left(\omega_{mn} t \right) \sin(nx) \sin(my)
+\end{align*}
+Note that we found $A_{mn} = 0$ when either $m$ or $n$ is even. Hence, the only non-trivial terms in this sum are when both $m$ and $n$ are odd, in which case $A_{mn} = 64 / (\pi^2 m^3 n^3)$. Hence, we just need to hop over all the odd terms:
+$$u(t,x,y) = \sum_{m = 0}^{\infty} \sum_{n = 0}^{\infty} A_{(2m + 1)(2n+1)} \cos \left(\omega_{(2m+1)(2n+1)} t \right) \sin((2n+1)x) \sin((2m+1)y)$$
+$$\boxed{u(t,x,y) =  \frac{64}{\pi^2} \sum_{m = 0}^{\infty} \sum_{n = 0}^{\infty} \frac{\cos \left( c \sqrt{(2m+1)^2 + (2n+1)^2} t \right) }{(2m+1)^3(2n+1)^3} \sin((2n+1)x) \sin((2m+1)y)}$$
 }
+
+
+
 
 \end{document}
