@@ -1,0 +1,116 @@
+
+\documentclass[12pt]{article}
+\pagestyle{empty} \topmargin -0.5in \textheight 9in \textwidth 6.5in
+\oddsidemargin -0in
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+\usepackage{xcolor}
+
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\begin{document}
+
+\begin{flushleft}
+
+
+\textcolor{blue}{\textbf{NAME: Andrew Yonan}}\\
+\textbf{Department of Applied Mathematics and Statistics}
+
+\textbf{COLORADO SCHOOL OF MINES}\\
+
+
+MATH $455$: Partial Differential Equations
+\end{flushleft}
+
+\vspace{0.1in}
+
+\begin{center}
+{\bf Assignment \#7 - More Problems in Higher Dimensions} \\
+Due Tuesday, December 1, 2026 \\
+\end{center}
+
+\vspace{0.3in}
+
+
+\noindent $\textbf{1}$. (12 points) Use the method of Frobenius to show that the function
+$$y(x) = \sqrt{x} e^x$$
+is a solution of the ODE
+$$4x^2 y'' - 4x^2y' + (1-2x)y = 0.$$
+Use the initial coefficient $c_0 = 1$ so that we don't need to worry about arbitrary constants arising. \\ \\
+\textcolor{blue}{\textbf{Solution} — 
+A}
+
+
+\vspace{0.3in}
+
+\noindent $\textbf{2}$. (10 points) Let's define the \textbf{fundamental frequency} of an acoustics problem to be the lowest note that one can hear from the vibration of a given object (i.e., the domain on which the wave equation is being solved). Said another way, this is the minimal time frequency of the solution of the wave equation with homogeneous Dirichlet boundary conditions.
+\begin{enumerate}[(a)]
+\item Determine the fundamental frequency for the circular drum with radius $a$ and wave speed $c$. \\ \\  \textcolor{blue}{\textbf{Solution} — 
+A}
+\item Determine the fundamental frequency for the string of length $L$ and wave speed $c$. \\ \\  \textcolor{blue}{\textbf{Solution} — 
+A}
+\item Suppose that you had a circular drum with wave speed $c_d$ and radius $a$ and a violin string with wave speed $c_v$ and length $L$. 
+In order to make the fundamental frequencies of the drum and violin the same, how would you choose the length $L$? \\ \\ \textcolor{blue}{\textbf{Solution} — 
+A}
+\end{enumerate}
+
+
+\vspace{0.3in}
+
+
+\noindent $\textbf{3}$. (18 points) Let $a > 0$ be given and consider the linear, two-dimensional Schr\"{o}dinger equation
+\begin{equation}
+\label{SE}
+i\hbar \frac{\partial u}{\partial t} = - \frac{\hbar^2}{2m} \Delta u
+\end{equation}
+on a disc
+$$\Omega = \{ (x,y) : x^2 + y^2 < a^2 \}$$
+with the boundary condition
+$$u(t,x,y) = 0 \quad \mathrm{when} \quad x^2 + y^2 = a^2$$
+for all $t \geq 0$.
+This model is fundamental in the study of quantum mechanics where $\hbar > 0$ is called the reduced Planck constant, $m > 0$ represents the mass of a specific particle of interest, and both of these constants are given.
+Due to the circular geometry of the domain, we will find (standing wave) solutions of the form
+$$u(t,r,\theta) = e^{-\frac{iEt}{\hbar}} w(r,\theta)$$
+where $(r,\theta)$ are polar coordinates, $E > 0$ represents the possible energy states of the particle, and the function $w(r,\theta)$ is to be determined.
+\begin{enumerate}[(a)]
+\item Using the form of the solution $u(t,r,\theta)$ stated above and the known Laplace operator in polar coordinates, derive the PDE that $w(r,\theta)$ must satisfy. \\ \\  \textcolor{blue}{\textbf{Solution} — 
+A}
+
+\item Let 
+\begin{equation}
+\label{nuE}
+\nu = \sqrt{\frac{2mE}{\hbar^2}}.
+\end{equation}
+Using separation of variables with 
+$$w(r,\theta) = R(r) \Theta(\theta),$$ find the general solution $w(r,\theta)$ satisfying
+\begin{itemize}
+\item $\Theta(\theta)$ is non-constant and $2\pi$-periodic
+\item $R(r)$ is bounded as $r \to 0$.
+\end{itemize}
+Note that we have not provided initial conditions, so your general solution should contain arbitrary constants. \\ \\  \textcolor{blue}{\textbf{Solution} — 
+A}
+
+\item Use \eqref{nuE} to provide a formula for the energy states that the particle can assume. \\ \\  \textcolor{blue}{\textbf{Solution} — 
+A}
+\end{enumerate}
+
+\vspace{0.3in}
+
+\noindent $\textbf{Extra Credit}$. (4 points on Midterm) For every $n \in \mathbb{N}$ and $x \in \mathbb{R}$
+\begin{enumerate}[(a)]
+\item Use the definition of the Bessel functions $J_n(x)$ to show 
+$$J_{n\pm1}(x)  = \frac{n}{x} J_n(x) \mp J_n'(x).$$ \\  \textcolor{blue}{\textbf{Solution} — 
+A}
+\item Use the formula from part (a) to show that the Bessel functions satisfy
+$$J_{n+1}(x)  + J_{n-1}(x) = \frac{2n}{x} J_n(x).$$ \\  \textcolor{blue}{\textbf{Solution} — 
+A}
+\end{enumerate}
+
+
+
+
+\end{document}
