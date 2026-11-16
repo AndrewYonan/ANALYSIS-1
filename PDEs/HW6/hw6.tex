@@ -114,6 +114,31 @@ with homogenous Dirichlet boundary conditions and the initial conditions
 $$u(0,x,y) = xy(\pi-x)(\pi-y) \qquad \mathrm{and} \qquad \frac{\partial u}{\partial t}(0,x,y) = 0$$
 for $(x,y) \in \Omega$.
 As in class, you may assume that the solution is oscillatory in $t$. Also, notice the symmetry in $u(0,x, y)$.
-Upon separating variables, you do NOT need to go through all of the cases to solve for the eigenfunctions and eigenvalues. Just use our previous work!
+Upon separating variables, you do NOT need to go through all of the cases to solve for the eigenfunctions and eigenvalues. Just use our previous work! \\ \\
+\textcolor{blue}{\textbf{Solution} — Because our domain has a uniform boundary, we can easily apply separation of variables as is, with no transformations. As always, assume the general solution takes the separated form $u(t,x,y) = T(t)X(x)Y(y)$. Then
+$$T(t)X''(x)Y(y) + T(t)X(x)Y''(y) - \frac{1}{c^2} T''(t)X(x)Y(y) = 0$$
+$$\frac{X''(x)}{X(x)} + \frac{Y''(y)}{Y(y)} = \frac{1}{c^2} \frac{T''(t)}{T(t)} \;\;\;\;\; \text{(dividing by $T(t)X(x)Y(y)$)}$$ \\
+Note that we can still use a separation constant here, even though one side of the equation is a function two variables. The equation is of the form $F(x,y) = G(t)$ for all $x,y,t$, which forces both sides to be equal to the same constant (fix $x=x_0$ and $y=y_0$ for instance, and we have $F(x_0, y_0) = G(t)$ for all $t$, which implies $G(t)$, and thus $F(x,y)$, is a constant function). Call this separation constant $\mu$: \\
+$$\frac{X''(x)}{X(x)} + \frac{Y''(y)}{Y(y)}  = \mu \;\;\;\;\;\;\;\;\;\; \frac{1}{c^2} \frac{T''(t)}{T(t)} = \mu$$ \\
+We can apply the same separation logic to the first equation, splitting it into the form $F(x) = G(y)$, and assigning another separation constant $\lambda$:
+\begin{align*}
+\frac{X''(x)}{X(x)} =  \lambda  &\;\;\;\;\;\;\;\;\;\;  \mu - \frac{Y''(y)}{Y(y)} = \lambda \\
+\end{align*}
+This yields a system of 3 ODEs:
+$$\begin{cases}
+T'' = \mu c^2 T \\
+X'' = \lambda X \\
+Y'' = (\mu - \lambda) Y
+\end{cases}$$ \\
+As before, the structure of these solutions depends on the signs of $\mu$ and $\lambda$. Because the homogeneous Dirichlet boundary conditions are spatial ($u(t,0,y) = u(t,\pi,y) = u(t,x,0) = u(t,x,\pi) = 0$), we should first examine the $X$ and $Y$ equations and use whatever information we get to constrain the signs of $\mu,\lambda$ to then solve the $T$ equation. \\ \\ For the following deductions, we assume none of $T(t), X(x)$, or $Y(y)$ are zero everywhere (otherwise the solution would be a trivial $u(t,x,y) = 0$).
+\begin{align*}
+u(t,0,y) &= T(t)X(0)Y(y) = 0 \;\;\;\;\;\;\;\; u(t,\pi,y) = T(t)X(\pi)Y(y) = 0  \\
+\implies& X(0) = 0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;  \implies X(\pi) = 0  \\ \\
+u(t,x,0) &= T(t)X(x)Y(0) = 0 \;\;\;\;\;\;\;\; u(t,x,\pi) = T(t)X(x)Y(\pi) = 0  \\
+\implies& Y(0) = 0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;  \implies Y(\pi) = 0  \\ \\
+\end{align*}
+\textbf{For $\lambda < 0$}: \\ \\
+a
+}
 
 \end{document}
