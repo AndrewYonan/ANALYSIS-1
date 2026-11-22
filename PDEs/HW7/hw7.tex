@@ -259,19 +259,55 @@ c_2 = \frac{-c_0}{2^2 (1) (n+1)} \;\;\;\;\; c_4 = \frac{c_0}{2^4 (1)(2) (n+1)(n+
 \end{align*}
 \begin{align*}
 \implies c_{2k} = \frac{c_0 (-1)^k n!}{2^{2k} (k!) (n+k)!}
-\end{align*}
-Simplifying the second case:
-$$c_k' = \frac{-1}{k(2n - k)} c'_{k-2}$$
-Note that $c'_1 = 0$ still, since we found that $c_1 = 0$ regardless of whether $n = \alpha$ or $n = -\alpha$. Hence for the odd indices,
+\end{align*} 
+The second recurrence $c'_{k}$ will turn out to be an extraneous solution because the second linearly independent solution of the Bessel equation doesn't have the solution form we assumed. If we did solve it, we'd come to the Bessel function of the second kind, which diverges at the origin, and hence it would violate our drum's regularity conditions anyways. So for the drum, our first recurrence solution is enough:
 \begin{align*}
-c'_1 = 0 \;\;\;\;\; c'_3 = \frac{-1}{3(2n-3)}(0) = 0 \;\;\;\;\; c'_5 =  \frac{-1}{5(2n-5)}(0) = 0 \;\;\; \cdots
+& V(v) = \sum_{k=0}^{\infty} c_k v^{k + \alpha} \\
+&= \sum_{k=0}^{\infty} c_{2k} v^{2k + n} \;\;\;\;\; \text{(all odd terms are zero)} \\
+&= \sum_{k=0}^{\infty} \frac{c_0 (-1)^k n!}{2^{2k} (k!) (n+k)!}  v^{2k + n} \\
 \end{align*}
-For the even indices, 
+Since the Bessel equation is linear and homogenous, the above solution is a solution regardless of the specific value of $c_0$ (any constant multiple of the solution is still a solution). By convention, choose $c_0 = 1/ (n! 2^n)$. Then
 \begin{align*}
-c'_2 = \frac{-1}{2n - 2}\;\;\;\;\; 
+V(v) = \sum_{k=0}^{\infty} \frac{(-1)^k}{(k!) (n+k)!}  \left( \frac{v}{2} \right)^{2k + n} \\
 \end{align*}
+Which is notated as a Bessel function $J_n(v)$. Substituting back, using our previous definitions $V(\gamma r) = R(r)$ and $\lambda = -\gamma^2$,
+\begin{align*}
+R(r) = V(\gamma r) &= \sum_{k=0}^{\infty} \frac{(-1)^k}{(k!) (n+k)!}  \left( \frac{\gamma r}{2} \right)^{2k + n} \\
+&= \sum_{k=0}^{\infty} \frac{(-1)^k}{(k!) (n+k)!}  \left( \frac{\sqrt{-\lambda} r}{2} \right)^{2k + n} \\
+&= J_n(\sqrt{-\lambda} r)
+\end{align*}
+Since the drum is clamped down at the ring $r = a$, we have the Dirichlet boundary conditions $u(t,a,\theta) = T(t)R(a)\Theta(\theta) = 0 \implies R(a) = 0$ for non-trivial solutions. \\
+\begin{align*}
+R(a) = 0 \implies J_n(\sqrt{-\lambda} a) = 0
+\end{align*}
+Let $z_{n,m}$ be the $m$th root (starting at $m=1$ for the first root) of the $n$th order Bessel function (they can't be solved for analytically). Then
+\begin{align*}
+J_n(\sqrt{-\lambda} a) = 0 \implies& \sqrt{-\lambda} a = z_{n,m} \\
+\implies& \lambda_{mn} = -\left( \frac{z_{n,m}}{a}  \right)^2 \\
+\end{align*} 
+Now we can further-specify our time equation $T'' = \lambda c^2 T$:
+\begin{align*}
+T'' = -\left( \frac{z_{n,m}}{a}  \right)^2 c^2 T
+\end{align*}
+This is of the form $T'' = -kT$ giving sinusoidal solutions of frequency $\sqrt{k}$. Hence
+\begin{align*}
+T_{mn}(t) = A_{mn} \cos \left( \frac{c z_{m,n}}{a} t  \right) + B_{mn} \sin \left( \frac{c z_{m,n}}{a} t  \right)
+\end{align*}
+Hence the angular frequencies are 
+$$\nu_{mn} = \frac{c z_{m,n}}{a}$$ 
+And thus the time frequencies are
+$$f_{mn} = \frac{c z_{m,n}}{2\pi a}$$ 
+The fundamental frequency will be the smallest positive $f_{mn}$ value. Since $c, 2\pi$ and $a$ are constants, this entails minimizing $z_{m,n}$ only (note that $f_{mn} = 0$ is not a frequency because it would mean something that takes an infinite amount of time to cycle—meaning that it doesn't cycle). From our angular equation, we found that $n \geq 0$. Because we defined $m$ to simply be the one-indexed counting index of a root, its minimum value is also $1$, and hence $m \geq 1$. \\ \\ Besides $z_{n\geq 1,1} = 0$ (producing a "frequency" of $0$), the smallest meaningful value of $z_{m,n}$ is $z_{0,1}$—the first root of the zero-order Bessel function $J_0$. Thus, the fundamental frequency is 
+$$\boxed{f = \frac{c z_{0,1}}{2\pi a}}$$ 
+Or approximately $f = \frac{2.4048 c}{2 \pi a} = 0.3827 \frac{c}{a}$
 }
-\item Determine the fundamental frequency for the string of length $L$ and wave speed $c$. \\ \\  \textcolor{blue}{\textbf{Solution} — 
+\item Determine the fundamental frequency for the string of length $L$ and wave speed $c$. \\ \\  \textcolor{blue}{\textbf{Solution} — This is also not possible without solving the 1D wave equation on the domain $x \in [0,L]$ with Dirichlet boundary conditions $u(t,0) = u(t,L) = 0$. From 
+$$\frac{\partial^2 u}{\partial x^2} - \frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = 0$$
+Assuming $u(t,x) = T(t)X(x)$,
+\begin{align*}
+& T(t)X''(x) - \frac{1}{c^2} T''(t)X(x) = 0 \\
+\implies& \frac{X''(x)}{X(x)} = \frac{1}{c^2} \frac{T''(t)}{T(t)}
+\end{align*}
 A}
 \item Suppose that you had a circular drum with wave speed $c_d$ and radius $a$ and a violin string with wave speed $c_v$ and length $L$. 
 In order to make the fundamental frequencies of the drum and violin the same, how would you choose the length $L$? \\ \\ \textcolor{blue}{\textbf{Solution} — 
