@@ -125,13 +125,128 @@ T'' = \lambda c^2 T \\
 r^2 R'' + rR' -  (\lambda r^2 + \mu) R = 0 \\
 \Theta'' = -\mu \Theta \\
 \end{cases}$$ \\
-The Dirichlet boundary conditions impose $u(t,a,\theta) = 0 \implies T(t)R(a)\Theta(\theta) = 0 \implies R(a) = 0$ for non-trivial solutions. \\ \\ 
-For $\mu < 0$ the $\Theta$ equation would produce exponential solutions (not periodic or single-valued around the circle) and if $\mu = 0$ we'd get linear solutions (not periodic or single-valued except for constant solutions). Hence, the only admissible angular solutions are
+We proceed to solve the angular equation first because we have boundary conditions for it. \\ \\
+For $\mu < 0$ the $\Theta$ equation would produce exponential solutions (not periodic or single-valued around the circle) and if $\mu = 0$ we'd get linear solutions (not periodic or single-valued except for constant solutions). Hence, the only admissible angular solutions are \\
 \begin{align*}
 \text{\textbf{For $\mu = 0$}:} &\;\;\;\; \Theta(\theta) = c_0 \\
-\text{\textbf{For $\mu > 0$}:} &\;\;\;\; \Theta(\theta) = c_1 \cos \left( \sqrt{\mu} \theta \right) + c_2 \sin \left( \sqrt{\mu} \theta \right)
+\text{\textbf{For $\mu > 0$}:} &\;\;\;\; \Theta(\theta) = c_1 \cos \left( \sqrt{\mu} \theta \right) + c_2 \sin \left( \sqrt{\mu} \theta \right) \\
 \end{align*}
-And we have the angular boundary condition that $\Theta(\theta) = \Theta(\theta + 2\pi)$ (the material of the drum must be continuous around the circle).
+And we have the angular boundary condition that $\Theta(\theta) = \Theta(\theta + 2\pi)$ (the material of the drum must be continuous around the circle). Applying this boundary condition, \\
+\begin{align*}
+c_1 \cos \left( \sqrt{\mu} \theta \right) + c_2 \sin \left( \sqrt{\mu} \theta \right) &= c_1 \cos \left( \sqrt{\mu} (\theta + 2\pi) \right) + c_2 \sin \left( \sqrt{\mu} (\theta + 2\pi) \right) \\ \\
+&= c_1 \cos(\sqrt{\mu} \theta) \cos( 2\pi \sqrt{\mu} ) - c_1 \sin(\sqrt{\mu} \theta) \sin( 2\pi \sqrt{\mu}) \\
+& \; + c_2 \sin(\sqrt{\mu} \theta) \cos(  2\pi \sqrt{\mu}) + c_2 \cos(\sqrt{\mu} \theta) \sin( 2\pi \sqrt{\mu})
+\end{align*}
+\begin{align*}
+\implies 0 =& \cos(\sqrt{\mu} \theta) \left( \vphantom{\frac{1}{1}} c_1 - c_1 \cos( 2\pi \sqrt{\mu} ) - c_2 \sin( 2\pi \sqrt{\mu}) \right) \\
++& \sin(\sqrt{\mu} \theta) \left( \vphantom{\frac{1}{1}} c_2 + c_1 \sin( 2\pi \sqrt{\mu}) - c_2 \cos( 2\pi \sqrt{\mu} ) \right)
+\end{align*}
+Since $\cos(\sqrt{\mu} \theta)$ and $\sin(\sqrt{\mu} \theta)$ are linearly independent functions, the only way a linear combination of them can sum to zero is if the linear combination is trivial. That is, their coefficients are zero:
+$$\begin{cases}
+c_1 - c_1 \cos( 2\pi \sqrt{\mu} ) - c_2 \sin( 2\pi \sqrt{\mu}) = 0 \\
+c_2 + c_1 \sin( 2\pi \sqrt{\mu} ) - c_2 \cos( 2\pi \sqrt{\mu}) = 0
+\end{cases}$$
+Let $A = \cos(2\pi \sqrt{\mu} )$ and $B = \sin( 2\pi \sqrt{\mu})$:
+$$\begin{cases}
+c_1 - c_1 A - c_2 B = 0 \\
+c_2 + c_1 B - c_2 A = 0
+\end{cases}$$
+Solving the system for $c_1, c_2$:
+$$
+\begin{pmatrix}
+1-A & -B \\
+B & 1-A \\
+\end{pmatrix}
+\begin{pmatrix}
+c_1 \\
+c_2 \\
+\end{pmatrix} = 
+\begin{pmatrix}
+0 \\
+0 \\
+\end{pmatrix}$$
+If we're looking for a non-trivial angular solution, then $c_1$ and $c_2$ cannot both be zero. But the only way they cannot both be zero and still solve the system above is if the matrix is singular:
+$$
+\begin{vmatrix}
+1-A & -B \\
+B & 1-A \\
+\end{vmatrix} = 0
+$$
+\begin{align*}
+\implies& (1-A)^2 + B^2 = 0 \\
+\implies& 1 - 2A + A^2 + B^2 = 0 \\
+\implies& 1 - 2 \cos(2\pi \sqrt{\mu}) + \cos^2(2\pi \sqrt{\mu})  + \sin^2( 2\pi \sqrt{\mu})= 0 \\
+\implies& 2(1 - \cos(2\pi \sqrt{\mu})) = 0 \\
+\implies& \cos(2\pi \sqrt{\mu}) = 1 \\
+\implies& 2\pi \sqrt{\mu} = 2\pi n \;\;\; \text{for $n \in \mathbb{N}^+$}  \\
+\implies& \mu_n = n^2 \\
+\end{align*}
+Note that we chose $n > 0$ since this is the case where $\mu > 0$. Hence our angular solution modes are
+\begin{align*}
+& \Theta_0(\theta) = c_0 \\
+& \Theta_n(\theta) = c_1 \cos \left( n \theta \right) + c_2 \sin \left(n \theta \right) \;\;\; \text{(for $n \geq 1$)} \\
+\end{align*}
+Now we use the fact that $\mu_n = n^2$ to solve the other equations and, in particular, find the time eigenvalues for $\lambda$. Using $\mu_n = n^2$, radial equation from before becomes
+\begin{align*}
+r^2 R'' + rR' -  (\lambda r^2 + n^2) R = 0
+\end{align*}
+This is close to the standard Bessel differential equation, so we can get there by making a few substitutions. First, let $\lambda = -\gamma^2$:
+\begin{align*}
+r^2 R'' + rR' + (\gamma^2 r^2 - n^2) R = 0
+\end{align*}
+Then express the equation in the variable $v = \gamma r$. Then $R(r) = V(v) = V(\gamma r)$
+\begin{align*}
+R'(r) = \gamma V'(v) \;\;\;\;\;\; R''(r) = \gamma^2 V''(v)
+\end{align*}
+The equation becomes the standard Bessel equation: \\
+\begin{align*}
+v^2 V'' + vV' + (v^2 - n^2) V = 0 \\
+\end{align*}
+Because this ODE can't be solved with any special methods, we apply the general method of Frobenius. Assume the solution takes the power series form
+\begin{align*}
+V(v) = \sum_{k=0}^{\infty} c_k v^{k + \alpha}
+\end{align*}
+Then
+\begin{align*}
+& \sum_{k=0}^{\infty} (\alpha + k)(\alpha + k - 1) c_k v^{k+\alpha} + \sum_{k=0}^{\infty} (\alpha + k) c_k v^{k+\alpha} + \sum_{k=0}^{\infty}  c_k v^{k+\alpha+2} - n^2 \sum_{k=0}^{\infty} c_k v^{k+\alpha}  = 0
+\end{align*}
+\begin{align*}
+\sum_{k=0}^{\infty} \left[ \vphantom{\frac{1}{1}} (\alpha + k)(\alpha + k - 1) + (\alpha + k) - n^2 \right] c_k v^{\alpha + k} + \sum_{k=0}^{\infty}  c_k v^{k+\alpha+2} = 0 
+\end{align*}
+\begin{align*}
+\sum_{k=0}^{\infty} \left[ \vphantom{\frac{1}{1}} (\alpha + k)^2 - n^2 \right] c_k v^{\alpha + k} + \sum_{k=0}^{\infty}  c_k v^{k+\alpha+2} = 0 
+\end{align*}
+Force both sums to start at $k=2$:
+\begin{align*}
+0 = (\alpha^2 - n^2)c_0 v^\alpha + ((\alpha + 1)^2 - n^2)c_1 v^{\alpha + 1} +& \sum_{k=2}^{\infty} \left[ \vphantom{\frac{1}{1}} (\alpha + k)^2 - n^2 \right] c_k v^{\alpha + k} + \sum_{k=2}^{\infty}  c_{k-2} v^{k+\alpha} 
+\end{align*}
+Combining the sums:
+\begin{align*}
+& \sum_{k=2}^{\infty} \left[ \left(  \vphantom{\frac{1}{1}} (\alpha + k)^2 - n^2 \right) c_k + c_{k-2}  \right] v^{\alpha + k} \\
+&= -(\alpha^2 - n^2)c_0 v^\alpha - ((\alpha + 1)^2 - n^2)c_1 v^{\alpha + 1}
+\end{align*}
+Since $\mathcal{B} = \{v^\alpha, v^{\alpha + 1}, v^{\alpha + 2}, \cdots\}$ is a linearly independent set (forms a basis), the LHS of the equation (a linear combination of $\{v^{\alpha + 2}, v^{\alpha + 3}, \cdots\}$) cannot equal the RHS (a linear combination of $\{v^{\alpha}, v^{\alpha + 1}\}$) unless both linear combinations have all zero coefficients. In other words, $v^{\alpha}$ and $v^{\alpha + 1}$ are outside the span of $\{v^{\alpha + 2}, v^{\alpha + 3}, \cdots\}$. Hence
+$$\begin{cases}
+c_0(\alpha^2 - n^2) = 0 \\
+c_1((\alpha + 1)^2 - n^2) = 0 \\
+((\alpha + k)^2 - n^2 ) c_k + c_{k-2} = 0 \;\;\;\; \text{(for $k \geq 2$)} \\
+\end{cases}$$
+The recursive case gives
+$$c_k = \frac{1}{n^2 - (\alpha + k)^2} c_{k-2}$$
+We assume $c_0 \neq 0$ by convention (otherwise it would just shift our first non-zero term up pointlessly). Then $\alpha = \pm n$. \\ \\
+Then either
+\begin{align*}
+c_1 = 0 \;\;\; \text{OR} \;\;\; & ((n + 1)^2 - n^2) = 0\\
+& \implies 2n + 1 = 0 \\
+& \implies n = -1/2 \;\;\;\; \text{(no solution)} \\
+\text{OR} \;\;\;& ((-n + 1)^2 - n^2) = 0 \\
+& \implies 1 - 2n = 0 \\
+& \implies n = 1/2\;\;\;\; \text{(no solution)} \\
+\end{align*}
+Hence $c_1 = 0$. For the recursive case, since $\alpha = \pm n$, we have either
+\begin{align*}
+c_k = \frac{1}{n^2 - (n + k)^2} c_{k-2} \;\;\;\; \text{OR} \;\;\;\; c_k = \frac{1}{n^2 - (k - n)^2} c_{k-2}
+\end{align*}
 }
 \item Determine the fundamental frequency for the string of length $L$ and wave speed $c$. \\ \\  \textcolor{blue}{\textbf{Solution} — 
 A}
