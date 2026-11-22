@@ -41,8 +41,63 @@ $$y(x) = \sqrt{x} e^x$$
 is a solution of the ODE
 $$4x^2 y'' - 4x^2y' + (1-2x)y = 0.$$
 Use the initial coefficient $c_0 = 1$ so that we don't need to worry about arbitrary constants arising. \\ \\
-\textcolor{blue}{\textbf{Solution} — 
-A}
+\textcolor{blue}{\textbf{Solution} — We assume the solution is convergent and takes a general power series form
+$$y(x) = \sum_{n=0}^\infty c_n x^{n + \alpha}$$
+We plug into the equation:
+\begin{align*}
+\sum_{n=0}^\infty 4(n + \alpha)(n + \alpha - 1) c_n x^{n + \alpha} - \sum_{n=0}^\infty 4(n+\alpha)  c_n x^{n+\alpha + 1} + \sum_{n=0}^\infty c_n x^{n + \alpha} - 2\sum_{n=0}^\infty c_n x^{n + \alpha + 1} = 0 \\
+\end{align*}
+Combining like terms:
+\begin{align*}
+\sum_{n=0}^\infty \left[ \vphantom{\frac{1}{1}} 4(n + \alpha)(n + \alpha - 1) + 1 \right] c_n x^{n + \alpha} - \sum_{n=0}^{\infty} \left[ \vphantom{\frac{1}{1}} 4(n+\alpha) + 2 \right] c_n x^{n+\alpha + 1} = 0 \\
+\end{align*}
+Re-indexing the second sum to start at $n=1$:
+\begin{align*}
+\sum_{n=0}^\infty \left[ \vphantom{\frac{1}{1}} 4(n + \alpha)(n + \alpha - 1) + 1 \right] c_n x^{n + \alpha} - \sum_{n=1}^{\infty} \left[ \vphantom{\frac{1}{1}} 4(n-1+\alpha) + 2 \right] c_{n-1} x^{n+\alpha} = 0 \\
+\end{align*}
+We can also force the first sum to start at $n=1$ by extracting the first term out (and applying $c_0 = 1$):
+\begin{align*}
+[ 4\alpha (\alpha - 1) + 1] x^\alpha + \sum_{n=1}^\infty \left[ \vphantom{\frac{1}{1}} 4(n + \alpha)(n + \alpha - 1) + 1 \right] c_n x^{n + \alpha} - \sum_{n=1}^{\infty} \left[ \vphantom{\frac{1}{1}} 4(n-1+\alpha) + 2 \right] c_{n-1} x^{n+\alpha} = 0 \\
+\end{align*}
+Combining summations and moving the lone term over:
+\begin{align*}
+-[ 4\alpha (\alpha - 1) + 1] x^\alpha = \sum_{n=1}^\infty \left[ \left( \vphantom{\frac{1}{1}} 4(n + \alpha)(n + \alpha - 1) + 1 \right) c_n - \left( \vphantom{\frac{1}{1}} 4(n-1+\alpha) + 2 \right) c_{n-1} \right] x^{n+\alpha} \\
+\end{align*}
+This is of the form
+\begin{align*}
+-A_0 x^\alpha = \sum_{n=1}^\infty \left[ \vphantom{\frac{1}{1} }B_{n,\alpha} - C_{n,\alpha} \right] x^{n+\alpha} \\
+\end{align*}
+Note that the right-hand side is a linear combination of the basis $\mathcal{B} = \{x^{\alpha + 1}, x^{\alpha + 2}, \cdots\}$. Since $x^{\alpha} \notin \operatorname{span} \{\mathcal{B}\}$
+ there is no linear combination of $\mathcal{B}$ that sums to $-A_0 x^\alpha$, unless $A_0 = 0$. Hence $A_0 = 0$. Also due to linear independence, the only linear combination of $\mathcal{B}$ that equals $0$ is the trivial solution, where each coefficient is independently zero. Hence
+$$\begin{cases}
+A_0 = 0 \\
+B_{n,\alpha} - C_{n,\alpha} = 0 \;\;\; \text{for every $n \geq 1$}
+\end{cases}$$
+\begin{align*}
+A_0 = 0 \implies& [ 4\alpha (\alpha - 1) + 1] = 0 \\
+\implies& 4\alpha^2 - 4\alpha + 1 = 0 \\
+\implies& \alpha^2 - \alpha + \frac{1}{4} = 0 \\ 
+\implies& \left( \alpha - \frac{1}{2} \right)^2= 0 \\
+\implies& \alpha = \frac{1}{2} \\
+\end{align*}
+\begin{align*}
+B_{n,\alpha} - C_{n,\alpha} = 0 \implies& \left( \vphantom{\frac{1}{1}} 4(n + \alpha)(n + \alpha - 1) + 1 \right) c_n - \left( \vphantom{\frac{1}{1}} 4(n-1+\alpha) + 2 \right) c_{n-1} = 0 \\
+\implies& c_n = \frac{4(n-1+\alpha) + 2}{4(n + \alpha)(n + \alpha - 1) + 1} c_{n-1} \\
+\implies& c_n = \frac{4(n-\frac{1}{2}) + 2}{4(n + \frac{1}{2})(n - \frac{1}{2}) + 1} c_{n-1} \;\;\;\; \text{(plugging in $\alpha = 1/2$)} \\
+\implies& c_n = \frac{1}{n} c_{n-1} 
+\end{align*}
+Hence
+\begin{align*}
+c_0 = 1 &\;\;\; c_1 = \frac{1}{1} \\ \\
+c_2 = \frac{1}{(1)(2)} &\;\;\; c_3 = \frac{1}{(1)(2)(3)} \\ \\
+\cdots &\;\;\; c_n = \frac{1}{n!} \;\;\; \text{for $n \geq 0$}
+\end{align*}
+Then we can fully specify our solution guess:
+\begin{align*}
+y(x) &= \sum_{n=0}^\infty c_n x^{n + \alpha} = \sum_{n=0}^\infty \frac{ x^{n + \frac{1}{2}} }{n!} \\
+&= x^{\frac{1}{2}} \sum_{n=0}^\infty \frac{ x^{n} }{n!} = x^{\frac{1}{2}}  e^x = \boxed{\sqrt{x} e^x}
+\end{align*}
+}
 
 
 \vspace{0.3in}
@@ -50,7 +105,34 @@ A}
 \noindent $\textbf{2}$. (10 points) Let's define the \textbf{fundamental frequency} of an acoustics problem to be the lowest note that one can hear from the vibration of a given object (i.e., the domain on which the wave equation is being solved). Said another way, this is the minimal time frequency of the solution of the wave equation with homogeneous Dirichlet boundary conditions.
 \begin{enumerate}[(a)]
 \item Determine the fundamental frequency for the circular drum with radius $a$ and wave speed $c$. \\ \\  \textcolor{blue}{\textbf{Solution} — 
-A}
+The only way to find the fundamental frequency is to solve the wave equation and see what it says it is. \\ \\ The time-deformation $u(t,r,\theta)$ of a drum head with radius $a$ is described by the solutions to the 2D polar wave equation, on the domain $|r| \leq a$ with Dirichlet boundary condition $u(t,a,\theta) = 0$ for all $t,\theta$ (a clamped ring around the drum head). The wave equation, in polar coordinates, is
+$$\frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \theta ^2} - \frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = 0$$ \\
+Then the minimal time frequency will be given by the smallest-magnitude eigenvalue value for the time equation. Hence, we must solve this differential equation up to that point. \\ \\
+Let $u(t,r,\theta) = T(t)R(r)\Theta(\theta)$, then
+$$T(t)R''(r)\Theta(\theta) + \frac{1}{r} T(t)R'(r)\Theta(\theta) + \frac{1}{r^2} T(t) R(r) \Theta''(\theta) - \frac{1}{c^2} T''(t)R(r) \Theta(\theta) = 0$$
+$$\frac{R''(r)}{R(r)} + \frac{R'(r)}{r R(r)} + \frac{\Theta''(\theta)}{r^2 \Theta(\theta)}- \frac{T''(t) }{c^2 T(t)} = 0$$ \\
+As always, depending on where we put the equal sign, we can split the equation into the separable form $F(r,\theta) = G(t)$, both sides of which must be equal to a constant (we can see this by fixing $t=t_0$, for instance—since the equality must hold for all $r,\theta$, then $F(r,\theta) = G(t_0)$ is thus a constant function and hence both sides are constant functions). We'll call our separation constant $\lambda$:
+$$\frac{R''(r)}{R(r)} + \frac{R'(r)}{r R(r)} + \frac{\Theta''(\theta)}{r^2 \Theta(\theta)} = \frac{T''(t) }{c^2 T(t)} = \lambda$$
+From this we get the two equations
+$$\frac{R''(r)}{R(r)} + \frac{R'(r)}{r R(r)} + \frac{\Theta''(\theta)}{r^2 \Theta(\theta)}  = \lambda \;\;\;\;\;\;\; \frac{T''(t) }{c^2 T(t)} = \lambda$$
+If we multiply everything by $r^2$ in the first equation and rearrange:
+$$\frac{r^2R''(r)}{R(r)} + \frac{rR'(r)}{ R(r)} -  \lambda r^2  = -\frac{\Theta''(\theta)}{\Theta(\theta)} $$ \\
+We can introduce another separation constant $\mu$ since this equation is of the form $F(r) = G(\theta)$.
+$$\frac{r^2R''(r)}{R(r)} + \frac{rR'(r)}{ R(r)} -  \lambda r^2 = \mu  \;\;\;\;\;\;\; -\frac{\Theta''(\theta)}{\Theta(\theta)} = \mu $$ \\
+multiplying by $R(r)$ and rearranging, we get the radial equation (and all three of the separated ODEs):
+$$\begin{cases}
+T'' = \lambda c^2 T \\
+r^2 R'' + rR' -  (\lambda r^2 + \mu) R = 0 \\
+\Theta'' = -\mu \Theta \\
+\end{cases}$$ \\
+The Dirichlet boundary conditions impose $u(t,a,\theta) = 0 \implies T(t)R(a)\Theta(\theta) = 0 \implies R(a) = 0$ for non-trivial solutions. \\ \\ 
+For $\mu < 0$ the $\Theta$ equation would produce exponential solutions (not periodic or single-valued around the circle) and if $\mu = 0$ we'd get linear solutions (not periodic or single-valued except for constant solutions). Hence, the only admissible angular solutions are
+\begin{align*}
+\text{\textbf{For $\mu = 0$}:} &\;\;\;\; \Theta(\theta) = c_0 \\
+\text{\textbf{For $\mu > 0$}:} &\;\;\;\; \Theta(\theta) = c_1 \cos \left( \sqrt{\mu} \theta \right) + c_2 \sin \left( \sqrt{\mu} \theta \right)
+\end{align*}
+And we have the angular boundary condition that $\Theta(\theta) = \Theta(\theta + 2\pi)$ (the material of the drum must be continuous around the circle).
+}
 \item Determine the fundamental frequency for the string of length $L$ and wave speed $c$. \\ \\  \textcolor{blue}{\textbf{Solution} — 
 A}
 \item Suppose that you had a circular drum with wave speed $c_d$ and radius $a$ and a violin string with wave speed $c_v$ and length $L$. 
