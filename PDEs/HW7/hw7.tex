@@ -305,13 +305,46 @@ Or approximately $f = \frac{2.4048 c}{2 \pi a} = 0.3827 \frac{c}{a}$
 $$\frac{\partial^2 u}{\partial x^2} - \frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = 0$$
 Assuming $u(t,x) = T(t)X(x)$,
 \begin{align*}
-& T(t)X''(x) - \frac{1}{c^2} T''(t)X(x) = 0 \\
-\implies& \frac{X''(x)}{X(x)} = \frac{1}{c^2} \frac{T''(t)}{T(t)}
+& T(t)X''(x) - \frac{1}{c^2} T''(t)X(x) = 0 \\ \\
+\implies& \frac{X''(x)}{X(x)} = \frac{1}{c^2} \frac{T''(t)}{T(t)} = \lambda \\ \\
+\implies& \begin{cases}
+X'' - \lambda X = 0 \\
+T'' - \lambda c^2 T = 0 \\
+\end{cases}
+\end{align*} \\
+From solving the spatial equation $X(x)$ with the imposed boundary conditions $X(0) = 0$ and $X(L) = 0$, we would get trivial solutions for the case $\lambda \geq 0$. For $\lambda < 0$, we would get
+\begin{align*}
+X(x) = c_0 \cos \left( \sqrt{-\lambda} x \right) + c_1 \sin \left( \sqrt{-\lambda} x \right)
 \end{align*}
-A}
+With 
+\begin{align*}
+X(0) = 0 \implies& c_0 = 0 \\
+X(L) = 0 \implies& c_1 \sin \left( \sqrt{-\lambda} L \right) = 0 \\
+\implies&  \sqrt{-\lambda} L  = n\pi \;\;\;\; \text{for $n \in \mathbb{Z}$ and for nontrivial $c_1 \neq 0$} \\
+\implies& \lambda = - \left( \frac{n\pi}{L} \right)^2
+\end{align*}
+Hence the time equation becomes
+\begin{align*}
+T'' + \left( \frac{n \pi c}{L} \right)^2 T = 0
+\end{align*}
+With solution
+\begin{align*}
+T_n(t) = A_n \cos \left( \frac{n \pi c t}{L} \right) + B_n \sin \left( \frac{n \pi c t}{L} \right)
+\end{align*}
+Hence the string's frequencies are
+\begin{align*}
+f_n = \frac{nc}{2L}
+\end{align*}
+The smallest and most fundamental of which comes from $n=1$: 
+$$\boxed{f = \frac{c}{2L}}$$
+}
 \item Suppose that you had a circular drum with wave speed $c_d$ and radius $a$ and a violin string with wave speed $c_v$ and length $L$. 
-In order to make the fundamental frequencies of the drum and violin the same, how would you choose the length $L$? \\ \\ \textcolor{blue}{\textbf{Solution} — 
-A}
+In order to make the fundamental frequencies of the drum and violin the same, how would you choose the length $L$? \\ \\ \textcolor{blue}{\textbf{Solution} — From the previous derivation, the drum must have fundamental frequency 
+$$\frac{c_dz_{0,1}}{2 \pi a}$$
+Where $z_{0,1}$ is the first positive root of the 0-order Bessel function. And the violin must have fundamental frequency
+$$\frac{c_v}{2L}$$
+If we want to tune the violin to make its fundamental frequency equal to that of the drum, we can simply chose $$\boxed{L = \frac{\pi a c_v}{c_d z_{0,1}}}$$
+}
 \end{enumerate}
 
 
@@ -334,7 +367,23 @@ $$u(t,r,\theta) = e^{-\frac{iEt}{\hbar}} w(r,\theta)$$
 where $(r,\theta)$ are polar coordinates, $E > 0$ represents the possible energy states of the particle, and the function $w(r,\theta)$ is to be determined.
 \begin{enumerate}[(a)]
 \item Using the form of the solution $u(t,r,\theta)$ stated above and the known Laplace operator in polar coordinates, derive the PDE that $w(r,\theta)$ must satisfy. \\ \\  \textcolor{blue}{\textbf{Solution} — 
-A}
+Polar Laplace operator:
+$$\Delta = \frac{\partial^2}{\partial r^2} + \frac{1}{r} \frac{\partial }{\partial r} + \frac{1}{r^2} \frac{\partial^2}{\partial \theta ^2}$$
+Using this, we can plug $u(t,r,\theta) = e^{-\frac{iEt}{\hbar}} w(r,\theta)$ into the Schr\"{o}dinger equation and determine the nature of solutions. 
+\begin{align*}
+\frac{\partial u}{\partial t} = -\frac{iE}{\hbar} e^{-\frac{iEt}{\hbar}} w(r,\theta)
+\end{align*}
+\begin{align*}
+\Delta u = e^{-\frac{iEt}{\hbar}}  \left( \frac{\partial^2 w}{\partial r^2} + \frac{1}{r} \frac{\partial w}{\partial r} + \frac{1}{r^2} \frac{\partial^2 w}{\partial \theta ^2} \right)
+\end{align*}
+Plugging these pieces in the equation,
+\begin{align*}
+i\hbar \frac{\partial u}{\partial t} &= - \frac{\hbar^2}{2m} \Delta u \\ \\
+\implies E e^{-\frac{iEt}{\hbar}} w(r,\theta) &= - \frac{\hbar^2}{2m} e^{-\frac{iEt}{\hbar}}   \left( \frac{\partial^2 w}{\partial r^2} + \frac{1}{r} \frac{\partial w}{\partial r} + \frac{1}{r^2} \frac{\partial^2 w}{\partial \theta ^2} \right) \\ \\
+\implies -\frac{2mE}{\hbar^2} w &= \frac{\partial^2 w}{\partial r^2} + \frac{1}{r} \frac{\partial w}{\partial r} + \frac{1}{r^2} \frac{\partial^2 w}{\partial \theta ^2} \\ \\
+\implies& \boxed{\frac{\partial^2 w}{\partial r^2} + \frac{1}{r} \frac{\partial w}{\partial r} + \frac{1}{r^2} \frac{\partial^2 w}{\partial \theta ^2} + \frac{2mE}{\hbar^2} w = 0} \\
+\end{align*}
+}
 
 \item Let 
 \begin{equation}
@@ -348,7 +397,32 @@ $$w(r,\theta) = R(r) \Theta(\theta),$$ find the general solution $w(r,\theta)$ s
 \item $R(r)$ is bounded as $r \to 0$.
 \end{itemize}
 Note that we have not provided initial conditions, so your general solution should contain arbitrary constants. \\ \\  \textcolor{blue}{\textbf{Solution} — 
-A}
+Let $w(r,\theta) = R(r) \Theta(\theta)$, then plugging into the equation, we get
+\begin{align*}
+R''(r) \Theta (\theta) + \frac{R'(r) \Theta (\theta)}{r} + \frac{R(r) \Theta''(\theta)}{r^2} + \frac{2mE}{\hbar^2} R(r) \Theta(\theta) = 0
+\end{align*}
+Assuming non-trivial $R(r) \Theta(\theta)$, we can divide by this, giving
+\begin{align*}
+\frac{R''(r)}{R(r)} + \frac{R'(r)}{rR(r)} + \frac{\Theta''(\theta)}{\Theta(\theta)r^2} + \underbrace{\frac{2mE}{\hbar^2}}_{\nu^2}  = 0
+\end{align*}
+Let's multiply by $r^2$ and rearrange into the separated form $F(r) = G(\theta)$, with separation constant $\lambda$.
+\begin{align*}
+\frac{r^2 R''(r)}{R(r)} + \frac{rR'(r)}{R(r)} + \nu^2 r^2 = -\frac{\Theta''(\theta)}{\Theta(\theta)} = \lambda
+\end{align*}
+From this we extract a radial equation
+\begin{align*}
+r^2 R + rR' + \left( \nu^2 r^2 -\lambda \right)R = 0
+\end{align*}
+And an angular equation
+\begin{align*}
+\Theta'' + \lambda \Theta = 0
+\end{align*}
+Since we have a periodic boundary condition for the $\Theta$ equation, let's use it to further constrain the possible values of $\lambda$. Since we're looking for periodic non-constant solutions, that already eliminates all linear and exponential solutions that come from the case $\lambda = 0$ and $\lambda < 0$, respectively. Hence $\lambda > 0$ and the only feasible angular solution is \\
+\begin{align*}
+\Theta(\theta) = c_0 \cos(\sqrt{\lambda} \theta) + c_1 \sin(\sqrt{\lambda} \theta) \\
+\end{align*}
+Applying the constraint $\Theta(\theta + 2\pi) = \Theta(\theta)$ forces $\lambda = n^2$ (we solved exactly this periodic boundary constraint in problem 1).
+}
 
 \item Use \eqref{nuE} to provide a formula for the energy states that the particle can assume. \\ \\  \textcolor{blue}{\textbf{Solution} — 
 A}
