@@ -483,12 +483,22 @@ $$J_{n\pm1}(x)  = \frac{n}{x} J_n(x) \mp J_n'(x).$$ \\  \textcolor{blue}{\textbf
 \begin{align*}
 & \frac{n}{x} J_n(x) \mp J_n'(x)  \\ \\
 &= \frac{n}{x} \sum_{k=0}^{\infty} \frac{(-1)^k}{k! (n+k)!}  \left( \frac{x}{2} \right)^{2k + n} \mp \frac{1}{2} \sum_{k=0}^{\infty} \frac{(2k + n)(-1)^k}{k! (n+k)!}  \left( \frac{x}{2} \right)^{2k + n - 1} \\ \\
-&= \sum_{k=0}^{\infty} \frac{n(-1)^k}{k! (n+k)!}  \frac{x^{2k + n - 1}}{2^{2k + n}}  \mp \sum_{k=0}^{\infty} \frac{(2k + n)(-1)^k}{k! (n+k)!}  \frac{x^{2k + n - 1}}{2^{2k + n}} \\ \\
+&= \sum_{k=0}^{\infty} \left(  \frac{n(-1)^k}{k! (n+k)!}  \frac{x^{2k + n - 1}}{2^{2k + n}}  \mp \frac{(2k + n)(-1)^k}{k! (n+k)!}  \frac{x^{2k + n - 1}}{2^{2k + n}} \right) \\ \\
+&= \sum_{k=0}^{\infty} \left(  \frac{n(-1)^k \mp (2k + n)(-1)^k}{k! (n+k)!} \right) \left(  \frac{x^{2k + n - 1}}{2^{2k + n}}   \right) \\ \\
+&= \underbrace{ \sum_{k=1}^{\infty} \left(  \frac{-2k(-1)^k}{k! (n+k)!} \right) \left(  \frac{x^{2k + n - 1}}{2^{2k + n}}   \right)}_{(-)} \;\;\; \text{OR} \;\;\; \underbrace{\sum_{k=0}^{\infty} \left(  \frac{2(-1)^k (n+k)}{k! (n+k)!} \right) \left(  \frac{x^{2k + n - 1}}{2^{2k + n}}   \right)}_{(+)} \\ \\
+&= \sum_{k=1}^{\infty} \left(  \frac{(-1)^{k+1}}{(k-1)! (n+k)!} \right) \left(  \frac{x}{2} \right)^{2k + n - 1} \;\;\; \text{OR} \;\;\; \sum_{k=0}^{\infty} \left(  \frac{(-1)^k}{k! (n+k-1)!} \right) \left(  \frac{x}{2} \right)^{2k + n - 1} \\ \\
+&= \sum_{k=0}^{\infty} \left(  \frac{(-1)^{k+2}}{k! (n+k+1)!} \right) \left(  \frac{x}{2} \right)^{2(k+1) + n - 1} \;\;\; \text{OR} \;\;\; \sum_{k=0}^{\infty} \left(  \frac{(-1)^k}{k! ((n-1)+k)!} \right) \left(  \frac{x}{2} \right)^{2k + (n - 1)} \\ \\
+&= \sum_{k=0}^{\infty} \left(  \frac{(-1)^{k}}{k! ((n+1)+k)!} \right) \left(  \frac{x}{2} \right)^{2k + (n + 1)} \;\;\; \text{OR} \;\;\; J_{n-1}(x) \\ \\
+&= J_{n+1}(x) \;\;\; \text{OR} \;\;\; J_{n-1}(x) \\ \\
+&= J_{n \pm 1}(x) \\ \\
 \end{align*}
 }
 \item Use the formula from part (a) to show that the Bessel functions satisfy
 $$J_{n+1}(x)  + J_{n-1}(x) = \frac{2n}{x} J_n(x).$$ \\  \textcolor{blue}{\textbf{Solution} — 
-A}
+\begin{align*}
+J_{n+1}(x)  + J_{n-1}(x) &= \left( \frac{n}{x} J_n(x) - J_n'(x) \right) + \left( \frac{n}{x} J_n(x) + J_n'(x) \right) \\ \\
+&=  \frac{2n}{x} J_n(x)
+\end{align*}}
 \end{enumerate}
 
 
