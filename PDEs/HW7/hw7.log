@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  24 NOV 2026 11:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  25 NOV 2026 10:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -202,92 +202,92 @@ Overfull \hbox (28.38094pt too wide) detected at line 100
 
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 107--303
+Underfull \hbox (badness 10000) in paragraph at lines 107--304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--303
+Underfull \hbox (badness 10000) in paragraph at lines 107--304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 
  []
 
 [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 
  []
 
 
-Overfull \hbox (23.36105pt too wide) detected at line 303
+Overfull \hbox (23.36105pt too wide) detected at line 304
 []
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--340
+Underfull \hbox (badness 10000) in paragraph at lines 305--341
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 341--347
+Underfull \hbox (badness 10000) in paragraph at lines 342--348
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 369--386
+Underfull \hbox (badness 10000) in paragraph at lines 370--387
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 399--425
+Underfull \hbox (badness 10000) in paragraph at lines 400--462
 
  []
 
 [12{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
 c}]
-Underfull \hbox (badness 10000) in paragraph at lines 425--425
+Underfull \hbox (badness 10000) in paragraph at lines 462--462
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 427--429
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 464--474
 
  []
 
-[13] [14] (./hw7.aux)
+[14] [15] (./hw7.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -296,11 +296,11 @@ L3 programming layer <2026-01-19>
 Here is how much of TeX's memory you used:
  2792 strings out of 467525
  38780 string characters out of 5418982
- 464821 words of memory out of 5000000
+ 464734 words of memory out of 5000000
  31704 multiletter control sequences out of 15000+600000
  634382 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,65p,717b,311s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 56i,15n,65p,492b,311s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -314,10 +314,10 @@ xlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texl
 ive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/
 texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/loc
 al/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on hw7.pdf (14 pages, 170092 bytes).
+Output written on hw7.pdf (15 pages, 173536 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 119 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

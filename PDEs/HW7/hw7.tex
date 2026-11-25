@@ -264,16 +264,16 @@ The second recurrence $c'_{k}$ will turn out to be an extraneous solution becaus
 \begin{align*}
 & V(v) = \sum_{k=0}^{\infty} c_k v^{k + \alpha} \\
 &= \sum_{k=0}^{\infty} c_{2k} v^{2k + n} \;\;\;\;\; \text{(all odd terms are zero)} \\
-&= \sum_{k=0}^{\infty} \frac{c_0 (-1)^k n!}{2^{2k} (k!) (n+k)!}  v^{2k + n} \\
+&= \sum_{k=0}^{\infty} \frac{c_0 (-1)^k n!}{2^{2k} k! (n+k)!}  v^{2k + n} \\
 \end{align*}
 Since the Bessel equation is linear and homogenous, the above solution is a solution regardless of the specific value of $c_0$ (any constant multiple of the solution is still a solution). By convention, choose $c_0 = 1/ (n! 2^n)$. Then
 \begin{align*}
-V(v) = \sum_{k=0}^{\infty} \frac{(-1)^k}{(k!) (n+k)!}  \left( \frac{v}{2} \right)^{2k + n} \\
+V(v) = \sum_{k=0}^{\infty} \frac{(-1)^k}{k! (n+k)!}  \left( \frac{v}{2} \right)^{2k + n} \\
 \end{align*}
 Which is notated as a Bessel function $J_n(v)$. Substituting back, using our previous definitions $V(\gamma r) = R(r)$ and $\lambda = -\gamma^2$,
 \begin{align*}
-R(r) = V(\gamma r) &= \sum_{k=0}^{\infty} \frac{(-1)^k}{(k!) (n+k)!}  \left( \frac{\gamma r}{2} \right)^{2k + n} \\
-&= \sum_{k=0}^{\infty} \frac{(-1)^k}{(k!) (n+k)!}  \left( \frac{\sqrt{-\lambda} r}{2} \right)^{2k + n} \\
+R(r) = V(\gamma r) &= \sum_{k=0}^{\infty} \frac{(-1)^k}{k! (n+k)!}  \left( \frac{\gamma r}{2} \right)^{2k + n} \\
+&= \sum_{k=0}^{\infty} \frac{(-1)^k}{k! (n+k)!}  \left( \frac{\sqrt{-\lambda} r}{2} \right)^{2k + n} \\
 &= J_n(\sqrt{-\lambda} r)
 \end{align*}
 Since the drum is clamped down at the ring $r = a$, we have the Dirichlet boundary conditions $u(t,a,\theta) = T(t)R(a)\Theta(\theta) = 0 \implies R(a) = 0$ for non-trivial solutions. \\
@@ -291,13 +291,14 @@ T'' = -\left( \frac{z_{n,m}}{a}  \right)^2 c^2 T
 \end{align*}
 This is of the form $T'' = -kT$ giving sinusoidal solutions of frequency $\sqrt{k}$. Hence
 \begin{align*}
-T_{mn}(t) = A_{mn} \cos \left( \frac{c z_{m,n}}{a} t  \right) + B_{mn} \sin \left( \frac{c z_{m,n}}{a} t  \right)
+T_{mn}(t) = A_{mn} \cos \left( \frac{c z_{n,m}}{a} t  \right) + B_{mn} \sin \left( \frac{c z_{n,m}}{a} t  \right)
 \end{align*}
 Hence the angular frequencies are 
-$$\nu_{mn} = \frac{c z_{m,n}}{a}$$ 
+$$\nu_{mn} = \frac{c z_{n,m}}{a}$$ 
 And thus the time frequencies are
-$$f_{mn} = \frac{c z_{m,n}}{2\pi a}$$ 
-The fundamental frequency will be the smallest positive $f_{mn}$ value. Since $c, 2\pi$ and $a$ are constants, this entails minimizing $z_{m,n}$ only (note that $f_{mn} = 0$ is not a frequency because it would mean something that takes an infinite amount of time to cycle—meaning that it doesn't cycle). From our angular equation, we found that $n \geq 0$. Because we defined $m$ to simply be the one-indexed counting index of a root, its minimum value is also $1$, and hence $m \geq 1$. \\ \\ Besides $z_{n\geq 1,1} = 0$ (producing a "frequency" of $0$), the smallest meaningful value of $z_{m,n}$ is $z_{0,1}$—the first root of the zero-order Bessel function $J_0$. Thus, the fundamental frequency is 
+$$f_{mn} = \frac{c z_{n,m}}{2\pi a}$$ 
+The fundamental frequency will be the smallest positive $f_{mn}$ value. Since $c, 2\pi$ and $a$ are constants, this entails minimizing $z_{n,m}$ only (note that $f_{mn} = 0$ is not a frequency because it would mean something that takes an infinite amount of time to cycle—meaning that it doesn't cycle). From our angular equation, we found that $n \geq 0$. By convention the root index $m \geq 1$. \\ \\ 
+Besides $z_{n\geq 1,1} = 0$ (producing a "frequency" of $0$), the smallest meaningful (positive) value of $z_{n,m}$ is $z_{0,1}$—the first root of the zero-order Bessel function $J_0$. Thus, the fundamental frequency is 
 $$\boxed{f = \frac{c z_{0,1}}{2\pi a}}$$ 
 Or approximately $f = \frac{2.4048 c}{2 \pi a} = 0.3827 \frac{c}{a}$
 }
@@ -411,7 +412,7 @@ Let's multiply by $r^2$ and rearrange into the separated form $F(r) = G(\theta)$
 \end{align*}
 From this we extract a radial equation
 \begin{align*}
-r^2 R + rR' + \left( \nu^2 r^2 -\lambda \right)R = 0
+r^2 R'' + rR' + \left( \nu^2 r^2 -\lambda \right)R = 0
 \end{align*}
 And an angular equation
 \begin{align*}
@@ -421,11 +422,56 @@ Since we have a periodic boundary condition for the $\Theta$ equation, let's use
 \begin{align*}
 \Theta(\theta) = c_0 \cos(\sqrt{\lambda} \theta) + c_1 \sin(\sqrt{\lambda} \theta) \\
 \end{align*}
-Applying the constraint $\Theta(\theta + 2\pi) = \Theta(\theta)$ forces $\lambda = n^2$ (we solved exactly this periodic boundary constraint in problem 1).
+Applying the constraint $\Theta(\theta + 2\pi) = \Theta(\theta)$ to this function forces $\lambda = n^2$ (we solved exactly this periodic boundary constraint in problem 1). Hence the radial equation becomes
+\begin{align*}
+r^2 R'' + rR' + \left( \nu^2 r^2 - n^2 \right)R = 0
+\end{align*}
+Which, if we transform to the variable $s = \nu r$ and let $R(r) = S(s) = S(\nu r)$, then
+$$R'(r) = \nu S'(s) \;\;\;\; R''(r) = \nu^2 S''(s)$$
+And the equation becomes the Bessel equation:
+\begin{align*}
+s^2 S'' + sS' + \left(s^2 - n^2 \right)S = 0
+\end{align*}
+With solution 
+\begin{align*}
+S(s) = A_n J_n(s) + B_n Y_n(s)
+\end{align*}
+Where $J_n$ is the $n$th order Bessel function of the first kind, and $Y_n$ is the $n$th order Bessel function of the second kind. Since $s = \nu r$, our equation is
+\begin{align*}
+R_n(r) = A_n J_n(\nu r) + B_n Y_n(\nu r)
+\end{align*}
+Since $Y_n$ diverges as $r \to 0$, we discard this portion of the solution. Hence our radial solution is
+\begin{align*}
+R_n(r) = A_n J_n(\nu r)
+\end{align*}
+We can now apply the radial boundary condition
+\begin{align*}
+R(a) = 0 \implies& A_n J_n (\nu a) = 0 \\
+\implies& \nu a = z_{n,m} \\
+\implies& \nu_{mn} = \frac{z_{n,m}}{a}
+\end{align*}
+Where $z_{n,m}$ is the $m$th positive root (starting at $m=1$) of the $n$th order Bessel function.
+Our full spacial modes are then 
+\begin{align*}
+w_{mn}(r, \theta) = J_n(\nu_{mn} r) \left( \vphantom{\frac{1}{1}} A_{mn} \cos(n \theta) + B_{mn} \sin(n \theta)  \right)
+\end{align*}
+Hence the general $(m,n)$-solution mode is
+\begin{align*}
+u_{mn}(t, r,\theta) =  e^{-\frac{iEt}{\hbar}} J_n(\nu_{mn} r) \left( \vphantom{\frac{1}{1}} A_{mn} \cos(n \theta) + B_{mn} \sin(n \theta)  \right)
+\end{align*}
 }
 
 \item Use \eqref{nuE} to provide a formula for the energy states that the particle can assume. \\ \\  \textcolor{blue}{\textbf{Solution} — 
-A}
+Since $$\nu  = \sqrt{\frac{2mE}{\hbar^2}}$$
+and we have found that $\nu_{mn}$ must satisfy 
+$$\nu_{mn} = \frac{z_{n,m}}{a}$$
+Then (let's re-notate the mass of the particle to capital $M$)
+\begin{align*}
+\sqrt{\frac{2ME}{\hbar^2}} &= \frac{z_{n,m}}{a} \\
+\implies& \boxed{E_{mn} = \frac{\hbar^2}{2m} \left( \frac{z_{n,m}}{a} \right)^2}
+\end{align*}
+Where $E_{mn}$ is the discrete energy state the particle has in solution mode $(m,n)$.
+}
 \end{enumerate}
 
 \vspace{0.3in}
