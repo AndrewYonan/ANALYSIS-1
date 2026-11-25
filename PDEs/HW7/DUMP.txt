@@ -1,3 +1,17 @@
+Note that we \textbf{cannot} write a full double-summation for a general $w(r,\theta)$. As before, we would have wanted to create a superposition (double sum) of all possible solution modes to create a general solution here. The only issue is that here, some $\nu$ values \textit{aren't} possible solutions. In fact, all of them are not possible except the single $\nu$-value that corresponds to the particle's fixed energy $E$. \\ \\ The reason we could aggregate solution modes before is that in all our previous boundary-value problems, our separation constants had infinitely-many possible values, unrestricted by anything except boundary conditions. Here, however, since $\nu_{kn}$ is coupled to the fixed $E \geq 0$, it is restricted not only by boundary conditions but also by the fact that it's now fixed to a single value. Fixing $E$ specifies the system beyond the generality of an infinite double summation—now, only one solution mode is actually a solution.
+
+
+
+
+
+
+
+
+
+
+
+
+
 Simplifying the second case:
 $$c_k' = \frac{1}{k(2n - k)} c'_{k-2}$$
 Note that $c'_1 = 0$ still, since we found that $c_1 = 0$ regardless of whether $n = \alpha$ or $n = -\alpha$. Hence for the odd indices,
